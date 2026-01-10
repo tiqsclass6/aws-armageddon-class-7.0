@@ -1,0 +1,33 @@
+{
+  "gate": "secrets_and_role",
+  "timestamp_utc": "2026-01-10T03:52:49Z",
+  "region": "sa-east-1",
+  "instance_id": "i-05bf561b96e642ca0",
+  "secret_id": "arn:aws:secretsmanager:sa-east-1:866340886126:secret:lab-rds-mysql-5i3FJD",
+  "resolved_instance_profile_arn": "arn:aws:iam::866340886126:instance-profile/ec2-to-secrets-role",
+  "resolved_role_name": "ec2-to-secrets-role",
+  "caller_arn": "arn:aws:iam::866340886126:user/AWSCLI",
+  "toggles": {
+    "require_rotation": false,
+    "check_secret_policy_wildcard": false,
+    "check_secret_value_read": true
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "details": [
+    "PASS: aws sts get-caller-identity succeeded (credentials OK).",
+    "PASS: secret exists and is describable (arn:aws:secretsmanager:sa-east-1:866340886126:secret:lab-rds-mysql-5i3FJD).",
+    "INFO: rotation requirement disabled (REQUIRE_ROTATION=false).",
+    "INFO: secret policy wildcard check disabled (CHECK_SECRET_POLICY_WILDCARD=false).",
+    "PASS: instance has IAM instance profile attached (i-05bf561b96e642ca0).",
+    "PASS: resolved instance profile -> role (ec2-to-secrets-role -> ec2-to-secrets-role).",
+    "PASS: resolved role matches EXPECTED_ROLE_NAME (ec2-to-secrets-role).",
+    "INFO: on-instance checks skipped (not running as expected role on EC2)."
+  ],
+  "warnings": [
+    "WARN: current caller ARN is not assumed-role/ec2-to-secrets-role (you may be running off-instance)."
+  ],
+  "failures": [
+    ""
+  ]
+}

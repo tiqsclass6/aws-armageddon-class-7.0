@@ -36,9 +36,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Ignore keys
-*.json 
-
 .terraform.lock.hcl
 example.kubeconfig
 

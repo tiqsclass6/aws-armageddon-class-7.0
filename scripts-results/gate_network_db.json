@@ -1,0 +1,37 @@
+{
+  "gate": "network_db",
+  "timestamp_utc": "2026-01-10T03:51:50Z",
+  "region": "sa-east-1",
+  "instance_id": "i-05bf561b96e642ca0",
+  "db_id": "lab-mysql",
+  "engine": "mysql",
+  "db_port": "3306",
+  "publicly_accessible": "False",
+  "ec2_security_groups": "sg-06ecf557dff8b8275",
+  "rds_security_groups": "sg-0470a06af8c115c6d",
+  "db_subnet_group": "lab-1a-db-subnet-group",
+  "toggles": {
+    "check_private_subnets": true
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "details": [
+    "PASS: aws sts get-caller-identity succeeded (credentials OK).",
+    "PASS: RDS instance exists (lab-mysql).",
+    "PASS: RDS is not publicly accessible (PubliclyAccessible=False).",
+    "PASS: discovered DB port = 3306 (engine=mysql).",
+    "PASS: EC2 security groups resolved (i-05bf561b96e642ca0): sg-06ecf557dff8b8275",
+    "PASS: RDS security groups resolved (lab-mysql): sg-0470a06af8c115c6d",
+    "PASS: RDS SG allows DB port 3306 from EC2 SG (SG-to-SG ingress present).",
+    "INFO: DB subnet group (lab-1a-db-subnet-group) subnets: subnet-0029e131bd7640bd7\tsubnet-08fa54818ac2ce69c\tsubnet-0645e80363969abfe",
+    "PASS: subnet subnet-0029e131bd7640bd7 shows no IGW route (private check OK).",
+    "PASS: subnet subnet-08fa54818ac2ce69c shows no IGW route (private check OK).",
+    "PASS: subnet subnet-0645e80363969abfe shows no IGW route (private check OK)."
+  ],
+  "warnings": [
+    ""
+  ],
+  "failures": [
+    ""
+  ]
+}

@@ -335,7 +335,11 @@ Secret ID for Application:     lab1a-rds-mysql
     - Screenshot of `http://<PUBLIC_IP>/list` output with ≥ **three notes**
 
       ![init.jpg](/Screenshots/init.jpg)
-      ![note.jpg](/Screenshots/note.jpg)
+      ![note1.jpg](/Screenshots/note1.jpg)
+      ![note2.jpg](/Screenshots/note2.jpg)
+      ![note3.jpg](/Screenshots/note3.jpg)
+      ![note4.jpg](/Screenshots/note4.jpg)
+      ![note5.jpg](/Screenshots/note5.jpg)
       ![list.jpg](/Screenshots/list.jpg)
 
 4. **Short Answers:**
@@ -409,6 +413,11 @@ Secret ID for Application:     lab1a-rds-mysql
 - **Verification Demonstration:**
 
   <https://github.com/user-attachments/assets/d5f0c48c-1678-4c14-a8f8-148dba0ba53f>
+
+- **Final Audit Check**
+
+  ![final-check-pt1.jpg](/Screenshots/final-check-pt1.jpg)
+  ![final-check-pt2.jpg](/Screenshots/final-check-pt2.jpg)
 
 ---
 
