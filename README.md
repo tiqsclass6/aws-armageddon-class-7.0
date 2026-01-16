@@ -1,4 +1,4 @@
-# **Lab 1B & 1C – Validation & Incident Response in Terraform**
+# **AWS Lab 1B & 1C – Validation & Incident Response in Terraform**
 
 [![Terraform](https://img.shields.io/badge/Terraform-≥1.6-623CE4?logo=terraform&logoColor=white)](https://www.terraform.io)
 [![AWS Provider](https://img.shields.io/badge/AWS%20Provider-≥6.0-FF9900?logo=amazonaws&logoColor=white)](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
@@ -321,6 +321,7 @@ aws secretsmanager get-secret-value \
 
 #### 4.4 Diagnosis – Identify credential drift
 
+> [!WARNING]
 > Notice the Password in the **Secrets Manager** was incorrect causing credential drift.
 
 #### 4.5 Recovery – Restore the correct password in Secrets Manager

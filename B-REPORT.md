@@ -64,7 +64,7 @@ The failure was identified through the following mechanisms:
 
 **Log Analysis**  
 
-- CloudWatch Logs filter (searching for "ERROR", "Exception", "failed", "denied", "OperationalError", "Access denied") revealed repeated `pymysql.err.OperationalError` exceptions with messages indicating authentication failure.
+- CloudWatch Logs filter (searching for "Access denied for user") revealed repeated `pymysql.err.OperationalError` exceptions with messages indicating authentication failure.
 
 ---
 
@@ -73,7 +73,8 @@ The failure was identified through the following mechanisms:
 **Root Cause**  
 Credential mismatch (drift) between the **RDS DB instance master password** and the value stored in **AWS Secrets Manager**.
 
-The RDS master password was intentionally modified to an incorrect value as part of the incident simulation exercise. The **Flask** application continued to retrieve and use the original (now invalid) password from the Secrets Manager secret `lab/rds/mysql_v15`. This resulted in repeated authentication failures during database connection attempts, manifesting as `pymysql.err.OperationalError` exceptions with "Access denied" messages.
+> [!NOTE]
+> The RDS master password was intentionally modified to an incorrect value as part of the incident simulation exercise. The **Flask** application continued to retrieve and use the original (now invalid) password from the Secrets Manager secret `lab/rds/mysql_v15`. This resulted in repeated authentication failures during database connection attempts, manifesting as `pymysql.err.OperationalError` exceptions with "Access denied for user" messages.
 
 **Contributing Factors**  
 
@@ -94,7 +95,7 @@ Approximately 12 minutes from detection to full restoration.
 - Time from first failed request to alarm trigger: **~5–7** minutes (alarm evaluation period)  
 - Time to acknowledge and diagnose via logs and configuration validation: **3 minutes**  
 - Time to retrieve correct password from **Secrets Manager** and apply it to RDS: **2 minutes**  
-- Time for RDS password change to propagate and instance to return to "available" status: **2–3 minutes**  
+- Time for Secrets Manager password change to propagate and instance to return to "available" status: **2–3 minutes**  
 - Final verification (successful `/list` endpoint response): immediate after recovery
 
 ---
@@ -102,15 +103,14 @@ Approximately 12 minutes from detection to full restoration.
 ## 7. Recovery Actions Performed
 
 1. Retrieved the correct master password from **Secrets Manager** using the AWS CLI.  
-2. Updated the RDS instance master password via the following command:  
+2. Updated the Secrets Manager master password via the following command:  
 
-   ```bash
-   aws rds modify-db-instance \
-     --db-instance-identifier lab-1c-mysql_v15 \
-     --master-user-password "<correct-password>" \
-     --apply-immediately \
-     --region sa-east-1
-   ```  
+    ```bash
+    aws secretsmanager update-secret \
+      --secret-id lab/rds/mysql_v15 \
+      --secret-string '{"username":"admin","password":"<correct_password>"}' \
+      --region sa-east-1
+    ```
 
 3. Monitored RDS instance status until it returned to "available".  
 4. Validated application functionality by successfully executing endpoints `/init`, `/add`, and `/list`.  
