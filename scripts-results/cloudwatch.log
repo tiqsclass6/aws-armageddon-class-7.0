@@ -1,0 +1,145 @@
+--------------------------------------------------------------------------------------------------------------------------------
+|   timestamp   |                                                   message                                                    |
+|---------------|--------------------------------------------------------------------------------------------------------------|
+| 1768282689831 | Starting Flask application on port 80                                                                        |
+| 1768283008079 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283008280 | Database initialized successfully                                                                            |
+| 1768283020677 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283020680 | Successfully connected to RDS database                                                                       |
+| 1768283020686 | Note added successfully: first_note                                                                          |
+| 1768283025362 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283025364 | Successfully connected to RDS database                                                                       |
+| 1768283025366 | Note added successfully: blue_book_gentlemen                                                                 |
+| 1768283030780 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283030782 | Successfully connected to RDS database                                                                       |
+| 1768283030784 | Note added successfully: brazil_colombia_capeverde                                                           |
+| 1768283035912 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283035915 | Successfully connected to RDS database                                                                       |
+| 1768283035917 | Note added successfully: this_is_200k_work                                                                   |
+| 1768283036626 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283036631 | Database initialized successfully                                                                            |
+| 1768283040725 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283040727 | Successfully connected to RDS database                                                                       |
+| 1768283040729 | Note added successfully: lab_1c_is_a_success                                                                 |
+| 1768283046068 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283046072 | Successfully connected to RDS database                                                                       |
+| 1768283046073 | Successfully retrieved 5 notes                                                                               |
+| 1768283053459 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283053463 | Successfully connected to RDS database                                                                       |
+| 1768283053465 | Note added successfully: first_note                                                                          |
+| 1768283075396 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768283075400 | Successfully connected to RDS database                                                                       |
+| 1768283075401 | Successfully retrieved 6 notes                                                                               |
+| 1768284955398 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768284955429 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768284962686 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768284962692 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768284962693 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768284966662 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768284966669 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768284966670 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768285314532 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285314550 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768285315574 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285315579 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768285316433 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285316442 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768285318508 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285318513 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768285318514 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768285319440 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285319447 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768285319447 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768285320234 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285320267 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768285320267 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768285322702 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285322709 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768285322710 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768285323509 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285323518 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768285323518 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768285324373 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768285324384 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768285324385 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768286160154 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286160246 | Database initialized successfully                                                                            |
+| 1768286163610 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286163612 | Successfully connected to RDS database                                                                       |
+| 1768286163615 | Note added successfully: test-failure                                                                        |
+| 1768286167712 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286167715 | Successfully connected to RDS database                                                                       |
+| 1768286167721 | Successfully retrieved 7 notes                                                                               |
+| 1768286285545 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286285549 | Successfully connected to RDS database                                                                       |
+| 1768286285551 | Successfully retrieved 7 notes                                                                               |
+| 1768286497662 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286497680 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768286500614 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286500620 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768286500620 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768286503898 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286503904 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768286503904 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768286539020 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286539028 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768286539997 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286540008 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768286540732 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286540738 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768286543160 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286543167 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768286543167 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768286543901 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286543910 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768286543910 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768286546309 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286546316 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768286546316 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768286547021 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768286547027 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768286547028 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768287137808 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287137817 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768287137817 | Failed to list notes: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")           |
+| 1768287148312 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287148320 | Database initialization failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)") |
+| 1768287152801 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287152810 | Database connection failed: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")     |
+| 1768287152810 | Failed to add note: (1045, "Access denied for user 'admin'@'10.240.0.27' (using password: YES)")             |
+| 1768287202189 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287202214 | Database initialized successfully                                                                            |
+| 1768287205374 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287205376 | Successfully connected to RDS database                                                                       |
+| 1768287205378 | Note added successfully: test-failure                                                                        |
+| 1768287208810 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287208813 | Successfully connected to RDS database                                                                       |
+| 1768287208816 | Successfully retrieved 8 notes                                                                               |
+| 1768287370087 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287370093 | Successfully connected to RDS database                                                                       |
+| 1768287370093 | Successfully retrieved 8 notes                                                                               |
+| 1768287372447 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287372450 | Successfully connected to RDS database                                                                       |
+| 1768287372451 | Successfully retrieved 8 notes                                                                               |
+| 1768287373147 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287373149 | Successfully connected to RDS database                                                                       |
+| 1768287373150 | Successfully retrieved 8 notes                                                                               |
+| 1768287373858 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287373860 | Successfully connected to RDS database                                                                       |
+| 1768287373861 | Successfully retrieved 8 notes                                                                               |
+| 1768287419219 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287419222 | Successfully connected to RDS database                                                                       |
+| 1768287419224 | Note added successfully: test-restored-success                                                               |
+| 1768287466330 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287466334 | Successfully connected to RDS database                                                                       |
+| 1768287466334 | Successfully retrieved 9 notes                                                                               |
+| 1768287539384 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287539387 | Successfully connected to RDS database                                                                       |
+| 1768287539389 | Note added successfully: the_database_is_working_again                                                       |
+| 1768287594419 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287594423 | Successfully connected to RDS database                                                                       |
+| 1768287594424 | Successfully retrieved 10 notes                                                                              |
+| 1768287665377 | Successfully retrieved database credentials from Secrets Manager                                             |
+| 1768287665383 | Successfully connected to RDS database                                                                       |
+| 1768287665384 | Successfully retrieved 10 notes                                                                              |
+--------------------------------------------------------------------------------------------------------------------------------
