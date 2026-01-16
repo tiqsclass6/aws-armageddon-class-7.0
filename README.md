@@ -6,7 +6,7 @@
 [![Flask](https://img.shields.io/badge/Flask-2.0+-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com)
 [![Deployment Region](https://img.shields.io/badge/Region-sa--east--1-FF9900?logo=amazonaws&logoColor=white)](https://aws.amazon.com/about-aws/global-infrastructure/regions/sa-east-1/)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/yourusername/lab-1c?color=blue)](https://github.com/tiqsclass6/aws-armageddon-class-7.0/commits)
+[![GitHub Last Commit Lab 1C](https://img.shields.io/github/last-commit/tiqsclass6/aws-armageddon-class-7.0?branch=main&label=Lab%201C&color=blue)](https://github.com/tiqsclass6/aws-armageddon-class-7.0/commits/main)
 
 ---
 
@@ -19,6 +19,7 @@
 - **[Validation & Incident Response (Lab 1B)](#validation--incident-response-lab-1b)**
 - **[Terraform Teardown / Cleanup](#terraform-teardown--cleanup)**
 - **[Lab 1A Through 1C Deliverables](#lab-1a-through-1c-deliverables)**
+- **[Cloudwatch Logs (Full Version - ASCII)](#cloudwatch-logs-full-version---ascii)**
 - **[References](#references)**
 - **[Troubleshooting](#troubleshooting)**
 - **[Author](#author)**
@@ -227,9 +228,9 @@ aws secretsmanager get-secret-value \
 
 ```bash
 aws sns subscribe \
-  --topic-arn arn:aws:sns:sa-east-1:866340886126:lab-1c-db-incidents-v1 \
+  --topic-arn arn:aws:sns:sa-east-1:<ACCOUNT_ID>:lab-1c-db-incidents-v1 \
   --protocol email \
-  --notification-endpoint bjett2000@hotmail.com \
+  --notification-endpoint <youremail@example.com> \
   --region sa-east-1
 ```
 
@@ -237,7 +238,7 @@ aws sns subscribe \
 
 ```bash
 aws sns list-subscriptions-by-topic \
-  --topic-arn arn:aws:sns:sa-east-1:866340886126:lab-1c-db-incidents-v1 \
+  --topic-arn arn:aws:sns:sa-east-1:<ACCOUNT_ID>:lab-1c-db-incidents-v1 \
   --region sa-east-1 \
   --query "Subscriptions[?Protocol=='email'].{Endpoint:Endpoint, Status:Status}" \
   --output table

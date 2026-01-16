@@ -17,7 +17,7 @@
 *January 13, 2026 (approximately 22:00–23:00 PST, based on log timestamps)*  
 
 **Classification**  
-*High: Simulated incident for training and validation purposes*
+*SEV-2 (Simulated / Training Exercise)*
 
 ---
 
@@ -56,7 +56,7 @@ The failure was identified through the following mechanisms:
 
 **Notification**  
 
-- SNS topic `lab-1c-db-incidents` delivered an email alert to `<youremail@example.com>`.
+- Delivered an email alert to the configured SNS email subscription.
 
 **Secondary Confirmation**  
 
@@ -103,15 +103,7 @@ Approximately 12 minutes from detection to full restoration.
 ## 7. Recovery Actions Performed
 
 1. Retrieved the correct master password from **Secrets Manager** using the AWS CLI.  
-2. Updated the Secrets Manager master password via the following command:  
-
-    ```bash
-    aws secretsmanager update-secret \
-      --secret-id lab/rds/mysql_v15 \
-      --secret-string '{"username":"admin","password":"<correct_password>"}' \
-      --region sa-east-1
-    ```
-
+2. Restored the RDS master password to match the existing Secrets Manager value.
 3. Monitored RDS instance status until it returned to "available".  
 4. Validated application functionality by successfully executing endpoints `/init`, `/add`, and `/list`.  
 5. Confirmed alarm clearance and absence of new error events in **CloudWatch Logs** in the subsequent 5-minute period.

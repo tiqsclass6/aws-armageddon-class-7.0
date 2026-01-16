@@ -65,12 +65,14 @@ aws sns list-subscriptions-by-topic \
 ## PART IV - Simulate the Incident (Trigger the Alarm)
 
 Purpose: Force a connection failure to generate logs, increment the metric, and trigger the alarm.
-Step 4.1 — Change the RDS password (most reliable way to trigger credential failure)
+Step 4.1 — Change the Secrets Manager password (most reliable way to trigger credential failure)
 
-Go to AWS Console → RDS → select your instance (lab-1c-mysql)
-Actions → Modify
-Under "Settings" → change the Master password to something different from what's in Secrets Manager
-Apply immediately (no maintenance window needed)
+- Go to AWS Console → Secrets Manager → select your secret (lab/rds/mysql_v15) → Retrieve secret value
+- Click Edit
+- Change the "password" field to an incorrect value
+- Save the changes
+
+### Test the application endpoints again (should fail)
 
 ```plaintext
 http://<PUBLIC_IP>/init
@@ -100,6 +102,7 @@ aws logs filter-log-events \
   --filter-pattern '"Access denied for user"' \
   --region sa-east-1 \
   --start-time "$(date -d '-1 hour' +%s000)" \
+  # NOTE: date -d assumes GNU/Linux. Use gdate on macOS.
   --limit 10 \
   --output json \
 | jq -r '.events[] | [(.timestamp / 1000 | todate), .message] | @tsv' \
@@ -124,7 +127,7 @@ aws secretsmanager get-secret-value \
 
 Notice the Password in the Secrets Manager was incorrect causing credential drift.
 
-### 5.4 Recovery – Restore RDS password to match Secrets Manager
+### 5.4 Recovery – Restore RDS master password using Secrets Manager as the source of truth
 
 ```bash
 # First Retrieve current password from Secrets Manager
@@ -137,7 +140,7 @@ aws secretsmanager get-secret-value \
 # Then: Apply it to RDS (replace <PASTE_PASSWORD_HERE>)
 aws rds modify-db-instance \
   --db-instance-identifier lab-1c-mysql \
-  --master-user-password "StFWydLMdmKvZEhb" \
+  --master-user-password "<REDACTED_FROM_SECRETS_MANAGER>" \
   --apply-immediately \
   --region sa-east-1
 
@@ -173,5 +176,6 @@ aws logs filter-log-events \
   --filter-pattern '"Access denied for user"' \
   --region sa-east-1 \
   --start-time "$(date -d '-5 minutes' +%s000)" \
+  # NOTE: date -d assumes GNU/Linux. Use gdate on macOS.
   --output text
 ```
