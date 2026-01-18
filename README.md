@@ -460,7 +460,7 @@ Run `terraform output` after successful deployment:
 - VPC Endpoints for AWS Services  
   <https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-interface.html>
 - Watchtower – Python CloudWatch Logging Library  
-  <https://github.com/lincolnloop/watchtower>
+  <https://github.com/kislyuk/watchtower>
 - Terraform AWS Provider – VPC Endpoints  
   <https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint>
 - Amazon Linux 2023 SSM Agent  
