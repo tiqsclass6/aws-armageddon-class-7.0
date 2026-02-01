@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   timestamp   |                                                        message                                                        |   logStreamName   |
+|---------------|-----------------------------------------------------------------------------------------------------------------------|-------------------|
+| 1769913501530 | Database initialized successfully                                                                                     | rdsapp-1769909189 |
+| 1769913521928 | Inserted note: lab3a_write_from_liberdade                                                                             | rdsapp-1769909187 |
+| 1769913524136 | Inserted note: tokyo_is_authoritative_db                                                                              | rdsapp-1769909197 |
+| 1769913861518 | Inserted note: blue_book_gentlemen                                                                                    | rdsapp-1769909195 |
+| 1769913873738 | Inserted note: TIQS_loves_big_booty_latinas                                                                           | rdsapp-1769909192 |
+| 1769913887935 | Inserted note: brazil_colombia_capeverde                                                                              | rdsapp-1769909187 |
+| 1769913895540 | Inserted note: this_is_300k_work                                                                                      | rdsapp-1769909192 |
+| 1769913903228 | Inserted note: lab_3a_is_complete                                                                                     | rdsapp-1769909197 |
+| 1769918892913 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v8 | rdsapp-1769918892 |
+| 1769918893310 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v8 | rdsapp-1769918893 |
+| 1769918893892 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v8 | rdsapp-1769918893 |
+| 1769918894395 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v8 | rdsapp-1769918894 |
+| 1769918895469 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v8 | rdsapp-1769918895 |
+| 1769918895515 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v8 | rdsapp-1769918895 |
+| 1769922098285 | Database initialized successfully                                                                                     | rdsapp-1769918895 |
+| 1769922112355 | Inserted note: first_note                                                                                             | rdsapp-1769918892 |
+| 1769922120929 | Inserted note: blue_book_gentlemen                                                                                    | rdsapp-1769918893 |
+| 1769922130039 | Inserted note: TIQS_loves_big_booty_latinas                                                                           | rdsapp-1769918893 |
+| 1769922138841 | Inserted note: brazil_colombia_capeverde                                                                              | rdsapp-1769918894 |
+| 1769922148744 | Inserted note: this_is_300k_work                                                                                      | rdsapp-1769918895 |
+| 1769922156984 | Inserted note: lab_3a_is_complete                                                                                     | rdsapp-1769918895 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------

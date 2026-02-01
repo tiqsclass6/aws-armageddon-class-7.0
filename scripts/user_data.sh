@@ -1,0 +1,201 @@
+#!/bin/bash
+set -euo pipefail
+exec > >(tee -a /var/log/user-data.log) 2>&1
+
+echo "===== Lab 3A user_data starting: $(date -Is) ====="
+
+# --- Base OS updates (non-fatal) ---
+dnf -y update || true
+
+# --- Install base packages with retries ---
+for i in {1..6}; do
+  echo "Attempt ${i}: installing base packages..."
+  if dnf -y install python3-pip awscli amazon-ssm-agent; then
+    echo "Base packages installed."
+    break
+  fi
+  echo "Base package install failed; retrying in 10s..."
+  sleep 10
+done
+
+# --- Start SSM agent (don’t fail script if it hiccups) ---
+systemctl enable --now amazon-ssm-agent || true
+systemctl restart amazon-ssm-agent || true
+systemctl status amazon-ssm-agent --no-pager || true
+
+# --- Make pip itself stable ---
+python3 -m pip install --upgrade pip || true
+
+# --- Install Python deps with retries (ONLY ONCE) ---
+for i in {1..6}; do
+  echo "Attempt ${i}: pip installing app dependencies..."
+  if pip3 install --no-cache-dir flask pymysql boto3 watchtower; then
+    echo "Python dependencies installed."
+    break
+  fi
+  echo "pip install failed; retrying in 10s..."
+  sleep 10
+done
+
+# --- App directories ---
+mkdir -p /etc/sysconfig /opt/rdsapp
+
+# NOTE:
+# If you are using Terraform template variables (templatefile), keep these as placeholders
+# and render them in your launch template. If not templating, hardcode values below.
+cat >/etc/sysconfig/rdsapp <<'EOF'
+AWS_REGION=sa-east-1
+SECRET_REGION=ap-northeast-1
+SECRET_ID=lab-3a/shinjuku/rds/mysql_v9
+CLOUDFRONT_DOMAIN=
+LOG_GROUP=/aws/ec2/lab-3a-shinjuku-rds-app
+EOF
+
+# --- Flask app ---
+cat >/opt/rdsapp/app.py <<'PY'
+import json, os, time, logging
+import boto3, pymysql
+from flask import Flask, request
+import watchtower
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+APP_REGION    = os.environ.get("AWS_REGION", "sa-east-1")
+SECRET_REGION = os.environ.get("SECRET_REGION", "ap-northeast-1")
+SECRET_ID     = os.environ.get("SECRET_ID", "lab-3a/shinjuku/rds/mysql_v9")
+CLOUDFRONT_DOMAIN = os.environ.get("CLOUDFRONT_DOMAIN", "").strip()
+LOG_GROUP     = os.environ.get("LOG_GROUP", "/aws/ec2/lab-3a-shinjuku-rds-app")
+
+try:
+    logger.addHandler(watchtower.CloudWatchLogHandler(
+        log_group_name=LOG_GROUP,
+        stream_name=f"rdsapp-{int(time.time())}",
+        send_interval=10,
+        boto3_client=boto3.client("logs", region_name=APP_REGION),
+    ))
+except Exception as e:
+    logger.warning("CloudWatch logging handler failed (continuing): %s", e)
+
+def cloudfront_base_url():
+    if not CLOUDFRONT_DOMAIN:
+        return ""
+    d = CLOUDFRONT_DOMAIN.replace("https://", "").replace("http://", "").strip().rstrip("/")
+    return f"https://{d}"
+
+secrets = boto3.client("secretsmanager", region_name=SECRET_REGION)
+
+def get_db_creds():
+    resp = secrets.get_secret_value(SecretId=SECRET_ID)
+    return json.loads(resp["SecretString"])
+
+def get_conn(db=None):
+    c = get_db_creds()
+    return pymysql.connect(
+        host=c["host"],
+        user=c["username"],
+        password=c["password"],
+        port=int(c.get("port", 3306)),
+        database=db if db else c.get("dbname", "labdb"),
+        autocommit=True,
+        connect_timeout=5,
+        read_timeout=10,
+        write_timeout=10,
+    )
+
+app = Flask(__name__)
+
+@app.route("/health")
+def health():
+    return "ok", 200
+
+@app.route("/")
+def home():
+    cf = cloudfront_base_url()
+    cf_block = f"<p>CloudFront Domain: <code>{cf}</code></p>" if cf else "<p><em>CloudFront domain not detected.</em></p>"
+    return f"""
+    <h2>EC2 → RDS Notes App</h2>
+    <h3>CloudFront</h3>
+    {cf_block}
+    <h3>Endpoints</h3>
+    <ul>
+      <li>GET /init</li>
+      <li>GET /add?note=hello</li>
+      <li>GET /list</li>
+      <li>GET /health</li>
+    </ul>
+    """
+
+@app.route("/init")
+def init_db():
+    try:
+        conn = get_conn(db=None)
+        cur = conn.cursor()
+        cur.execute("CREATE DATABASE IF NOT EXISTS labdb;")
+        cur.execute("USE labdb;")
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS notes (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                note VARCHAR(255) NOT NULL
+            );
+        """)
+        cur.close()
+        conn.close()
+        logger.info("Database initialized successfully")
+        return "Initialized labdb + notes table."
+    except Exception as e:
+        logger.exception("Init DB failed: %s", e)
+        return "Init failed", 500
+
+@app.route("/add")
+def add_note():
+    note = request.args.get("note", "").strip()
+    if not note:
+        return "Missing note param. Try: /add?note=hello", 400
+    conn = get_conn(db="labdb")
+    cur = conn.cursor()
+    cur.execute("INSERT INTO notes(note) VALUES(%s);", (note,))
+    cur.close()
+    conn.close()
+    logger.info("Inserted note: %s", note)
+    return f"Inserted note: {note}"
+
+@app.route("/list")
+def list_notes():
+    conn = get_conn(db="labdb")
+    cur = conn.cursor()
+    cur.execute("SELECT id, note FROM notes ORDER BY id DESC;")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    out = "<h3>Notes</h3><ul>"
+    for r in rows:
+        out += f"<li>{r[0]}: {r[1]}</li>"
+    out += "</ul>"
+    return out
+
+if __name__ == "__main__":
+    logger.info("Starting Flask on 0.0.0.0:80 APP_REGION=%s SECRET_REGION=%s SECRET_ID=%s", APP_REGION, SECRET_REGION, SECRET_ID)
+    app.run(host="0.0.0.0", port=80)
+PY
+
+# --- Systemd unit ---
+cat >/etc/systemd/system/rdsapp.service <<'SERVICE'
+[Unit]
+Description=EC2 to RDS Notes App
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/rdsapp
+EnvironmentFile=-/etc/sysconfig/rdsapp
+ExecStart=/usr/bin/python3 /opt/rdsapp/app.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+SERVICE
+
+systemctl daemon-reload
+systemctl enable --now rdsapp
+systemctl status rdsapp --no-pager || true
