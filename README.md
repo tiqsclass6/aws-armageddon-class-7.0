@@ -164,12 +164,6 @@ Successful deployment results in:
 
 ---
 
-## 🖼️ Lab 3B Demo
-
-[Lab 3B Demo](https://github.com/user-attachments/assets/8b85866b-ab09-49d6-8837-8fde3c2d9d39)
-
----
-
 ## 📦 Deliverables
 
 The lab delivers the following artifacts:
@@ -186,7 +180,6 @@ The lab delivers the following artifacts:
 | `lab-3b-pt7.jpg`                 | 3B  | ![lab-3b-pt7.jpg](/Screenshots/lab-3b-pt7.jpg)                               |
 | `lab-3b-pt8.jpg`                 | 3B  | ![lab-3b-pt8.jpg](/Screenshots/lab-3b-pt8.jpg)                               |
 | `lab-3b-pt9.jpg`                 | 3B  | ![lab-3b-pt9.jpg](/Screenshots/lab-3b-pt9.jpg)                               |
-| `WRITTEN.md`                     | 3B  | [WRITTEN.md](/WRITTEN.md)                                                    |
 | `STEPS.md`                       | 3B  | [STEPS.md](/STEPS.md)                                                        |
 | `audit-pack/`                    | 3B  | [audit-pack/](/audit-pack/)                                                  |
 | `deliverables/`                  | 3B  | [deliverables/](/deliverables/)                                              |
