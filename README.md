@@ -1,23 +1,15 @@
-# 🏥 Lab 3A — Cross‑Region Healthcare Architecture (Shinjuku ↔ Liberdade) **(UNDER CONSTRUCTION)**
+# 🏥 Lab 3A — Cross‑Region Healthcare Architecture (Shinjuku ↔ Liberdade)
 
 ![Terraform](https://img.shields.io/badge/Terraform-Validated-7B42BC?logo=terraform)
 ![Security](https://img.shields.io/badge/Security-Compliance--by--Design-green)
 ![AWS](https://img.shields.io/badge/AWS-Multi--Region-orange?logo=amazonaws)
-![ALB](https://img.shields.io/badge/Load--Balancer-ALB-orange)
-![Auto-Scaling](https://img.shields.io/badge/Compute-Auto--Scaling-green)
 ![CloudFront](https://img.shields.io/badge/CDN-CloudFront-yellowgreen)
-![EC2](https://img.shields.io/badge/Compute-EC2-lightgrey)
 ![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
-![Origin-Verification](https://img.shields.io/badge/Security-Origin--Verification-green)
 ![RDS](https://img.shields.io/badge/Database-RDS-blueviolet)
-![Stateless](https://img.shields.io/badge/Compute-Stateless-green)
-![SSM](https://img.shields.io/badge/Management-SSM-blue)
 ![Transit-Gateway](https://img.shields.io/badge/Networking-Transit--Gateway-lightblue)
-![TGW-Peering](https://img.shields.io/badge/Networking-TGW--Peering-lightblue)
 ![Healthcare](https://img.shields.io/badge/Industry-Healthcare-red)
 ![HIPAA](https://img.shields.io/badge/Compliance-HIPAA-purple)
 ![No-PHI](https://img.shields.io/badge/Data-No--PHI--Outside--Shinjuku-red)
-![Status](https://img.shields.io/badge/Lab-Complete-success)
 
 ---
 
@@ -39,7 +31,7 @@ This architecture closely mirrors real‑world AWS Healthcare / HIPAA‑aligned 
 
 The lab satisfies the following requirements:
 
-* Two AWS regions
+* **Two AWS regions**
 
   * **Shinjuku (Primary / Data Authority)**
   * **Liberdade (Secondary / Compute Only)**
@@ -47,8 +39,7 @@ The lab satisfies the following requirements:
 * Cross‑region private connectivity using **Transit Gateway**
 * **No databases, replicas, or PHI storage outside Shinjuku**
 * Stateless compute in Liberdade
-* No SSH or bastion access (SSM only)
-* Enforced ALB origin verification
+* Enforced **ALB origin verification**
 * Explicit routing and security controls
 
 ---
@@ -159,32 +150,74 @@ Successful deployment results in:
 
 ---
 
-## 📦 Deliverables
+## 🖼️ Lab 3A Demo
 
-The lab delivers the following artifacts:
-
-* ✅ Fully deployed multi‑region AWS infrastructure
-* ✅ Verified TGW inter‑region routing
-* ✅ Functional application with cross‑region writes
-* ✅ No PHI storage outside Shinjuku
-* ✅ Screenshots proving each verification step
-* ✅ `WRITTEN.md` — architectural & compliance explanation
-* ✅ `STEPS.md` — reproducible verification runbook
+[Lab 3A Demo](https://github.com/user-attachments/assets/8b85866b-ab09-49d6-8837-8fde3c2d9d39)
 
 ---
 
-## 🖼️ Additional Screenshots
+## 📦 Deliverables
 
-Screenshots included demonstrate:
+### **Lab 3A Screenshots**
 
-* Terraform init / validate / plan
-* Successful `terraform apply`
-* ALB target health
-* TGW attachments and routes
-* RDS connectivity from Liberdade via TGW
-* CloudFront application responses
+| Deliverable      | Lab | Screenshots                                      |
+|:----------------:|:---:|:------------------------------------------------:|
+| `lab-3a-pt1.jpg` | 3A  | ![lab-3a-pt1.jpg](Screenshots/lab-3a-pt1.jpg)    |
+| `lab-3a-pt2.jpg` | 3A  | ![lab-3a-pt2.jpg](Screenshots/lab-3a-pt2.jpg)    |
+| `lab-3a-pt3.jpg` | 3A  | ![lab-3a-pt3.jpg](Screenshots/lab-3a-pt3.jpg)    |
+| `lab-3a-pt4.jpg` | 3A  | ![lab-3a-pt4.jpg](Screenshots/lab-3a-pt4.jpg)    |
+| `lab-3a-pt5.jpg` | 3A  | ![lab-3a-pt5.jpg](Screenshots/lab-3a-pt5.jpg)    |
+| `lab-3a-pt6.jpg` | 3A  | ![lab-3a-pt6.jpg](Screenshots/lab-3a-pt6.jpg)    |
+| `lab-3a-pt7.jpg` | 3A  | ![lab-3a-pt7.jpg](Screenshots/lab-3a-pt7.jpg)    |
+| `lab-3a-pt8.jpg` | 3A  | ![lab-3a-pt8.jpg](Screenshots/lab-3a-pt8.jpg)    |
+| `lab-3a-pt9.jpg` | 3A  | ![ lab-3a-pt9.jpg](Screenshots/lab-3a-pt9.jpg)   |
+| `lab-3a-pt10.jpg`| 3A  | ![lab-3a-pt10.jpg](Screenshots/lab-3a-pt10.jpg)  |
+| `lab-3a-pt11.jpg`| 3A  | ![lab-3a-pt11.jpg](Screenshots/lab-3a-pt11.jpg)  |
+| `lab-3a-pt12.jpg`| 3A  | ![lab-3a-pt12.jpg](Screenshots/lab-3a-pt12.jpg)  |
+| `lab-3a-pt13.jpg`| 3A  | ![lab-3a-pt13.jpg](Screenshots/lab-3a-pt13.jpg)  |
+| `lab-3a-pt14.jpg`| 3A  | ![lab-3a-pt14.jpg](Screenshots/lab-3a-pt14.jpg)  |
+| `lab-3a-pt15.jpg`| 3A  | ![ lab-3a-pt15.jpg](Screenshots/lab-3a-pt15.jpg) |
+| `lab-3a-pt16.jpg`| 3A  | ![lab-3a-pt16.jpg](Screenshots/lab-3a-pt16.jpg)  |
 
-See the `Screenshots/` directory for full evidence.
+### **Notes App Evidence**
+
+| Deliverable      | Lab | Screenshots                                      |
+|:----------------:|:---:|:------------------------------------------------:|
+| `init.jpg`       | 3A  | ![init.jpg](Screenshots/init.jpg)                |
+| `note1.jpg`      | 3A  | ![note1.jpg](Screenshots/note1.jpg)              |
+| `note2.jpg`      | 3A  | ![note2.jpg](Screenshots/note2.jpg)              |
+| `note3.jpg`      | 3A  | ![note3.jpg](Screenshots/note3.jpg)              |
+| `note4.jpg`      | 3A  | ![note4.jpg](Screenshots/note4.jpg)              |
+| `note5.jpg`      | 3A  | ![note5.jpg](Screenshots/note5.jpg)              |
+| `note6.jpg`      | 3A  | ![note6.jpg](Screenshots/note6.jpg)              |
+| `list.jpg`       | 3A  | ![list.jpg](Screenshots/list.jpg)                |
+
+### **Liberdade Infrastructure Evidence**
+
+| Deliverable                   |Lab | Screenshots                                                                 |
+|:-----------------------------:|:--:|:---------------------------------------------------------------------------:|
+|`liberdade-cf-pt1.jpg`         | 3A | ![liberdade-cf-pt1.jpg](Screenshots/liberdade-cf-pt1.jpg)                   |
+|`liberdade-cf-pt2.jpg`         | 3A | ![liberdade-cf-pt2.jpg](Screenshots/liberdade-cf-pt2.jpg)                   |
+|`liberdade-cf-pt3.jpg`         | 3A | ![liberdade-cf-pt3.jpg](Screenshots/liberdade-cf-pt3.jpg)                   |
+|`liberdade-lb-pt1.jpg`         | 3A | ![liberdade-lb-pt1.jpg](Screenshots/liberdade-lb-pt1.jpg)                   |
+|`liberdade-lb-pt2.jpg`         | 3A | ![liberdade-lb-pt2.jpg](Screenshots/liberdade-lb-pt2.jpg)                   |
+|`liberdade-ec2-instances.jpg`  | 3A | ![liberdade-ec2-instances.jpg](Screenshots/liberdade-ec2-instances.jpg)     |
+|`liberdade-security-groups.jpg`| 3A | ![liberdade-security-groups.jpg](Screenshots/liberdade-security-groups.jpg) |
+|`liberdade-tg.jpg`             | 3A | ![liberdade-tg.jpg](Screenshots/liberdade-tg.jpg)                           |
+|`liberdade-tgw-rt-pt1.jpg`     | 3A | ![liberdade-tgw-rt-pt1.jpg](Screenshots/liberdade-tgw-rt-pt1.jpg)           |
+|`liberdade-tgw-rt-pt2.jpg`     | 3A | ![liberdade-tgw-rt-pt2.jpg](Screenshots/liberdade-tgw-rt-pt2.jpg)           |
+
+### **Shinjuku Infrastructure Evidence**
+
+| Deliverable                   |Lab | Screenshots                                                                 |
+|:-----------------------------:|:--:|:---------------------------------------------------------------------------:|
+|`shinjuku-rds-pt1.jpg`         | 3A | ![shinjuku-rds-pt1.jpg](Screenshots/shinjuku-rds-pt1.jpg)                   |
+|`shinjuku-rds-pt2.jpg`         | 3A | ![shinjuku-rds-pt2.jpg](Screenshots/shinjuku-rds-pt2.jpg)                   |
+|`shinjuku-secrets.jpg`         | 3A | ![shinjuku-secrets.jpg](Screenshots/shinjuku-secrets.jpg)                   |
+|`shinjuku-ssm.jpg`             | 3A | ![shinjuku-ssm.jpg](Screenshots/shinjuku-ssm.jpg)                           |
+|`shinjuku-tgw-rt-pt1.jpg`      | 3A | ![shinjuku-tgw-rt-pt1.jpg](Screenshots/shinjuku-tgw-rt-pt1.jpg)             |
+|`shinjuku-tgw-rt-pt2.jpg`      | 3A | ![shinjuku-tgw-rt-pt2.jpg](Screenshots/shinjuku-tgw-rt-pt2.jpg)             |
+|`cloudwatch-logs.jpg`          | 3A | ![cloudwatch-logs.jpg](Screenshots/cloudwatch-logs.jpg)                     |
 
 ---
 
@@ -219,22 +252,23 @@ Common checks if issues occur:
 * Confirm ALB rules require CloudFront origin header
 * Validate SSM endpoints exist and are reachable
 
-Detailed commands are provided in **STEPS.md**.
+Detailed commands are provided in **[STEPS.md](STEPS.md)**.
 
 ---
 
 ## 📚 References
 
-* AWS Transit Gateway Documentation
-* AWS Well‑Architected Framework — Security Pillar
-* AWS Healthcare & HIPAA Compliance Whitepapers
-* Amazon RDS Security Best Practices
-* CloudFront Security & Origin Protection
+* [AWS Transit Gateway Documentation](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)
+* [AWS Well-Architected Framework — Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html)
+* [AWS Healthcare & HIPAA Compliance Whitepapers](https://aws.amazon.com/compliance/hipaa-compliance/)
+* [Amazon RDS Security Best Practices](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SecurityBestPractices.html)
+* [CloudFront Security & Origin Protection](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/security-overview.html)
 
 ---
 
-## ✍️ Authors
+## **Authors**
 
-**T.I.Q.S.**
+* **Author:** T.I.Q.S.
+* **Group Leader:** John Sweeney
 
 ---

@@ -72,7 +72,7 @@ try:
         log_group_name=LOG_GROUP,
         stream_name=f"rdsapp-{int(time.time())}",
         send_interval=10,
-        boto3_client=boto3.client("logs", region_name=APP_REGION),
+        boto3_client=boto3.client("logs", region_name=SECRET_REGION),
     ))
 except Exception as e:
     logger.warning("CloudWatch logging handler failed (continuing): %s", e)
