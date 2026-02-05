@@ -1,0 +1,10 @@
+{
+  "status": "no_waf_logging_configured",
+  "message": "No WAF logging is currently configured or no matching log group was found. This script requires AWS WAF logging to be enabled to a CloudWatch Logs group. For Lab 3B, this deliverable can be skipped or noted as not implemented, as WAF proof is desirable but not strictly mandatory.",
+  "metadata": {
+    "attempted_log_group": "/aws/waf/lab-3b",
+    "region": "sa-east-1",
+    "lookback_hours": 24,
+    "generated_at": "2026-02-05T02:30:08.049324+00:00Z"
+  }
+}

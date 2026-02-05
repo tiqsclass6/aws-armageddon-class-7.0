@@ -1,0 +1,15 @@
+{
+  "changes": {
+    "ap-northeast-1": {
+      "error": "'AwsRegion'"
+    },
+    "sa-east-1": {
+      "error": "'AwsRegion'"
+    }
+  },
+  "metadata": {
+    "generated_at": "2026-02-05T02:29:51.719975+00:00Z",
+    "lookback_hours": 72,
+    "max_results_per_region": 30
+  }
+}

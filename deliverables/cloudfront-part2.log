@@ -1,0 +1,27 @@
+Found 12 objects. Analyzing latest 5:
+  - s3://lab-3b-cloudfront-logs/lab-3b/E3OM7PTY6WT13S.2026-02-04-04.3ed5a992.gz
+  - s3://lab-3b-cloudfront-logs/lab-3b/E3OM7PTY6WT13S.2026-02-04-03.c44d7710.gz
+  - s3://lab-3b-cloudfront-logs/lab-3b/E3OM7PTY6WT13S.2026-02-04-02.e863dd94.gz
+  - s3://lab-3b-cloudfront-logs/lab-3b/E3OM7PTY6WT13S.2026-02-04-02.1a158131.gz
+  - s3://lab-3b-cloudfront-logs/lab-3b/E27IOBC69KWMUQ.2026-02-05-02.9bc373c1.gz
+
+=== CloudFront Cache Outcome Report (Standard Logs) ===
+Core total (Hit/Miss/RefreshHit): 0
+All counted lines/notes:          33
+
+Core outcomes:
+  Hit              0   (  0.0% of core)
+  RefreshHit       0   (  0.0% of core)
+  Miss             0   (  0.0% of core)
+
+Other outcomes / parsing notes (top 20):
+  Other:200                      30
+  Other:502                      2
+  Other:404                      1
+
+Interpretation (ops):
+  • High Hit% usually means lower latency & lower origin load.
+  • High Miss% suggests caching policy mismatch, uncacheable headers,
+    query-string/cookie variance, or origin Cache-Control behavior.
+  • RefreshHit means CloudFront revalidated with origin and served cached content (often good).
+=======================================================

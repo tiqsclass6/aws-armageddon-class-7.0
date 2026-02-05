@@ -1,0 +1,38 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   timestamp   |                                                        message                                                         |   logStreamName   |
+|---------------|------------------------------------------------------------------------------------------------------------------------|-------------------|
+| 1770001862719 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v9  | rdsapp-1770001861 |
+| 1770001862986 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v9  | rdsapp-1770001861 |
+| 1770001863279 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v9  | rdsapp-1770001861 |
+| 1770001863756 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v9  | rdsapp-1770001862 |
+| 1770001863813 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v9  | rdsapp-1770001862 |
+| 1770001864707 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v9  | rdsapp-1770001863 |
+| 1770002060211 | Database initialized successfully                                                                                      | rdsapp-1770001862 |
+| 1770002197979 | Inserted note: first_note                                                                                              | rdsapp-1770001863 |
+| 1770002208017 | Inserted note: blue_book_gentlemen                                                                                     | rdsapp-1770001861 |
+| 1770002220629 | Inserted note: TIQS_loves_big_booty_latinas                                                                            | rdsapp-1770001861 |
+| 1770002229124 | Inserted note: brazil_colombia_capeverde                                                                               | rdsapp-1770001861 |
+| 1770002235800 | Inserted note: this_is_300k_work                                                                                       | rdsapp-1770001861 |
+| 1770002242634 | Inserted note: lab_3a_is_complete                                                                                      | rdsapp-1770001862 |
+| 1770089926203 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v10 | rdsapp-1770089924 |
+| 1770089926980 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v10 | rdsapp-1770089925 |
+| 1770089927390 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v10 | rdsapp-1770089926 |
+| 1770089928046 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v10 | rdsapp-1770089926 |
+| 1770089928184 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v10 | rdsapp-1770089926 |
+| 1770089931311 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v10 | rdsapp-1770089930 |
+| 1770090204141 | Database initialized successfully                                                                                      | rdsapp-1770089926 |
+| 1770090383431 | Inserted note: first_note                                                                                              | rdsapp-1770089926 |
+| 1770090391693 | Inserted note: blue_book_gentlemen                                                                                     | rdsapp-1770089926 |
+| 1770090407391 | Inserted note: TIQS_loves_big_booty_latinas                                                                            | rdsapp-1770089926 |
+| 1770090413082 | Inserted note: brazil_colombia_capeverde                                                                               | rdsapp-1770089926 |
+| 1770090420131 | Inserted note: this_is_300k_work                                                                                       | rdsapp-1770089930 |
+| 1770090447933 | Inserted note: lab_3b_is_complete                                                                                      | rdsapp-1770089930 |
+| 1770101668331 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v11 | rdsapp-1770101667 |
+| 1770101669649 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v11 | rdsapp-1770101668 |
+| 1770101669727 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v11 | rdsapp-1770101668 |
+| 1770101670559 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v11 | rdsapp-1770101669 |
+| 1770101670622 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v11 | rdsapp-1770101669 |
+| 1770101670811 | Starting Flask on 0.0.0.0:80 APP_REGION=sa-east-1 SECRET_REGION=ap-northeast-1 SECRET_ID=lab-3a/shinjuku/rds/mysql_v11 | rdsapp-1770101669 |
+| 1770102148697 | Database initialized successfully                                                                                      | rdsapp-1770101668 |
+| 1770102250063 | Inserted note: first_note                                                                                              | rdsapp-1770101669 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------

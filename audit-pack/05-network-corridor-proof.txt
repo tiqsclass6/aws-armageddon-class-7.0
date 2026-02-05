@@ -1,0 +1,222 @@
+{
+  "tokyo": {
+    "region": "ap-northeast-1",
+    "transit_gateways": [
+      {
+        "TransitGatewayId": "tgw-0fa3c903a32d12be8",
+        "TransitGatewayArn": "arn:aws:ec2:ap-northeast-1:866340886126:transit-gateway/tgw-0fa3c903a32d12be8",
+        "State": "available",
+        "OwnerId": "866340886126",
+        "Description": "Shinjuku TGW",
+        "CreationTime": "2026-02-05 02:00:36+00:00",
+        "Options": {
+          "AmazonSideAsn": 64512,
+          "AutoAcceptSharedAttachments": "disable",
+          "DefaultRouteTableAssociation": "disable",
+          "DefaultRouteTablePropagation": "disable",
+          "VpnEcmpSupport": "enable",
+          "DnsSupport": "enable",
+          "SecurityGroupReferencingSupport": "disable",
+          "MulticastSupport": "disable",
+          "EncryptionSupport": {
+            "EncryptionState": "disabled"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "Environment",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Terraform"
+          },
+          {
+            "Key": "Name",
+            "Value": "shinjuku-tgw"
+          }
+        ]
+      }
+    ],
+    "attachments": [
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-09e0b8ffd95f41004",
+        "TransitGatewayId": "tgw-0fa3c903a32d12be8",
+        "TransitGatewayOwnerId": "866340886126",
+        "ResourceOwnerId": "866340886126",
+        "ResourceType": "peering",
+        "ResourceId": "tgw-0b62493f804698e10",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-07e92f640048403a2",
+          "State": "associated"
+        },
+        "CreationTime": "2026-02-05 02:01:06+00:00",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "Environment",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Terraform"
+          },
+          {
+            "Key": "Name",
+            "Value": "shinjuku-to-liberdade-peer"
+          }
+        ]
+      },
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-00769d36545d3eda3",
+        "TransitGatewayId": "tgw-0fa3c903a32d12be8",
+        "TransitGatewayOwnerId": "866340886126",
+        "ResourceOwnerId": "866340886126",
+        "ResourceType": "vpc",
+        "ResourceId": "vpc-071f985b19d9b49d0",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-07e92f640048403a2",
+          "State": "associated"
+        },
+        "CreationTime": "2026-02-05 02:01:07+00:00",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "Environment",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Terraform"
+          },
+          {
+            "Key": "Name",
+            "Value": "shinjuku-tgw-vpc-attach"
+          }
+        ]
+      }
+    ]
+  },
+  "saopaulo": {
+    "region": "sa-east-1",
+    "transit_gateways": [
+      {
+        "TransitGatewayId": "tgw-0b62493f804698e10",
+        "TransitGatewayArn": "arn:aws:ec2:sa-east-1:866340886126:transit-gateway/tgw-0b62493f804698e10",
+        "State": "available",
+        "OwnerId": "866340886126",
+        "Description": "Liberdade TGW",
+        "CreationTime": "2026-02-05 02:00:37+00:00",
+        "Options": {
+          "AmazonSideAsn": 64512,
+          "AutoAcceptSharedAttachments": "disable",
+          "DefaultRouteTableAssociation": "disable",
+          "DefaultRouteTablePropagation": "disable",
+          "VpnEcmpSupport": "enable",
+          "DnsSupport": "enable",
+          "SecurityGroupReferencingSupport": "disable",
+          "MulticastSupport": "disable",
+          "EncryptionSupport": {
+            "EncryptionState": "disabled"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "Environment",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Terraform"
+          },
+          {
+            "Key": "Name",
+            "Value": "liberdade-tgw"
+          }
+        ]
+      }
+    ],
+    "attachments": [
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-09e0b8ffd95f41004",
+        "TransitGatewayId": "tgw-0b62493f804698e10",
+        "TransitGatewayOwnerId": "866340886126",
+        "ResourceOwnerId": "866340886126",
+        "ResourceType": "peering",
+        "ResourceId": "tgw-0fa3c903a32d12be8",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-0391dc719c37f8677",
+          "State": "associated"
+        },
+        "CreationTime": "2026-02-05 02:01:35+00:00",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "Environment",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Terraform"
+          },
+          {
+            "Key": "Name",
+            "Value": "liberdade-tgw-peer-accepter"
+          }
+        ]
+      },
+      {
+        "TransitGatewayAttachmentId": "tgw-attach-0c7cde0da85d40c47",
+        "TransitGatewayId": "tgw-0b62493f804698e10",
+        "TransitGatewayOwnerId": "866340886126",
+        "ResourceOwnerId": "866340886126",
+        "ResourceType": "vpc",
+        "ResourceId": "vpc-0ddef8b58ce280ff5",
+        "State": "available",
+        "Association": {
+          "TransitGatewayRouteTableId": "tgw-rtb-0391dc719c37f8677",
+          "State": "associated"
+        },
+        "CreationTime": "2026-02-05 02:01:00+00:00",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "Environment",
+            "Value": "lab-3b"
+          },
+          {
+            "Key": "ManagedBy",
+            "Value": "Terraform"
+          },
+          {
+            "Key": "Name",
+            "Value": "liberdade-tgw-vpc-attach"
+          }
+        ]
+      }
+    ]
+  }
+}
