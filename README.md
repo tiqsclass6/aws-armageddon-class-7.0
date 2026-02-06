@@ -50,30 +50,30 @@ Secret ID for Application:     lab1a-rds-mysql
 
 ```plaintext
 lab-1a/
-└── Screenshots/                                ← Directory for lab screenshots
-|   ├── final-check-pt1.jpg
-|   ├── final-check-pt2.jpg
-|   ├── init.jpg
-|   ├── lab-1a-ec2-iam-role.jpg
-|   ├── lab-1a-ec2-rds-sg-inbound-rule.jpg
-|   ├── list.jpg
-|   ├── note1.jpg
-|   ├── note2.jpg
-|   ├── note3.jpg
-|   ├── note4.jpg
-|   ├── note5.jpg
-|   └── verification.mp4
-├── scripts-results/                            ← Directory for SEIR gate results
+├── Screenshots/
+│   ├── final-check-pt1.jpg
+│   ├── final-check-pt2.jpg
+│   ├── init.jpg
+│   ├── lab-1a-ec2-iam-role.jpg
+│   ├── lab-1a-ec2-rds-sg-inbound-rule.jpg
+│   ├── list.jpg
+│   ├── note1.jpg
+│   ├── note2.jpg
+│   ├── note3.jpg
+│   ├── note4.jpg
+│   ├── note5.jpg
+│   └── verification.mp4
+├── scripts-results/
 │   ├── gate_result_secrets_and_role.json
 │   ├── gate_network_db.json
 │   ├── run_all_gates_1.json
 │   └── run_all_gates_2.json
-├── .gitignore                                  ← Git ignore file
-├── gate_secrets_and_role.sh                    ← SEIR Gate script for Secrets Manager and IAM Role
-├── gate_network_db.sh                          ← SEIR Gate script for Network and Database
-├── run_all_gates.sh                            ← SEIR Run All Gates script
-├── README.md                                   ← This file
-└── user_data.sh                                ← EC2 User Data script for bootstrapping
+├── .gitignore
+├── gate_secrets_and_role.sh
+├── gate_network_db.sh
+├── run_all_gates.sh
+├── README.md
+└── user_data.sh
 ```
 
 ---
@@ -212,34 +212,34 @@ lab-1a/
    - Go to the role → **Add permissions** → **Create inline policy** → **JSON**.
    - Paste:
 
-    ```json
-    {
-      "Version": "2012-10-17",
-      "Statement": [
-        {
-          "Sid": "ReadSpecificSecret",
-          "Effect": "Allow",
-          "Action": [
-            "secretsmanager:GetSecretValue"
-          ],
-          "Resource": "arn:aws:secretsmanager:<REGION_HERE>:<ACCOUNT_ID>:secret:lab-rds-mysql*"
-        },
-        {
-          "Sid": "EC2ReadAccess",
-          "Effect": "Allow",
-          "Action": [
-            "ec2:DescribeInstances",
-            "ec2:DescribeTags"
-          ],
-          "Resource": "*"
-        }
-      ]
-    }
-    ```
+     ```json
+     {
+       "Version": "2012-10-17",
+       "Statement": [
+         {
+           "Sid": "ReadSpecificSecret",
+           "Effect": "Allow",
+           "Action": [
+             "secretsmanager:GetSecretValue"
+           ],
+           "Resource": "arn:aws:secretsmanager:<REGION_HERE>:<ACCOUNT_ID>:secret:lab-rds-mysql*"
+         },
+         {
+           "Sid": "EC2ReadAccess",
+           "Effect": "Allow",
+           "Action": [
+             "ec2:DescribeInstances",
+             "ec2:DescribeTags"
+           ],
+           "Resource": "*"
+         }
+       ]
+     }
+     ```
 
 > NOTE: Replace **<REGION_HERE>** with your actual AWS region and **<ACCOUNT_ID>** with your actual AWS account ID.
 
-1. Name the policy (e.g., `secrets-access`) and create policy.
+8. Name the policy (e.g., `secrets-access`) and create policy.
 
 ---
 
