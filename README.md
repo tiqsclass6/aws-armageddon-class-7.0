@@ -212,30 +212,30 @@ lab-1a/
    - Go to the role → **Add permissions** → **Create inline policy** → **JSON**.
    - Paste:
 
-        ```json
+    ```json
+    {
+      "Version": "2012-10-17",
+      "Statement": [
         {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Sid": "ReadSpecificSecret",
-                "Effect": "Allow",
-                "Action": [
-                    "secretsmanager:GetSecretValue"
-                ],
-                "Resource": "arn:aws:secretsmanager:<REGION_HERE>:<ACCOUNT_ID>:secret:lab-rds-mysql*"
-            },
-            {
-                "Sid": "EC2ReadAccess",
-                "Effect": "Allow",
-                "Action": [
-                    "ec2:DescribeInstances",
-                    "ec2:DescribeTags"
-                ],
-                "Resource": "*"
-            }
-            ]
+          "Sid": "ReadSpecificSecret",
+          "Effect": "Allow",
+          "Action": [
+            "secretsmanager:GetSecretValue"
+          ],
+          "Resource": "arn:aws:secretsmanager:<REGION_HERE>:<ACCOUNT_ID>:secret:lab-rds-mysql*"
+        },
+        {
+          "Sid": "EC2ReadAccess",
+          "Effect": "Allow",
+          "Action": [
+            "ec2:DescribeInstances",
+            "ec2:DescribeTags"
+          ],
+          "Resource": "*"
         }
-        ```
+      ]
+    }
+    ```
 
     > NOTE: Replace **<REGION_HERE>** with your actual AWS region and **<ACCOUNT_ID>** with your actual AWS account ID.
 
