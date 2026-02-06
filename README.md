@@ -105,11 +105,12 @@ curl -i https://app.theinternationalquietstorm.com/api/public-feed | sed -n '1,3
 
 ---
 
-### 2️⃣ Direct Origin Access (SUCCESS)
+### 2️⃣ Direct Origin Access (SUCCESS then FAILURE)
 
 ```bash
-# Direct origin access should succeed
-curl -i https://origin.theinternationalquietstorm.com
+# Direct origin access should succeed initially, then fail after CloudFront is active
+curl -i https://origin.theinternationalquietstorm.com/api/public-feed | sed -n '1,30p'
+curl -i https://origin.theinternationalquietstorm.com/api/public-feed | sed -n '1,30p'
 ```
 
 * Returns `200 OK`
@@ -117,6 +118,7 @@ curl -i https://origin.theinternationalquietstorm.com
 * Cache behavior respected
 
 ![lab-2b-bam-a-pt2.jpg](/Screenshots/lab-2b-bam-a-pt2.jpg)
+![lab-2b-bam-a-pt3.jpg](/Screenshots/lab-2b-bam-a-pt3.jpg)
 
 ---
 
@@ -125,11 +127,6 @@ curl -i https://origin.theinternationalquietstorm.com
 ```bash
 # CloudFront response should show caching headers
 curl -i https://app.theinternationalquietstorm.com/api/list | sed -n '1,30p'
-```
-
-![lab-2b-bam-a-pt3.jpg](/Screenshots/lab-2b-bam-a-pt3.jpg)
-
-```bash
 curl -i https://app.theinternationalquietstorm.com/api/list | sed -n '1,30p'
 ```
 
