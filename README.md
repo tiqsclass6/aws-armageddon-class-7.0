@@ -237,9 +237,9 @@ lab-1a/
     }
     ```
 
-    > NOTE: Replace **<REGION_HERE>** with your actual AWS region and **<ACCOUNT_ID>** with your actual AWS account ID.
+> NOTE: Replace **<REGION_HERE>** with your actual AWS region and **<ACCOUNT_ID>** with your actual AWS account ID.
 
-8. Name the policy (e.g., `secrets-access`) and create policy.
+1. Name the policy (e.g., `secrets-access`) and create policy.
 
 ---
 
