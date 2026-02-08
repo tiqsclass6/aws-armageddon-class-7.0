@@ -144,7 +144,7 @@ terraform apply
   
   - [AWS WAFv2 Logging](/scripts/lab-1c-bonus-c-waf-logs.csv)
   
-  - WAF Logs: <https://github.com/user-attachments/assets/6a08711a-ea84-4d3b-a67b-fcbdded7df42>
+  - <https://github.com/user-attachments/assets/6a08711a-ea84-4d3b-a67b-fcbdded7df42>
 
 ---
 
