@@ -12,7 +12,7 @@ set -euo pipefail
 # ---------- Inputs (override via env) ----------
 REGION="${REGION:-sa-east-1}"
 INSTANCE_ID="${INSTANCE_ID:-i-07dc154c3f39ae680}"
-SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v15-??????}"
+SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v16-??????}"
 DB_ID="${DB_ID:-lab-1c-mysql}"
 
 # toggles pass-through
@@ -43,7 +43,7 @@ badge_color() {
 if [[ -z "$INSTANCE_ID" || -z "$SECRET_ID" || -z "$DB_ID" ]]; then
   echo "ERROR: You must set INSTANCE_ID, SECRET_ID, and DB_ID." >&2
   echo "Example:" >&2
-  echo "  REGION=sa-east-1 INSTANCE_ID=i-07dc154c3f39ae680 SECRET_ID=arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v15-?????? DB_ID=lab-1c-mysql ./scripts/run_all-gates.sh" >&2
+  echo "  REGION=sa-east-1 INSTANCE_ID=i-07dc154c3f39ae680 SECRET_ID=arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v16-?????? DB_ID=lab-1c-mysql ./scripts/run_all-gates.sh" >&2
   exit 1
 fi
 

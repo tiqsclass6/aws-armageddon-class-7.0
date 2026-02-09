@@ -41,7 +41,7 @@ variable "project_name" {
 variable "aws_sns_topic_subscription_email_alert_endpoint" {
   description = "Email endpoint for SNS topic subscription"
   type        = string
-  default     = "<youremail@example.com>"
+  default     = "bjett2000@hotmail.com"
 }
 
 variable "aws_key_pair_name" {

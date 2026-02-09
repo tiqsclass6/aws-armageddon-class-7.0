@@ -11,7 +11,7 @@ set -euo pipefail
 # ---------- Defaults (override via env or flags) ----------
 REGION="${REGION:-sa-east-1}"
 INSTANCE_ID="${INSTANCE_ID:-i-07dc154c3f39ae680}"
-SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v15-??????}"
+SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v16-??????}"
 OUT_JSON="${OUT_JSON:-./scripts-results/gate_secrets_and_role.json}"
 
 # toggles (default: strict but sane)
@@ -36,7 +36,7 @@ add_failure() { failures+=("$1"); }
 usage() {
   cat <<EOF
 Usage:
-  REGION=sa-east-1 INSTANCE_ID=i-07dc154c3f39ae680 SECRET_ID=arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v15-?????? scripts/gate_secrets_and_role.sh
+  REGION=sa-east-1 INSTANCE_ID=i-07dc154c3f39ae680 SECRET_ID=arn:aws:secretsmanager:sa-east-1:<ACCOUNT_ID>:secret:lab/rds/mysql_v16-?????? scripts/gate_secrets_and_role.sh
 
 Required:
   REGION        AWS region (default: sa-east-1)

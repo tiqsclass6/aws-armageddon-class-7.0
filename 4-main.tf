@@ -298,9 +298,10 @@ resource "aws_secretsmanager_secret_version" "db_creds_version" {
 
 # SSM Parameter Store Entries
 resource "aws_ssm_parameter" "db_endpoint" {
-  name  = "/lab/db/endpoint"
-  type  = "String"
-  value = aws_db_instance.lab_rds.address
+  name        = "/lab/db/endpoint"
+  description = "RDS database endpoint for lab application"
+  type        = "SecureString"
+  value       = aws_db_instance.lab_rds.address
 
   tags = merge(
     local.tags,
@@ -309,9 +310,10 @@ resource "aws_ssm_parameter" "db_endpoint" {
 }
 
 resource "aws_ssm_parameter" "db_port" {
-  name  = "/lab/db/port"
-  type  = "String"
-  value = tostring(aws_db_instance.lab_rds.port)
+  name        = "/lab/db/port"
+  description = "RDS database port for lab application"
+  type        = "SecureString"
+  value       = tostring(aws_db_instance.lab_rds.port)
 
   tags = merge(
     local.tags,
@@ -320,9 +322,10 @@ resource "aws_ssm_parameter" "db_port" {
 }
 
 resource "aws_ssm_parameter" "db_name" {
-  name  = "/lab/db/name"
-  type  = "String"
-  value = local.db_name
+  name        = "/lab/db/name"
+  description = "RDS database name for lab application"
+  type        = "SecureString"
+  value       = local.db_name
 
   tags = merge(
     local.tags,
@@ -375,7 +378,7 @@ resource "aws_cloudwatch_log_metric_filter" "db_connection_errors" {
   pattern = "?\"pymysql.err.OperationalError\" ?\"Can't connect\" ?\"ERROR\" ?\"failed\" ?\"Access denied\""
 
   metric_transformation {
-    name          = "DBConnectionErrors" # ← Must match the alarm's metric_name
+    name          = "DBConnectionErrors"
     namespace     = "Lab/RDSApp"
     value         = "1"
     default_value = "0"
@@ -388,7 +391,7 @@ resource "aws_cloudwatch_metric_alarm" "db_connection_failure" {
 
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 1
-  metric_name         = "DBConnectionErrors" # ← Must match the filter's metric name
+  metric_name         = "DBConnectionErrors"
   namespace           = "Lab/RDSApp"
   period              = 300
   statistic           = "Sum"

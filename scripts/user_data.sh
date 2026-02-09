@@ -30,7 +30,7 @@ console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(
 logger.addHandler(console_handler)
 
 REGION = os.environ.get("AWS_REGION", "sa-east-1")
-SECRET_ID = os.environ.get("SECRET_ID", "lab/rds/mysql_v15")
+SECRET_ID = os.environ.get("SECRET_ID", "lab/rds/mysql_v16")
 
 secrets_client = boto3.client("secretsmanager", region_name=REGION)
 
@@ -152,7 +152,7 @@ After=network.target
 [Service]
 WorkingDirectory=/opt/rdsapp
 Environment=AWS_REGION=sa-east-1
-Environment=SECRET_ID=lab/rds/mysql_v15
+Environment=SECRET_ID=lab/rds/mysql_v16
 ExecStart=/usr/bin/python3 /opt/rdsapp/app.py
 Restart=always
 
