@@ -1,0 +1,91 @@
+{
+  "incident_id": "bonus_h-20260209T171922Z-97e21858",
+  "time_window_utc": {
+    "start": "2026-02-09T17:04:22Z",
+    "end": "2026-02-09T17:19:22Z"
+  },
+  "alarm": {
+    "name": "lab-1c-db-connection-failure",
+    "metric": "Unknown",
+    "threshold": "Unknown",
+    "state": "ALARM"
+  },
+  "queries": {
+    "app_error_rate_over_time_1m": {
+      "log_group": "/aws/ec2/lab-1c-rds-app",
+      "query": "fields @timestamp\n| filter @message like /ERROR|Error|Exception|Traceback/\n| stats count() as errors by bin(1m) as t\n| sort t asc",
+      "status": "Complete",
+      "queryId": "05628a9e-c499-4ff4-9397-a41180aea0b9",
+      "results": []
+    },
+    "app_latest_50_db_related_error_lines": {
+      "log_group": "/aws/ec2/lab-1c-rds-app",
+      "query": "fields @timestamp, @message\n| filter @message like /pymysql|mysql|Access denied|Can't connect|OperationalError|RDS|SQLSTATE/\n| sort @timestamp desc\n| limit 50",
+      "status": "Complete",
+      "queryId": "a0de39f8-857a-4ca3-9e1a-eef3b7051695",
+      "results": []
+    },
+    "waf_allow_vs_block": {
+      "log_group": "aws-waf-logs-lab-1c-web-acl",
+      "query": "fields @timestamp, action\n| stats count() as hits by action\n| sort hits desc",
+      "status": "Complete",
+      "queryId": "76c97879-a5b7-4f53-a8c9-ed3f8274cbde",
+      "results": [
+        [
+          {
+            "field": "action",
+            "value": "ALLOW"
+          },
+          {
+            "field": "hits",
+            "value": "9"
+          }
+        ],
+        [
+          {
+            "field": "action",
+            "value": "BLOCK"
+          },
+          {
+            "field": "hits",
+            "value": "1"
+          }
+        ]
+      ]
+    },
+    "waf_top_blocked_ip_uri_pairs": {
+      "log_group": "aws-waf-logs-lab-1c-web-acl",
+      "query": "fields @timestamp, action, httpRequest.clientIp as clientIp, httpRequest.uri as uri\n| filter action = \"BLOCK\"\n| stats count() as hits by clientIp, uri\n| sort hits desc\n| limit 25",
+      "status": "Complete",
+      "queryId": "f099b93f-edb1-4dd9-b683-96b022205a08",
+      "results": [
+        [
+          {
+            "field": "clientIp",
+            "value": "20.29.57.104"
+          },
+          {
+            "field": "uri",
+            "value": "/developmentserver/metadatauploader"
+          },
+          {
+            "field": "hits",
+            "value": "1"
+          }
+        ]
+      ]
+    }
+  },
+  "ssm_params": {
+    "endpoint": "AQICAHjSVUjv6txSXh2u8DphMbiTja9if2NdQNAem3nqSmnN5QEl9Nn2Qzi8sxvue9KGZIL/AAAAljCBkwYJKoZIhvcNAQcGoIGFMIGCAgEAMH0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMzEPsxbwEQgErsG/hAgEQgFCwVUVGyuvAYM4c7ScLh57giNC3MSdt9xIRQrdcyy9+9QShLOiBdbM4ug1seMMQ+UgRc03inOiDcfNrlSFlS00epXwV0dwq0wP8oDQeND193g==",
+    "port": "AQICAHjSVUjv6txSXh2u8DphMbiTja9if2NdQNAem3nqSmnN5QFHZ680BWcRPe+fYm13XIaGAAAAYjBgBgkqhkiG9w0BBwagUzBRAgEAMEwGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMtleGqXkDcIqfzYwmAgEQgB8MD6I8DUg5GpdpqIOcbTlAittgkbqxBDWefB/hzFir",
+    "name": "AQICAHjSVUjv6txSXh2u8DphMbiTja9if2NdQNAem3nqSmnN5QEQPOOjQHX+kfXgOYpA8xD0AAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMHhlMNdjf6yr8C5ivAgEQgCDL4yk18S13Wdep5oJ2dMzkBj5aYkZ0lQgBOXsEu+7kgg==",
+    "source_path": "/lab/db/"
+  },
+  "secret_meta": {
+    "host": "lab-1c-mysql.cpaac602s7b6.us-east-1.rds.amazonaws.com",
+    "port": 3306,
+    "dbname": "labdb",
+    "username": "admin"
+  }
+}
