@@ -1,0 +1,156 @@
+{
+  "incident_id": "bonus_g-20260209-023105",
+  "time_window_utc": {
+    "start": 1770603365,
+    "end": 1770604265
+  },
+  "event": {
+    "Records": [
+      {
+        "EventSource": "aws:sns",
+        "EventVersion": "1.0",
+        "EventSubscriptionArn": "arn:aws:sns:us-east-1:866340886126:lab-1c-db-incidents:569d0649-45e7-4b55-a20f-ba3494a41780",
+        "Sns": {
+          "Type": "Notification",
+          "MessageId": "824a6c28-1937-5a80-868a-0e2b501e6609",
+          "TopicArn": "arn:aws:sns:us-east-1:866340886126:lab-1c-db-incidents",
+          "Message": "{\"AlarmName\":\"lab-1c-db-connection-failure\",\"AlarmDescription\":\"Triggers when DB connection failures exceed threshold\",\"AWSAccountId\":\"866340886126\",\"AlarmConfigurationUpdatedTimestamp\":\"2026-02-09T01:08:12.437+0000\",\"NewStateValue\":\"ALARM\",\"NewStateReason\":\"Threshold Crossed: 1 datapoint [4.0 (09/02/26 02:26:00)] was greater than or equal to the threshold (3.0).\",\"StateChangeTime\":\"2026-02-09T02:31:05.015+0000\",\"Region\":\"US East (N. Virginia)\",\"AlarmArn\":\"arn:aws:cloudwatch:us-east-1:866340886126:alarm:lab-1c-db-connection-failure\",\"OldStateValue\":\"OK\",\"ActionExecutedAfterMuteWindow\":false,\"OKActions\":[],\"AlarmActions\":[\"arn:aws:sns:us-east-1:866340886126:lab-1c-db-incidents\"],\"InsufficientDataActions\":[],\"Trigger\":{\"MetricName\":\"DBConnectionErrors\",\"Namespace\":\"Lab/RDSApp\",\"StatisticType\":\"Statistic\",\"Statistic\":\"SUM\",\"Unit\":null,\"Dimensions\":[],\"Period\":300,\"EvaluationPeriods\":1,\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"Threshold\":3.0,\"TreatMissingData\":\"notBreaching\",\"EvaluateLowSampleCountPercentile\":\"\"}}",
+          "Timestamp": "2026-02-09T02:31:05.057Z",
+          "SignatureVersion": "1",
+          "Signature": "i+479wo0fAlGowXo8fbYrb1bvfiCKRXy2HKYFL1IJbSpAMd/+MWZTXv+aBu436UzaLM0sR21h4Ch0G1d9T05hxtIE4PqXCKKpjkFo/yDO/jH+DiLrUjioWvSGVbs21R1aLPDXUp/x3nHIwam5PxdW5UwoePHPfrecfyP2OW0fpv04kFmIz9xeZDxbFggdGy5LgVZnRyYxH+OlaHLB0NCsMKEqITYepOSIbf1GAg6BukecH9NvOdY7KutElqlUR2HOkOA7VmPEviv5C18zRU4EPS9fU9liughqiQzVZzhPKW1xX9PsV5p17lx4S+WvgXt7+5CbPzugJL7Ktt6Ac79yQ==",
+          "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-7506a1e35b36ef5a444dd1a8e7cc3ed8.pem",
+          "Subject": "ALARM: \"lab-1c-db-connection-failure\" in US East (N. Virginia)",
+          "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:866340886126:lab-1c-db-incidents:569d0649-45e7-4b55-a20f-ba3494a41780",
+          "MessageAttributes": {}
+        }
+      }
+    ]
+  },
+  "ssm": {
+    "path": "/lab/db/",
+    "names": [
+      "/lab/db/endpoint",
+      "/lab/db/name",
+      "/lab/db/port"
+    ],
+    "values_redacted": true
+  },
+  "secrets": {
+    "meta": {
+      "error": "An error occurred (AccessDeniedException) when calling the DescribeSecret operation: User: arn:aws:sts::866340886126:assumed-role/lab-1c-bonus-g-incident-reporter-role/lab-1c-bonus-g-incident-reporter is not authorized to perform: secretsmanager:DescribeSecret on resource: lab/rds/mysql_v16 because no identity-based policy allows the secretsmanager:DescribeSecret action",
+      "redacted": true
+    },
+    "safe_subset": {
+      "host": "lab-1c-mysql.cpaac602s7b6.us-east-1.rds.amazonaws.com",
+      "port": 3306,
+      "dbname": "labdb",
+      "username": "admin"
+    },
+    "password_included": false
+  },
+  "queries": {
+    "app_errors": {
+      "status": "Complete",
+      "queryId": "3f9e102f-6b3f-4f1f-8ad1-36d0c68fa143",
+      "results": [
+        [
+          {
+            "field": "@timestamp",
+            "value": "2026-02-09 02:19:54.358"
+          },
+          {
+            "field": "@message",
+            "value": "Error in /init: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")\nTraceback (most recent call last):\n  File \"/opt/rdsapp/app.py\", line 77, in init_db\n    conn = pymysql.connect(\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 365, in __init__\n    self.connect()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 681, in connect\n    self._request_authentication()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 980, in _request_authentication\n    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 272, in caching_sha2_password_auth\n    pkt = _roundtrip(conn, data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 121, in _roundtrip\n    pkt = conn._read_packet()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 782, in _read_packet\n    packet.raise_for_error()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/protocol.py\", line 219, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/err.py\", line 150, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.OperationalError: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")"
+          },
+          {
+            "field": "@ptr",
+            "value": "CpkBCl4KJDg2NjM0MDg4NjEyNjovYXdzL2VjMi9sYWItMWMtcmRzLWFwcBABGiRlZmQ0OGQyMy1jOTkyLTRlNGQtOWMwNS1kOGVkZWNiMzk0MzAiDgiIhb2BxDMQj4T0gcQzEjUaGAIGmEOwDAAAAAGi4JMpAAaYlEEwAAAFwiABKIT8yoHEMzD2hMuBxDM4BkCII0j1E1CuCyACEAUYAQ=="
+          }
+        ],
+        [
+          {
+            "field": "@timestamp",
+            "value": "2026-02-09 02:19:53.756"
+          },
+          {
+            "field": "@message",
+            "value": "Error in /init: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")\nTraceback (most recent call last):\n  File \"/opt/rdsapp/app.py\", line 77, in init_db\n    conn = pymysql.connect(\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 365, in __init__\n    self.connect()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 681, in connect\n    self._request_authentication()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 980, in _request_authentication\n    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 272, in caching_sha2_password_auth\n    pkt = _roundtrip(conn, data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 121, in _roundtrip\n    pkt = conn._read_packet()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 782, in _read_packet\n    packet.raise_for_error()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/protocol.py\", line 219, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/err.py\", line 150, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.OperationalError: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")"
+          },
+          {
+            "field": "@ptr",
+            "value": "CpkBCl4KJDg2NjM0MDg4NjEyNjovYXdzL2VjMi9sYWItMWMtcmRzLWFwcBABGiRlZmQ0OGQyMy1jOTkyLTRlNGQtOWMwNS1kOGVkZWNiMzk0MzAiDgiIhb2BxDMQj4T0gcQzEjUaGAIGmEOwDAAAAAGi4JMpAAaYlEEwAAAFwiABKIT8yoHEMzD2hMuBxDM4BkCII0j1E1CuCyACEAMYAQ=="
+          }
+        ],
+        [
+          {
+            "field": "@timestamp",
+            "value": "2026-02-09 02:19:53.229"
+          },
+          {
+            "field": "@message",
+            "value": "Error in /init: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")\nTraceback (most recent call last):\n  File \"/opt/rdsapp/app.py\", line 77, in init_db\n    conn = pymysql.connect(\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 365, in __init__\n    self.connect()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 681, in connect\n    self._request_authentication()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 980, in _request_authentication\n    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 272, in caching_sha2_password_auth\n    pkt = _roundtrip(conn, data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 121, in _roundtrip\n    pkt = conn._read_packet()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 782, in _read_packet\n    packet.raise_for_error()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/protocol.py\", line 219, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/err.py\", line 150, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.OperationalError: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")"
+          },
+          {
+            "field": "@ptr",
+            "value": "CpkBCl4KJDg2NjM0MDg4NjEyNjovYXdzL2VjMi9sYWItMWMtcmRzLWFwcBABGiRlZmQ0OGQyMy1jOTkyLTRlNGQtOWMwNS1kOGVkZWNiMzk0MzAiDgiIhb2BxDMQj4T0gcQzEjUaGAIGmEOwDAAAAAGi4JMpAAaYlEEwAAAFwiABKIT8yoHEMzD2hMuBxDM4BkCII0j1E1CuCyACEAEYAQ=="
+          }
+        ],
+        [
+          {
+            "field": "@timestamp",
+            "value": "2026-02-09 02:19:52.577"
+          },
+          {
+            "field": "@message",
+            "value": "Error in /init: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")\nTraceback (most recent call last):\n  File \"/opt/rdsapp/app.py\", line 77, in init_db\n    conn = pymysql.connect(\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 365, in __init__\n    self.connect()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 681, in connect\n    self._request_authentication()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 980, in _request_authentication\n    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 272, in caching_sha2_password_auth\n    pkt = _roundtrip(conn, data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 121, in _roundtrip\n    pkt = conn._read_packet()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 782, in _read_packet\n    packet.raise_for_error()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/protocol.py\", line 219, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/err.py\", line 150, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.OperationalError: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")"
+          },
+          {
+            "field": "@ptr",
+            "value": "CpkBCl4KJDg2NjM0MDg4NjEyNjovYXdzL2VjMi9sYWItMWMtcmRzLWFwcBAHGiRlZmQ0OGQyMy1jOTkyLTRlNGQtOWMwNS1kOGVkZWNiMzk0MzAiDgiIhb2BxDMQj4T0gcQzEjUaGAIGl3YWLwAAAAAzVj1fAAaYlEHwAAAE8iABKLDqyoHEMzCB98qBxDM4BECwF0i7E1D0CiACEAMYAQ=="
+          }
+        ],
+        [
+          {
+            "field": "@timestamp",
+            "value": "2026-02-09 02:19:50.994"
+          },
+          {
+            "field": "@message",
+            "value": "Error in /init: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")\nTraceback (most recent call last):\n  File \"/opt/rdsapp/app.py\", line 77, in init_db\n    conn = pymysql.connect(\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 365, in __init__\n    self.connect()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 681, in connect\n    self._request_authentication()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 980, in _request_authentication\n    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 272, in caching_sha2_password_auth\n    pkt = _roundtrip(conn, data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/_auth.py\", line 121, in _roundtrip\n    pkt = conn._read_packet()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/connections.py\", line 782, in _read_packet\n    packet.raise_for_error()\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/protocol.py\", line 219, in raise_for_error\n    err.raise_mysql_exception(self._data)\n  File \"/usr/local/lib/python3.9/site-packages/pymysql/err.py\", line 150, in raise_mysql_exception\n    raise errorclass(errno, errval)\npymysql.err.OperationalError: (1045, \"Access denied for user 'admin'@'10.240.2.96' (using password: YES)\")"
+          },
+          {
+            "field": "@ptr",
+            "value": "CpkBCl4KJDg2NjM0MDg4NjEyNjovYXdzL2VjMi9sYWItMWMtcmRzLWFwcBAHGiRlZmQ0OGQyMy1jOTkyLTRlNGQtOWMwNS1kOGVkZWNiMzk0MzAiDgiIhb2BxDMQj4T0gcQzEjUaGAIGl3YWLwAAAAAzVj1fAAaYlEHwAAAE8iABKLDqyoHEMzCB98qBxDM4BECwF0i7E1D0CiACEAEYAQ=="
+          }
+        ]
+      ]
+    },
+    "waf_actions": {
+      "status": "Complete",
+      "queryId": "880106a7-3eac-453c-88b2-76784b9ac80f",
+      "results": [
+        [
+          {
+            "field": "action",
+            "value": "ALLOW"
+          },
+          {
+            "field": "hits",
+            "value": "11"
+          }
+        ]
+      ]
+    },
+    "waf_blocks": {
+      "status": "Complete",
+      "queryId": "ee7e3f75-5239-4186-8242-86342d0ef993",
+      "results": []
+    }
+  },
+  "grading": {
+    "must_use_only_evidence": true,
+    "must_include_confidence_levels": true,
+    "must_cite_query_field_per_claim": true,
+    "must_redact_secrets": true
+  }
+}

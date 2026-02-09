@@ -36,11 +36,12 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Ignore keys
-*.json 
-
 .terraform.lock.hcl
 example.kubeconfig
 
 # Ignore MP4 files
 *.mp4
+
+# Ignore build artifacts
+lambda/incident_reporter
+lambda/incident_reporter.zip

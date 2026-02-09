@@ -116,11 +116,11 @@ terraform apply
 
 ## 📦 Deliverables
 
-- [**Initial IR Report Markdown**](Screenshots/bonus_g-20260209-023105.md)
-- [**Initial Evidence Bundle JSON**](Screenshots/bonus_g-20260209-023105.json)
-- [**Complete IR Report Markdown**](Screenshots/bonus_g-20260209-023502.md)
-- [**Complete Evidence Bundle JSON**](Screenshots/bonus_g-20260209-023502.json)
-- [**CloudWatch Logs for RDSApp**](Screenshots/rdsapp-cw-logs.csv)
+- [**Initial IR Report Markdown**](scripts-results/bonus_g-20260209-023105.md)
+- [**Initial Evidence Bundle JSON**](scripts-results/bonus_g-20260209-023105.json)
+- [**Complete IR Report Markdown**](scripts-results/bonus_g-20260209-023502.md)
+- [**Complete Evidence Bundle JSON**](scripts-results/bonus_g-20260209-023502.json)
+- [**CloudWatch Logs for RDSApp**](scripts-results/rdsapp-cw-logs.csv)
 
 ---
 
