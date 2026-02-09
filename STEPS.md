@@ -61,7 +61,7 @@ aws s3 ls s3://lab-1c-bonus-h-ir-<ACCOUNT_ID>/reports/ --recursive | tail
 ```
 
 ![bonus-h-pt2.jpg](/Screenshots/bonus-h-pt2.jpg)
-[**Lambda Test Report (Markdown)**](/Screenshots/lambda-test-bonus-h.md)
+[**Lambda Test Report (Markdown)**](/deliverables/lambda-test-bonus-h.md)
 
 ---
 
@@ -94,6 +94,6 @@ aws s3 cp \
 ```
 
 ![bonus-h-pt3.jpg](/Screenshots/bonus-h-pt3.jpg)
-[**Lambda Test Report (JSON)**](/Screenshots/%20lambda-test-bonus-h.json)
+[**Lambda Test Report (JSON)**](/deliverables/lambda-test-bonus-h.json)
 
 ---
