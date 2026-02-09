@@ -1,12 +1,8 @@
 # **AWS Lab 1B & 1C – Validation & Incident Response in Terraform**
 
-[![Terraform](https://img.shields.io/badge/Terraform-≥1.6-623CE4?logo=terraform&logoColor=white)](https://www.terraform.io)
-[![AWS Provider](https://img.shields.io/badge/AWS%20Provider-≥6.0-FF9900?logo=amazonaws&logoColor=white)](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org)
 [![Flask](https://img.shields.io/badge/Flask-2.0+-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com)
-[![Deployment Region](https://img.shields.io/badge/Region-sa--east--1-FF9900?logo=amazonaws&logoColor=white)](https://aws.amazon.com/about-aws/global-infrastructure/regions/sa-east-1/)
-[![GitHub Last Commit Lab 1C](https://img.shields.io/github/last-commit/tiqsclass6/aws-armageddon-class-7.0?branch=main&label=Lab%201C&color=blue)](https://github.com/tiqsclass6/aws-armageddon-class-7.0/commits/main)
 
 ---
 
