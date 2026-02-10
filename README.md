@@ -1,4 +1,4 @@
-# 🏥 Lab 3A — Cross‑Region Healthcare Architecture (Shinjuku ↔ Liberdade)
+# 🏥 AWS Lab 3A — Cross‑Region Healthcare Architecture
 
 ![Terraform](https://img.shields.io/badge/Terraform-Validated-7B42BC?logo=terraform)
 ![Security](https://img.shields.io/badge/Security-Compliance--by--Design-green)
@@ -266,7 +266,7 @@ Detailed commands are provided in **[STEPS.md](STEPS.md)**.
 
 ---
 
-## **Authors**
+## 👥 Authors
 
 * **Author:** T.I.Q.S.
 * **Group Leader:** John Sweeney
