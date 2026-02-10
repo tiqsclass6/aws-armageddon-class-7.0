@@ -178,7 +178,7 @@ terraform destroy
 
 ![lab1-diagram](/images/lab1-diagram.png)
 
-1. **Lab 1A - EC2 → RDS Integration**  
+1. [**Lab 1A - EC2 → RDS Integration**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-1a)  
 
    - **Task**: Establish secure EC2-to-RDS connectivity with dynamic credential management  
    - **Synopsis**: Deploys a basic but production-ready two-tier application using Secrets Manager for credentials and initial CloudWatch logging.  
