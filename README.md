@@ -1,4 +1,4 @@
-# Lab 1C - Bonus A – Private EC2 App w/ RDS & SSM Session Manager
+# 🛡️ Lab 1C - Bonus A – Private EC2 App w/ RDS & SSM Session Manager
 
 [![Terraform Version](https://img.shields.io/badge/Terraform-1.9+-623CE4?style=flat&logo=terraform)](https://www.terraform.io)
 [![AWS Provider](https://img.shields.io/badge/AWS%20Provider-6.27+-FF9900?style=flat&logo=amazon-aws)](https://registry.terraform.io/providers/hashicorp/aws)
@@ -14,7 +14,7 @@ Fully private **EC2 instance** running a **Flask** notes application, connected 
 
 ---
 
-## Task Overview
+## 📄 Task Overview
 
 **Lab 1C Bonus A** requires the deployment of a secure, private application architecture in AWS using Terraform with the following objectives:
 
@@ -29,7 +29,7 @@ Fully private **EC2 instance** running a **Flask** notes application, connected 
 
 ---
 
-## Task Requirements Needed
+## 🛠 Task Requirements Needed
 
 - AWS account with permissions to create **VPC, EC2, RDS, IAM, VPC Endpoints, CloudWatch, SNS, and Secrets Manager** resources
 - **Terraform** ≥ 1.9
@@ -39,7 +39,7 @@ Fully private **EC2 instance** running a **Flask** notes application, connected 
 
 ---
 
-## Project Structure
+## 🏗 Project Structure
 
 ```plaintext
 lab-1c-bonus-a/
@@ -73,7 +73,7 @@ lab-1c-bonus-a/
 
 ---
 
-## Shell Scripts Added
+## 🛠 Shell Scripts Added
 
 ### `scripts/user_data.sh`
 
@@ -330,7 +330,7 @@ Install **Python** dependencies, deploy **Flask Notes App**, configure `systemd`
 
 ---
 
-## Terraform Deployment Steps
+## 🛠 Terraform Deployment Steps
 
 1. **Clone the repository**
 
@@ -352,17 +352,23 @@ Install **Python** dependencies, deploy **Flask Notes App**, configure `systemd`
    terraform validate
    ```
 
+   ![terraform-init-fmt-validate.jpg](Screenshots/terraform-init-fmt-validate.jpg)
+
 4. **Generate execution plan**
 
    ```bash
    terraform plan
    ```
 
+   ![terraform-plan.jpg](Screenshots/terraform-plan.jpg)
+
 5. **Apply the infrastructure**
 
    ```bash
-   terraform apply --auto-approve
+   terraform apply
    ```
+
+   ![terraform-apply.jpg](Screenshots/terraform-apply.jpg)
 
 6. **Wait 10–25 minutes** for **SSM Agent** registration in private **VPC** environment
 
@@ -396,19 +402,7 @@ Install **Python** dependencies, deploy **Flask Notes App**, configure `systemd`
 
 ---
 
-## Terraform Outputs
-
-Run `terraform output` after successful deployment:
-
-| **Terraform Output Name**         | **Screenshot**                                                                  |
-|-----------------------------------|---------------------------------------------------------------------------------|
-| `terraform-init-fmt-validate.jpg` | ![terraform-init-fmt-validate.jpg](Screenshots/terraform-init-fmt-validate.jpg) |
-| `terraform-plan.jpg`              | ![terraform-plan.jpg](Screenshots/terraform-plan.jpg)                           |
-| `terraform-apply.jpg`             | ![terraform-apply.jpg](Screenshots/terraform-apply.jpg)                         |
-
----
-
-## Project Deliverables
+## 📝 Project Deliverables
 
 - [x] EC2 instance in private subnet (no public IP)
 - [x] Access exclusively via AWS Systems Manager Session Manager
@@ -422,7 +416,7 @@ Run `terraform output` after successful deployment:
 
 ---
 
-## Screenshots
+## 📄 Screenshots
 
 | Output Name               | Screenshot                                          |
 |---------------------------|-----------------------------------------------------|
@@ -437,7 +431,7 @@ Run `terraform output` after successful deployment:
 | `note5.jpg`               | ![note5.jpg](Screenshots/note5.jpg)                 |
 | `list.jpg`                | ![list.jpg](Screenshots/list.jpg)                   |
 
-## Tear Down Steps
+## 🧹 Tear Down Steps
 
 1. **Destroy all resources**
 
@@ -453,7 +447,7 @@ Run `terraform output` after successful deployment:
 
 ---
 
-## References
+## 📄 References
 
 - AWS Systems Manager Session Manager Documentation  
   <https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html>
@@ -468,7 +462,7 @@ Run `terraform output` after successful deployment:
 
 ---
 
-## Troubleshooting Steps
+## 🛠 Troubleshooting Steps
 
 | **Symptom**                                      | **Likely Cause**                               | **Resolution Steps**                                               |
 |--------------------------------------------------|------------------------------------------------|--------------------------------------------------------------------|
@@ -480,7 +474,7 @@ Run `terraform output` after successful deployment:
 
 ---
 
-## **Author**
+## ✍🏾 **Author**
 
 - **Author:** T.I.Q.S.
 - **Group Leader:** John Sweeney
