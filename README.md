@@ -1,4 +1,4 @@
-# 🛡️ Lab 2B — BAM Honors++: CloudFront Invalidation as a Controlled Operation
+# 🛡️ AWS Lab 2B (BAM B) - Honors++
 
 ![AWS](https://img.shields.io/badge/AWS-CloudFront-orange)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-623CE4)
@@ -188,25 +188,23 @@ terraform destroy
 
 ## 📚 References
 
-* AWS CloudFront Invalidation Guide
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
+* **AWS CloudFront Invalidation Guide** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
 
-* Specifying Objects for Invalidation
+* **Specifying Objects for Invalidation** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-specifying-objects.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-specifying-objects.html)
+
+* **CloudFront Cache Statistics**
   [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-specifying-objects.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/invalidation-specifying-objects.html)
 
-* CloudFront Cache Statistics
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-statistics.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-statistics.html)
+* **CloudFront Cache Statistics** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-statistics.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-statistics.html)
 
-* CloudFront Standard Logs Reference
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/standard-logs-reference.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/standard-logs-reference.html)
+* **CloudFront Standard Logs Reference** -
+  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-statistics.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-statistics.html)
 
 ---
 
 ## 👤 Author
 
-**TIQS**
-DevSecOps | Cloud Infrastructure | Terraform | AWS
-
-GitHub: [https://github.com/tiqsclass6](https://github.com/tiqsclass6)
+* **Author:** T.I.Q.S.
+* **Group Leader:** John Sweeney
 
 ---
