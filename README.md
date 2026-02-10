@@ -1,4 +1,4 @@
-# Lab 2B — CloudFront + API Caching Correctness
+# 🛡️ Lab 2B — CloudFront + API Caching Correctness
 
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-blueviolet)
 ![AWS](https://img.shields.io/badge/AWS-CloudFront-orange)
@@ -7,7 +7,7 @@
 
 ---
 
-## Task Overview
+## 📌 Task Overview
 
 This lab implements a **production-grade Amazon CloudFront architecture** that demonstrates **correct CDN caching behavior** for both static and dynamic content.
 
@@ -22,7 +22,7 @@ Key objectives:
 
 ---
 
-## Architecture Diagram
+## 🏗️ Architecture Diagram
 
 The following diagram illustrates the complete Lab 2B architecture, including CloudFront behaviors, cache policies, and origin flow.
 
@@ -38,7 +38,7 @@ The following diagram illustrates the complete Lab 2B architecture, including Cl
 
 ---
 
-## Task Requirements
+## 📋 Task Requirements
 
 - Two cache policies:
   - Static (aggressive caching)
@@ -53,7 +53,7 @@ The following diagram illustrates the complete Lab 2B architecture, including Cl
 
 ---
 
-## Project Structure
+## 📄 Project Structure
 
 ```plaintext
 lab-2b/
@@ -83,7 +83,7 @@ lab-2b/
 
 ---
 
-## Terraform Deployment Steps
+## 🛠️ Terraform Deployment Steps
 
 ```bash
 terraform init
@@ -99,7 +99,7 @@ terraform apply
 
 ---
 
-## Deliverables Mapping
+## 🗾 Deliverables Mapping
 
 | Deliverable | Description                                            | Screenshot Reference                                                                      |
 |-------------|--------------------------------------------------------|-------------------------------------------------------------------------------------------|
@@ -116,20 +116,7 @@ terraform apply
 
 ---
 
----
-
-## Additional Screenshots
-
-Screenshots in the `Screenshots/` directory include:
-
-- CloudFront behaviors and policies
-- Cache policy and origin request policy configuration
-- `curl -I` correctness proof for static and API paths
-- Be A Man challenge artifact
-
----
-
-## Teardown
+## 🧹 Teardown
 
 ```bash
 terraform destroy
@@ -139,7 +126,7 @@ terraform destroy
 
 ---
 
-## References
+## 📝 References
 
 - [Understanding the Cache Key](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/understanding-the-cache-key.html)
 - [Controlling the Cache Key](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html)
@@ -149,7 +136,7 @@ terraform destroy
 
 ---
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
 - Local DNS resolution failures (corporate/VPN resolvers)
 - Windows TLS handshake errors (SChannel)
@@ -158,7 +145,7 @@ terraform destroy
 
 ---
 
-## **Authors**
+## 👥 Authors
 
 - **Author:** T.I.Q.S.
 - **Group Leader:** John Sweeney
