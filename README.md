@@ -1,4 +1,4 @@
-# 🛡️ AWS Armageddon – Lab 1C Bonus E  
+# 🛡️ AWS Lab 1C (Bonus E) - WAF Logging into CloudWatch Logs
 
 ![AWS](https://img.shields.io/badge/AWS-WAF%20%7C%20CloudWatch-orange?style=for-the-badge&logo=amazonaws)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-purple?style=for-the-badge&logo=terraform)
