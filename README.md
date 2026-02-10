@@ -1,4 +1,4 @@
-# 🛡️ AWS Lab 2B — Germany Cloak (CloudFront Front Door)
+# 🛡️ AWS Lab 2B (BAM A) - Honors
 
 ![AWS](https://img.shields.io/badge/AWS-CloudFront-orange?logo=amazonaws)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-844FBA?logo=terraform)
@@ -27,14 +27,14 @@ The solution demonstrates:
 
 ## 🎯 Task Requirements
 
-✔ CloudFront is the **only public entry point**
-✔ Direct ALB access is blocked / fails
-✔ HTTPS enforced end-to-end
-✔ Origin uses **origin-driven caching**
-✔ Dynamic APIs are **never cached**
-✔ IMDSv2 metadata is securely accessed
-✔ Terraform-managed infrastructure
-✔ Route53 + ACM properly configured
+* ✔ CloudFront is the **only public entry point**
+* ✔ Direct ALB access is blocked / fails
+* ✔ HTTPS enforced end-to-end
+* ✔ Origin uses **origin-driven caching**
+* ✔ Dynamic APIs are **never cached**
+* ✔ IMDSv2 metadata is securely accessed
+* ✔ Terraform-managed infrastructure
+* ✔ Route53 + ACM properly configured
 
 ---
 
@@ -63,9 +63,9 @@ lab-2b-bam-a/
 ├── 4-main.tf
 ├── 5-variables.tf
 ├── 6-outputs.tf
+├── README.md
 ├── STEPS.md
 ├── user_data.sh
-├── README.md
 └── WRITTEN.md
 ```
 
@@ -158,15 +158,15 @@ curl -i https://app.theinternationalquietstorm.com/api/list | sed -n '1,30p'
 
 ### Origin-Driven Caching
 
-Caching decisions are made by the **application**, preventing accidental storage of sensitive or user-specific data at the edge.
+* Caching decisions are made by the **application**, preventing accidental storage of sensitive or user-specific data at the edge.
 
 ### Header-Gated ALB
 
-The ALB only accepts requests with CloudFront-specific headers, eliminating direct internet abuse.
+* The ALB only accepts requests with CloudFront-specific headers, eliminating direct internet abuse.
 
 ### IMDSv2 Enforcement
 
-Metadata access requires signed tokens, protecting instance identity data.
+* Metadata access requires signed tokens, protecting instance identity data.
 
 ---
 
@@ -178,7 +178,7 @@ terraform destroy
 
 ![terraform-destroy.jpg](/Screenshots/terraform-destroy.jpg)
 
-✔ Fully removes:
+### Fully removes all resources
 
 * CloudFront distribution
 * ALB
@@ -212,20 +212,15 @@ terraform destroy
 
 ## 📚 References
 
-* CloudFront Security Best Practices
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/security.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/security.html)
+* **CloudFront Security Best Practices** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/security.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/security.html)
 
-* Origin Request Policies
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html)
+* **Origin Request Policies** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html)
 
-* Application Load Balancer Security
-  [https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
+* **Application Load Balancer Security** - [https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
 
-* EC2 IMDSv2
-  [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+* **EC2 IMDSv2** - [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
 
-* Terraform AWS Provider
-  [https://registry.terraform.io/providers/hashicorp/aws/latest/docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+* **Terraform AWS Provider** - [https://registry.terraform.io/providers/hashicorp/aws/latest/docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 ---
 
