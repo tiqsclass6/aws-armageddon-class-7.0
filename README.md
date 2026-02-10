@@ -1,4 +1,4 @@
-# 🏥 Lab 3B — Cross‑Region Healthcare Architecture (Shinjuku ↔ Liberdade)
+# 🏥 AWS Lab 3B — Audit Evidence & Regulator-Ready Logging
 
 ![Terraform](https://img.shields.io/badge/Terraform-Validated-7B42BC?logo=terraform)
 ![Security](https://img.shields.io/badge/Security-Compliance--by--Design-green)
@@ -197,7 +197,6 @@ terraform destroy
 ```
 
 ![terraform-destroy](Screenshots/terraform-destroy.jpg)
-]
 
 This will fully decommission:
 
@@ -236,7 +235,7 @@ Detailed commands are provided in **STEPS.md**.
 
 ---
 
-## **Authors**
+## 👥 Authors
 
 * **Author:** T.I.Q.S.
 * **Group Leader:** John Sweeney
