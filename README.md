@@ -1,4 +1,4 @@
-# 🤖 AWS Armageddon – Lab 1C Bonus G  
+# 🤖 AWS Lab 1C (Bonus G) - Bedrock-Powered “Auto-IR” Pipeline  
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazon-aws)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-purple?style=for-the-badge&logo=terraform)
