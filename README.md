@@ -1,4 +1,4 @@
-# 🛡️ AWS Lab 1C (Bonus C + Bonus D)
+# 🛡️ AWS Lab 1C (Bonus D) - Zone Apex ALIAS → ALB
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazonaws)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-purple?style=for-the-badge&logo=terraform)
