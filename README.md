@@ -1,6 +1,4 @@
-# 🛡️ AWS Armageddon – Lab 1C Bonus F
-
-## **CloudWatch Logs Insights Incident Response Pack**
+# 🛡️ AWS Lab 1C (Bonus F) - CloudWatch Logs Insights Incident Response
 
 ![AWS](https://img.shields.io/badge/AWS-WAF%20%7C%20CloudWatch-orange?style=for-the-badge\&logo=amazonaws)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-purple?style=for-the-badge\&logo=terraform)
