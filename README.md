@@ -1,4 +1,4 @@
-# 🤖 Lab 1C — Bonus H (MTTR Automation with Bedrock)
+# 🤖 AWS Lab 1C — Bonus H (MTTR Automation with Bedrock)
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud%20Native-orange?logo=amazonaws)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-blueviolet?logo=terraform)
