@@ -1,4 +1,4 @@
-# **AWS Lab 1A EC2 → RDS Integration Lab**
+# 🛡️ **AWS Lab 1A EC2 → RDS Integration Lab**
 
 [![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
 [![AWS Certified](https://img.shields.io/badge/AWS%20Certified-Solutions%20Architect%20-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
@@ -210,7 +210,6 @@ lab-1a/
 6. Click **Create role**
 7. After creation, attach an inline policy:
    - Go to the role → **Add permissions** → **Create inline policy** → **JSON**.
-   - Paste:
 
      ```json
      {
@@ -237,7 +236,7 @@ lab-1a/
      }
      ```
 
-> NOTE: Replace **<REGION_HERE>** with your actual AWS region and **<ACCOUNT_ID>** with your actual AWS account ID.
+     > NOTE: Replace **<REGION_HERE>** with your actual AWS region and **<ACCOUNT_ID>** with your actual AWS account ID.
 
 8. Name the policy (e.g., `secrets-access`) and create policy.
 
