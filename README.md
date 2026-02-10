@@ -1,4 +1,4 @@
-# Be A Man – Lab 2B Challenge C (Honors ++)
+# 🛡️ AWS Lab 2B (BAM C) - Honors ++
 
 ---
 
@@ -177,21 +177,17 @@ Confirm CloudFront distribution deletion completes successfully.
 
 ## 📚 References
 
-* AWS CloudFront Cache Behaviors
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)
+* **AWS CloudFront Cache Behaviors** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)
 
-* HTTP Conditional Requests (RFC 9110)
-  [https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
+* **HTTP Conditional Requests (RFC 9110)** - [https://www.rfc-editor.org/rfc/rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html)
 
-* CloudFront Cache Policies
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html)
+* **CloudFront Cache Policies** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html)
 
-* AWS Managed Cache Policies
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
+* **AWS Managed Cache Policies** - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html)
 
 ---
 
-## **Authors**
+## 👤 **Authors**
 
 * **Author:** T.I.Q.S.
 * **Group Leader:** John Sweeney
