@@ -1,4 +1,4 @@
-# 🛡️ Lab 2B — CloudFront + API Caching Correctness
+# 🛡️ AWS Lab 2B — CloudFront + API Caching Correctness
 
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-blueviolet)
 ![AWS](https://img.shields.io/badge/AWS-CloudFront-orange)
