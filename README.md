@@ -1,4 +1,4 @@
-# **Lab 2A — CloudFront Origin Cloaking with WAF & ALB**
+# 🛡️ AWS Lab 2A — CloudFront Origin Cloaking with WAF & ALB
 
 ![AWS](https://img.shields.io/badge/AWS-Architecture-232F3E?logo=amazon-aws&logoColor=white)
 ![CloudFront](https://img.shields.io/badge/CloudFront-Edge%20Security-orange?logo=amazon-aws)
