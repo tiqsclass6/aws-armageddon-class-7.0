@@ -1,4 +1,4 @@
-# 🛡️ AWS Lab 2B (BAM B) - Honors++
+# 🛡️ AWS Lab 2B (BAM B) - Honors +
 
 ![AWS](https://img.shields.io/badge/AWS-CloudFront-orange)
 ![Terraform](https://img.shields.io/badge/Terraform-IaC-623CE4)
