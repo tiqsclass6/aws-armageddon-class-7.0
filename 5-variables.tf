@@ -12,12 +12,6 @@ data "http" "my_public_ip" {
   url = "https://ipv4.icanhazip.com"
 }
 
-# data "aws_acm_certificate" "existing" {
-#   arn           = "arn:aws:acm:us-east-1:866340886126:certificate/9e091531-3230-42ff-b5f4-468d0031d795"
-#   most_recent   = true
-#   statuses      = ["ISSUED"]
-# }
-
 data "aws_route53_zone" "selected" {
   name         = var.domain_name
   private_zone = false
@@ -39,6 +33,12 @@ variable "aws_sns_topic_subscription_email_alert_endpoint" {
   description = "Email endpoint for SNS topic subscription"
   type        = string
   default     = "bjett2000@hotmail.com"
+}
+
+variable "create_app_record" {
+  type        = bool
+  description = "Also create app.<domain> Alias A -> ALB"
+  default     = true
 }
 
 variable "db_instance_class" {

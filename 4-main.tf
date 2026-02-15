@@ -621,21 +621,22 @@ resource "aws_cloudwatch_metric_alarm" "db_connection_failure" {
   ]
 }
 
-# CloudWatch Alarm - 500
-resource "aws_cloudwatch_metric_alarm" "alb_500" {
-  alarm_name          = "${var.project_name}-alb-500"
+resource "aws_cloudwatch_metric_alarm" "alb_5xx" {
+  alarm_name          = "${var.project_name}-alb-5xx"
+  alarm_description   = "Triggers when ALB 5XX errors exceed threshold"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 2
   threshold           = 1
   period              = 300
   statistic           = "Sum"
   namespace           = "AWS/ApplicationELB"
-  metric_name         = "HTTPCode_ELB_500_Count"
+  metric_name         = "HTTPCode_ELB_5XX_Count"
   dimensions = {
     LoadBalancer = aws_lb.lab1c_alb.arn_suffix
   }
-  alarm_actions = [aws_sns_topic.db_incidents.arn]
-  tags          = local.tags
+  alarm_actions      = [aws_sns_topic.db_incidents.arn]
+  treat_missing_data = "notBreaching"
+  tags               = local.tags
 }
 
 # CloudWatch Dashboard
@@ -666,28 +667,31 @@ resource "aws_cloudwatch_dashboard" "dashboard" {
 }
 
 # Route53 Hosted Zone
-resource "aws_route53_zone" "main" {
-  name = var.domain_name
-
-  tags = local.tags
+data "aws_route53_zone" "root" {
+  name         = "${var.domain_name}."
+  private_zone = false
 }
 
-# Route 53 Records
-# resource "aws_route53_record" "app" {
-#   zone_id = data.aws_route53_zone.selected.zone_id
-#   name    = "${var.app_subdomain}.${var.domain_name}"
-#   type    = "A"
+data "aws_elb_service_account" "bonus_b" {}
 
-#   alias {
-#     name                   = aws_lb.lab1c_alb.dns_name
-#     zone_id                = aws_lb.lab1c_alb.zone_id
-#     evaluate_target_health = true
-#   }
-# }
-
-resource "aws_route53_record" "apex" {
-  zone_id = data.aws_route53_zone.selected.zone_id
+# Apex/root Alias A -> ALB
+resource "aws_route53_record" "apex_alias_to_alb" {
+  zone_id = data.aws_route53_zone.root.zone_id
   name    = var.domain_name
+  type    = "A"
+
+  alias {
+    name                   = aws_lb.lab1c_alb.dns_name
+    zone_id                = aws_lb.lab1c_alb.zone_id
+    evaluate_target_health = true
+  }
+}
+
+# Optional: app.<domain> Alias A -> ALB
+resource "aws_route53_record" "app_alias_to_alb" {
+  count   = var.create_app_record ? 1 : 0
+  zone_id = data.aws_route53_zone.root.zone_id
+  name    = "${var.app_subdomain}.${var.domain_name}"
   type    = "A"
 
   alias {
@@ -746,6 +750,43 @@ resource "aws_secretsmanager_secret_version" "db_creds_version" {
     dbname   = aws_db_instance.lab_rds.db_name
     port     = 3306
   })
+}
+
+# SSM Parameter Store Entries
+resource "aws_ssm_parameter" "db_endpoint" {
+  name        = "/lab/db/endpoint"
+  description = "RDS database endpoint for lab application"
+  type        = "SecureString"
+  value       = aws_db_instance.lab_rds.address
+
+  tags = merge(
+    local.tags,
+    { Name = "${local.project_name}-param-db-endpoint" }
+  )
+}
+
+resource "aws_ssm_parameter" "db_port" {
+  name        = "/lab/db/port"
+  description = "RDS database port for lab application"
+  type        = "SecureString"
+  value       = tostring(aws_db_instance.lab_rds.port)
+
+  tags = merge(
+    local.tags,
+    { Name = "${local.project_name}-param-db-port" }
+  )
+}
+
+resource "aws_ssm_parameter" "db_name" {
+  name        = "/lab/db/name"
+  description = "RDS database name for lab application"
+  type        = "SecureString"
+  value       = local.db_name
+
+  tags = merge(
+    local.tags,
+    { Name = "${local.project_name}-param-db-name" }
+  )
 }
 
 # SNS Topic

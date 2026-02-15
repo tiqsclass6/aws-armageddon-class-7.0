@@ -1,7 +1,7 @@
 output "application_access_public" {
   description = "Public access instructions via ALB (Bonus B)"
   value       = <<EOT
-Application is now accessible publicly via ALB (HTTPS only - Port 443):
+1. Application is now accessible publicly via ALB (HTTPS only - Port 443):
 
 Home:           https://${local.fqdn}/
 Initialize DB:  https://${local.fqdn}/init
@@ -21,13 +21,13 @@ output "application_access_private" {
   value       = <<EOT
 The application is also still accessible via SSM port forwarding:
 
-1. aws ssm start-session \
+2. aws ssm start-session \
      --target ${aws_instance.lab_ec2.id} \
      --document-name AWS-StartPortForwardingSession \
      --parameters '{"portNumber":["80"],"localPortNumber":["80"]}' \
      --region ${local.region}
 
-2. Open in browser:
+3. Open in browser:
    http://localhost:80/
    http://localhost:80/init
    http://localhost:80/add?note=test_from_SSM

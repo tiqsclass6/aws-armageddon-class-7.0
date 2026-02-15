@@ -8,7 +8,7 @@ locals {
   fqdn              = var.domain_name
   my_ip_cidr        = "${chomp(data.http.my_public_ip.response_body)}/32"
   region            = "us-east-1"
-  secret_name       = "lab/rds/mysql_v7"
+  secret_name       = "lab/rds/mysql_v21"
   zone_id           = data.aws_route53_zone.selected.zone_id
 
   tags = {
