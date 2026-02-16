@@ -507,7 +507,7 @@ resource "aws_s3_bucket_policy" "alb_logs_policy" {
 
         Condition = {
           StringEquals = {
-            "s3:x-amz-acl"     = "bucket-owner-full-control"
+            "s3:x-amz-acl"      = "bucket-owner-full-control"
             "aws:SourceAccount" = data.aws_caller_identity.current.account_id
           }
         }
@@ -629,20 +629,22 @@ resource "aws_cloudwatch_metric_alarm" "db_connection_failure" {
 }
 
 # CloudWatch Alarm - 500
-resource "aws_cloudwatch_metric_alarm" "alb_500" {
-  alarm_name          = "${var.project_name}-alb-500"
+resource "aws_cloudwatch_metric_alarm" "alb_5xx" {
+  alarm_name          = "${var.project_name}-alb-5xx"
+  alarm_description   = "Triggers when ALB 5XX errors exceed threshold"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 2
   threshold           = 1
   period              = 300
   statistic           = "Sum"
   namespace           = "AWS/ApplicationELB"
-  metric_name         = "HTTPCode_ELB_500_Count"
+  metric_name         = "HTTPCode_ELB_5XX_Count"
   dimensions = {
     LoadBalancer = aws_lb.lab1c_alb.arn_suffix
   }
-  alarm_actions = [aws_sns_topic.db_incidents.arn]
-  tags          = local.tags
+  alarm_actions      = [aws_sns_topic.db_incidents.arn]
+  treat_missing_data = "notBreaching"
+  tags               = local.tags
 }
 
 # CloudWatch Dashboard
@@ -721,6 +723,43 @@ resource "aws_secretsmanager_secret_version" "db_creds_version" {
     dbname   = aws_db_instance.lab_rds.db_name
     port     = 3306
   })
+}
+
+# SSM Parameter Store Entries
+resource "aws_ssm_parameter" "db_endpoint" {
+  name        = "/lab/db/endpoint"
+  description = "RDS database endpoint for lab application"
+  type        = "SecureString"
+  value       = aws_db_instance.lab_rds.address
+
+  tags = merge(
+    local.tags,
+    { Name = "${local.project_name}-param-db-endpoint" }
+  )
+}
+
+resource "aws_ssm_parameter" "db_port" {
+  name        = "/lab/db/port"
+  description = "RDS database port for lab application"
+  type        = "SecureString"
+  value       = tostring(aws_db_instance.lab_rds.port)
+
+  tags = merge(
+    local.tags,
+    { Name = "${local.project_name}-param-db-port" }
+  )
+}
+
+resource "aws_ssm_parameter" "db_name" {
+  name        = "/lab/db/name"
+  description = "RDS database name for lab application"
+  type        = "SecureString"
+  value       = local.db_name
+
+  tags = merge(
+    local.tags,
+    { Name = "${local.project_name}-param-db-name" }
+  )
 }
 
 # SNS Topic
