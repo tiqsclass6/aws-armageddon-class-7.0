@@ -3,6 +3,8 @@ data "aws_route53_zone" "root" {
   private_zone = false
 }
 
+data "aws_elb_service_account" "bonus_b" {}
+
 # Apex/root Alias A -> ALB
 resource "aws_route53_record" "apex_alias_to_alb" {
   zone_id = data.aws_route53_zone.root.zone_id

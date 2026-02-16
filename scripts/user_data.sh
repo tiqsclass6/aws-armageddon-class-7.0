@@ -39,7 +39,7 @@ echo "Detected AWS region: ${AWS_REGION}"
 
 # App configuration
 PREFIX="${PREFIX:-lab-1c}"
-SECRET_ID="${SECRET_ID:-lab/rds/mysql_v11}"
+SECRET_ID="${SECRET_ID:-lab/rds/mysql_v22}"
 export PREFIX SECRET_ID
 
 echo "Using PREFIX=${PREFIX}"
