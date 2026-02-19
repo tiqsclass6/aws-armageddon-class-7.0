@@ -10,18 +10,18 @@ set -euo pipefail
 # ============================================================
 
 # ---------- Inputs (override via env) ----------
-REGION="${REGION:-us-east-1}"
-INSTANCE_ID="${INSTANCE_ID:-i-07545b8bea0fa9d59}"
-SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v16-xfyPov}"
-DB_ID="${DB_ID:-lab-1c-mysql}"
+REGION="${REGION:-us-east-1}"                                                                                      # AWS region for API calls
+INSTANCE_ID="${INSTANCE_ID:-i-07545b8bea0fa9d59}"                                                                  # EC2 instance ID to check
+SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v26-??????}"            # Secrets Manager secret ARN
+DB_ID="${DB_ID:-lab-1c-mysql}"                                                                                     # RDS DB instance identifier
 
 # toggles pass-through
-REQUIRE_ROTATION="${REQUIRE_ROTATION:-false}"
-CHECK_SECRET_POLICY_WILDCARD="${CHECK_SECRET_POLICY_WILDCARD:-true}"
-CHECK_SECRET_VALUE_READ="${CHECK_SECRET_VALUE_READ:-true}"
-EXPECTED_ROLE_NAME="${EXPECTED_ROLE_NAME:-lab-1c-ec2-ssm-role}"
+REQUIRE_ROTATION="${REQUIRE_ROTATION:-false}"                                                                      # Whether to require recent rotation
+CHECK_SECRET_POLICY_WILDCARD="${CHECK_SECRET_POLICY_WILDCARD:-true}"                                               # Whether to check for wildcard permissions in secret policy
+CHECK_SECRET_VALUE_READ="${CHECK_SECRET_VALUE_READ:-true}"                                                         # Whether to check if secret value can be read
+EXPECTED_ROLE_NAME="${EXPECTED_ROLE_NAME:-lab-1c-ec2-ssm-role}"                                                    # Expected IAM role name to be attached to instance
 
-CHECK_PRIVATE_SUBNETS="${CHECK_PRIVATE_SUBNETS:-true}"
+CHECK_PRIVATE_SUBNETS="${CHECK_PRIVATE_SUBNETS:-true}"                                                             # Whether to check that RDS is in private subnets
 
 # output
 OUT_JSON="${OUT_JSON:-./scripts-results/run_all_gates.json}"
@@ -43,7 +43,7 @@ badge_color() {
 if [[ -z "$INSTANCE_ID" || -z "$SECRET_ID" || -z "$DB_ID" ]]; then
   echo "ERROR: You must set INSTANCE_ID, SECRET_ID, and DB_ID." >&2
   echo "Example:" >&2
-  echo "  REGION=us-east-1 INSTANCE_ID=i-07dc154c3f39ae680 SECRET_ID=arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v16-xfyPov DB_ID=lab-1c-mysql ./scripts/run_all-gates.sh" >&2
+  echo "  REGION=us-east-1 INSTANCE_ID=i-07dc154c3f39ae680 SECRET_ID=arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v26-?????? DB_ID=lab-1c-mysql ./scripts/run_all-gates.sh" >&2
   exit 1
 fi
 

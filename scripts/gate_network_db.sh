@@ -9,13 +9,13 @@ set -euo pipefail
 # ============================================================
 
 # ---------- Defaults (override via env) ----------
-REGION="${REGION:-us-east-1}"
-INSTANCE_ID="${INSTANCE_ID:-i-07545b8bea0fa9d59}"
-DB_ID="${DB_ID:-lab-1c-mysql}"
-DB_PORT="${DB_PORT:-}"
-OUT_JSON="${OUT_JSON:-./scripts-results/gate_network_db.json}"
+REGION="${REGION:-us-east-1}"                                          # AWS region for API calls
+INSTANCE_ID="${INSTANCE_ID:-i-07545b8bea0fa9d59}"                      # EC2 instance ID to check
+DB_ID="${DB_ID:-lab-1c-mysql}"                                         # RDS DB instance identifier
+DB_PORT="${DB_PORT:-}"                                                 # DB port (optional override; will attempt discovery if not set)
+OUT_JSON="${OUT_JSON:-./scripts-results/gate_network_db.json}"         # Output JSON file path
 
-CHECK_PRIVATE_SUBNETS="${CHECK_PRIVATE_SUBNETS:-true}"
+CHECK_PRIVATE_SUBNETS="${CHECK_PRIVATE_SUBNETS:-true}"                 # Whether to check that RDS is in private subnets (no IGW route)
 
 # ---------- Helpers ----------
 now_utc() { date -u +"%Y-%m-%dT%H:%M:%SZ"; }

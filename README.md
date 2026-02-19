@@ -45,11 +45,11 @@ Using **Amazon Bedrock**, this lab automatically generates **human-readable inci
 ```plaintext
 lab-1c-bonus-g/
 ├── lambda/
+│   └── incident_reporter.zip
 │   └── incident_reporter/
 │       ├── handler.py
 │       ├── claude.py
 │       └── bonus_g_bedrock_template.md
-│   └── incident_reporter.zip
 │
 ├── Screenshots/
 │   ├── bonus_g-20260208-225214.json

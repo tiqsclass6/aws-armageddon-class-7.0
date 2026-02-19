@@ -9,16 +9,16 @@ set -euo pipefail
 # ============================================================
 
 # ---------- Defaults (override via env or flags) ----------
-REGION="${REGION:-us-east-1}"
-INSTANCE_ID="${INSTANCE_ID:-i-07545b8bea0fa9d59}"
-SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v16-xfyPov}"
-OUT_JSON="${OUT_JSON:-./scripts-results/gate_secrets_and_role.json}"
+REGION="${REGION:-us-east-1}"                                                                                      # AWS region for API calls
+INSTANCE_ID="${INSTANCE_ID:-i-07545b8bea0fa9d59}"                                                                  # EC2 instance ID to check
+SECRET_ID="${SECRET_ID:-arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v26-??????}"            # Secrets Manager secret ARN
+DB_ID="${DB_ID:-lab-1c-mysql}"                                                                                     # RDS DB instance identifier
 
-# toggles (default: strict but sane)
-REQUIRE_ROTATION="${REQUIRE_ROTATION:-false}"
-CHECK_SECRET_POLICY_WILDCARD="${CHECK_SECRET_POLICY_WILDCARD:-true}"
-CHECK_SECRET_VALUE_READ="${CHECK_SECRET_VALUE_READ:-true}"
-EXPECTED_ROLE_NAME="${EXPECTED_ROLE_NAME:-lab-1c-ec2-ssm-role}"
+# toggles pass-through
+REQUIRE_ROTATION="${REQUIRE_ROTATION:-false}"                                                                      # Whether to require recent rotation
+CHECK_SECRET_POLICY_WILDCARD="${CHECK_SECRET_POLICY_WILDCARD:-true}"                                               # Whether to check for wildcard permissions in secret policy
+CHECK_SECRET_VALUE_READ="${CHECK_SECRET_VALUE_READ:-true}"                                                         # Whether to check if secret value can be read
+EXPECTED_ROLE_NAME="${EXPECTED_ROLE_NAME:-lab-1c-ec2-ssm-role}"                                                    # Expected IAM role name to be attached to instance
 
 # ---------- Helpers ----------
 now_utc() { date -u +"%Y-%m-%dT%H:%M:%SZ"; }
@@ -36,7 +36,7 @@ add_failure() { failures+=("$1"); }
 usage() {
   cat <<EOF
 Usage:
-  REGION=us-east-1 INSTANCE_ID=i-07545b8bea0fa9d59 SECRET_ID=arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v16-xfyPov scripts/gate_secrets_and_role.sh
+  REGION=us-east-1 INSTANCE_ID=i-07545b8bea0fa9d59 SECRET_ID=arn:aws:secretsmanager:us-east-1:866340886126:secret:lab/rds/mysql_v26-?????? scripts/gate_secrets_and_role.sh
 
 Required:
   REGION        AWS region (default: us-east-1)

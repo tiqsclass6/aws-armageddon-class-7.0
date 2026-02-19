@@ -39,7 +39,7 @@ echo "Detected AWS region: ${AWS_REGION}"
 
 # App configuration
 PREFIX="${PREFIX:-lab-1c}"
-SECRET_ID="${SECRET_ID:-lab/rds/mysql_v16}"
+SECRET_ID="${SECRET_ID:-lab/rds/mysql_v26}"
 export PREFIX SECRET_ID
 
 echo "Using PREFIX=${PREFIX}"
@@ -170,7 +170,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return """
-    <h2>Private EC2 → RDS Notes App (Bonus C)</h2>
+    <h2>Private EC2 → RDS Notes App (Bonus G)</h2>
     <p><a href="/init">/init</a> – initialize database</p>
     <p>/add?note=hello</p>
     <p><a href="/list">/list</a></p>

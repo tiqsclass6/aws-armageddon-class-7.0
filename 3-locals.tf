@@ -7,7 +7,7 @@ locals {
   db_username           = "admin"
   my_ip_cidr            = "${chomp(data.http.my_public_ip.response_body)}/32"
   region                = "us-east-1"
-  secret_name           = "lab/rds/mysql_v16"
+  secret_name           = "lab/rds/mysql_v26"
   waf_cw_log_group_name = "aws-waf-logs-${var.project_name}-web-acl"
   app_log_group         = "/aws/ec2/${var.project_name}-rds-app"
   waf_log_group         = local.waf_cw_log_group_name
