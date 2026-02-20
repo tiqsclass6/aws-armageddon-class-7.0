@@ -128,6 +128,7 @@ aws-armageddon-terraform/
 ├── lab-1c-bonus-f/        # CloudWatch Logs Insights incident response & correlation pack
 ├── lab-1c-bonus-g/        # Automated IR pipeline (CloudWatch → Lambda → Bedrock v1)
 ├── lab-1c-bonus-h/        # Final MTTR automation with guardrailed Bedrock reporting
+├── lab-1c-bonus-i/        # Amazon Bedrock–Assisted Incident Response Runbook
 │
 ├── lab-2a/                # CloudFront origin cloaking with WAF + ALB (edge-only ingress)
 ├── lab-2b/                # Origin-driven caching correctness (static vs dynamic paths)
@@ -137,7 +138,9 @@ aws-armageddon-terraform/
 │
 ├── lab-3a/                # Cross-region base architecture (Shinjuku ↔ Liberdade)
 ├── lab-3b/                # Healthcare-grade multi-region design (PHI isolation)
-├── Screenshots/           # Consolidated visual evidence (~200+ screenshots)
+|
+├── lab-4/                # (COMING SOON) AWS-GCP VPN + Transit Gateway multi-cloud reality
+|
 └── README.md              # Primary portfolio documentation
 ```
 
@@ -238,6 +241,12 @@ terraform destroy
     - **Synopsis**: Refines Bedrock prompt engineering, enforces secret redaction, validates no-leak reports, and tests end-to-end pipeline.  
     - **Key Artifacts**: Guardrailed Bedrock template, **Lambda** test harness, verified Markdown & JSON deliverables, no-secrets validation
 
+11. [**Lab 1C (Bonus I) - Amazon Bedrock–Assisted Incident Response Runbook**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-1c-bonus-i)  
+
+    - **Task**: Develop an Amazon Bedrock–assisted incident response runbook  
+    - **Synopsis**: Creates a structured runbook for leveraging Bedrock in incident response, including evidence collection, analysis, and remediation steps.  
+    - **Key Artifacts**: Incident response runbook document, example incident scenario with Bedrock-assisted analysis, remediation playbook
+
 ---
 
 ### 🌐 Lab 2 — CloudFront Edge Security & Caching Mastery
@@ -256,19 +265,19 @@ terraform destroy
    - **Synopsis**: Separates static (aggressive) and dynamic (no-cache) behaviors with managed policies and header validation.  
    - **Key Artifacts**: Managed cache & origin request policies, `Hit`, `Miss`, `Cache-Control` proof, HTTP header screenshots
 
-3. [**Lab 2B (BAM Challenge A) - Secure Front-Door Reinforcement**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-2b-bam-a)  
+3. [**Lab 2B (BAM Challenge A) - Honors**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-2b-bam-a)  
 
    - **Task**: Reinforce secure front-door pattern  
    - **Synopsis**: Strengthens origin protection with header gating, origin-driven caching, and IMDSv2 enforcement.  
    - **Key Artifacts**: Header-based ALB rule, cache policy disabled for dynamic paths, IMDSv2 proof, direct origin blocked
 
-4. [**Lab 2B (BAM Challenge B) - Disciplined Cache Invalidation Practice**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-2b-bam-b)  
+4. [**Lab 2B (BAM Challenge B) - Honors+**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-2b-bam-b)  
 
    - **Task**: Establish disciplined cache invalidation practice  
    - **Synopsis**: Prefers versioned assets, reserves invalidations for break-glass scenarios, minimizes blast radius and cost.  
    - **Key Artifacts**: Path-specific invalidation command, before/after cache header proof, break-glass runbook
 
-5. [**Lab 2B (BAM Challenge C) - Protocol-Level Caching Correctness**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-2b-bam-c)  
+5. [**Lab 2B (BAM Challenge C) - Honors++**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-2b-bam-c)  
 
    - **Task**: Demonstrate protocol-level caching correctness  
    - **Synopsis**: Proves conditional revalidation with `ETag`/`Last-Modified`, showing `RefreshHit` after TTL expiry.  
@@ -291,6 +300,14 @@ terraform destroy
    - **Task**: Deliver compliance-aware multi-region architecture  
    - **Synopsis**: Enforces strict PHI residency in primary region, deploys stateless ASG in secondary region, includes full audit pack.  
    - **Key Artifacts**: Explicit PHI isolation, Transit Gateway routing, audit pack & Python scripts, end-to-end observability
+
+---
+
+### 🧬 Lab 4 — Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)
+
+![lab4-diagram](/images/lab4-diagram.png)
+
+1. [**Lab 4 - (COMING SOON)**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-4)  
 
 ---
 
