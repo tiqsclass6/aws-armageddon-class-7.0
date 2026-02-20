@@ -26,6 +26,7 @@
   - [**Lab 1 — Secure Two-Tier Application Foundation**](#-lab-1--secure-two-tier-application-foundation)
   - [**Lab 2 — CloudFront Edge Security & Caching Mastery**](#-lab-2--cloudfront-edge-security--caching-mastery)
   - [**Lab 3 — Multi-Region Healthcare Architecture**](#-lab-3--multi-region-healthcare-architecture)
+  - [**Lab 4 — Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)**](#-lab-4--japan-medical-multi-cloud-reality-in-regulated-healthcare-aws-gcp-vpn-and-tgws)
 - [**Ways Ahead / Future Enhancements**](#-ways-ahead--future-enhancements)
 - [**Why This Portfolio Stands Out**](#-why-this-portfolio-stands-out)
 - [**References**](#-references)
@@ -37,7 +38,7 @@
 
 ## 📘 Project Overview
 
-This repository contains a **comprehensive, production-oriented AWS Terraform portfolio** developed through three progressively advanced labs and their complete bonus tracks.
+This repository contains a **comprehensive, production-oriented AWS Terraform portfolio** developed through four progressively advanced labs and their complete bonus tracks.
 
 The portfolio demonstrates **enterprise-grade cloud engineering practices**, including:
 
@@ -66,6 +67,7 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 - **Lab 1**: EC2, RDS, Secrets Manager, SSM, WAF, Bedrock access
 - **Lab 2**: CloudFront + ALB integration, custom domains, short TTL testing
 - **Lab 3**: Multi-region architecture, Transit Gateway permissions, compliance mindset
+- **Lab 4**: Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)
 
 ---
 
@@ -107,6 +109,7 @@ The labs follow a deliberate progression from secure foundations to edge mastery
 1. **Lab 1** — Secure two-tier architecture, observability, automated incident response
 2. **Lab 2** — CDN correctness, origin cloaking, edge security discipline
 3. **Lab 3** — Compliance-aware multi-region architecture using Transit Gateways
+4. **Lab 4** — (COMING SOON) Multi-cloud reality with AWS-GCP VPN and Transit Gateway
 
 > Each lab includes self-contained Terraform code, bootstrap scripts, screenshots, CLI verification steps, and operational runbooks where applicable.
 
