@@ -96,9 +96,9 @@ terraform plan
 terraform apply
 ```
 
-![terraform-init-fmt-validate](Screenshots/terraform-init-fmt-validate.jpg)
-![terraform-plan](Screenshots/terraform-plan.jpg)
-![terraform-apply](Screenshots/terraform-apply.jpg)
+![terraform-init-fmt-validate](/Screenshots/terraform-init-fmt-validate.jpg)
+![terraform-plan](/Screenshots/terraform-plan.jpg)
+![terraform-apply](/Screenshots/terraform-apply.jpg)
 
 ---
 
@@ -107,20 +107,20 @@ terraform apply
 > 📸 Included evidence:
 
 - **SNS Notification for Password changed in Secrets Manager:**
-![sns-db-connection-failure](Screenshots/sns-db-connection-failure.jpg)
+![sns-db-connection-failure](/Screenshots/sns-db-connection-failure.jpg)
 
 - **IR Report Complete via SNS Notification:**
-![ir-report-sns-notification](Screenshots/ir-report-sns-notification.jpg)
+![ir-report-sns-notification](/Screenshots/ir-report-sns-notification.jpg)
 
 ---
 
 ## 📦 Deliverables
 
-- [**Initial IR Report Markdown**](scripts-results/bonus_g-20260209-023105.md)
-- [**Initial Evidence Bundle JSON**](scripts-results/bonus_g-20260209-023105.json)
-- [**Complete IR Report Markdown**](scripts-results/bonus_g-20260209-023502.md)
-- [**Complete Evidence Bundle JSON**](scripts-results/bonus_g-20260209-023502.json)
-- [**CloudWatch Logs for RDSApp**](scripts-results/rdsapp-cw-logs.csv)
+- [**Initial IR Report Markdown**](/scripts-results/bonus_g-20260209-023105.md)
+- [**Initial Evidence Bundle JSON**](/scripts-results/bonus_g-20260209-023105.json)
+- [**Complete IR Report Markdown**](/scripts-results/bonus_g-20260209-023502.md)
+- [**Complete Evidence Bundle JSON**](/scripts-results/bonus_g-20260209-023502.json)
+- [**CloudWatch Logs for RDSApp**](/scripts-results/rdsapp-cw-logs.csv)
 
 ---
 
@@ -146,6 +146,8 @@ This is **how real orgs scale SRE and security operations**.
 ```bash
 terraform destroy
 ```
+
+![terraform-destroy](/Screenshots/terraform-destroy.jpg)
 
 ---
 
