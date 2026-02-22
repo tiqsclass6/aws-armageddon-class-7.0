@@ -1,9 +1,9 @@
-# STEPS.md
+# Lab 2A: WAF Migration Validation Deliverables
 
 ## Direct ALB access should fail (403)
 
 ```bash
-curl -I -k https://lab-2a-alb-316017758.us-east-2.elb.amazonaws.com
+curl -I https://lab-2a-alb-1021479830.us-east-1.elb.amazonaws.com
 ```
 
 ### Expected: 403 (blocked by missing header)
@@ -13,8 +13,8 @@ curl -I -k https://lab-2a-alb-316017758.us-east-2.elb.amazonaws.com
 ## CloudFront access should succeed
 
 ```bash
-  curl -I https://theinternationalquietstorm.com
-  curl -I --ssl-no-revoke https://app.theinternationalquietstorm.com
+  curl -I -k https://theinternationalquietstorm.com
+  curl -I -k https://app.theinternationalquietstorm.com
 ```
 
 ### Expected: 200/301 → 200
@@ -40,15 +40,16 @@ curl -I -k https://lab-2a-alb-316017758.us-east-2.elb.amazonaws.com
 
 ```bash
   aws cloudfront get-distribution \
-  --id E9CJW26HBNGTS \
-  --query "Distribution.DistributionConfig.WebACLId"
+  --id EVKGK9OT7KQ3Y \
+  --query "Distribution.DistributionConfig.WebACLId" \
+  --output text
 ```
 
 ### Expected: WebACL ARN present
 
 ---
 
-## theinternationalquietstorm.com points to CloudFront
+## `theinternationalquietstorm.com` points to CloudFront
 
 ```bash
   dig theinternationalquietstorm.com A +short

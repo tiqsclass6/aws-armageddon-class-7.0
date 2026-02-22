@@ -41,15 +41,14 @@ This lab implements a **defense-in-depth CloudFront cloaking architecture** wher
 - WAF scoped to **CloudFront**, not the ALB
 - Route 53 apex + subdomain → **CloudFront only**
 - ACM certificates:
-  - `us-east-1` → CloudFront
-  - `us-east-2` → ALB
+  - `us-east-1` → CloudFront/ALB
 - ALB security group allows traffic **only from CloudFront**
 - Listener rule enforces secret header:
-  - `X-Lab2a-Origin-Secret`
+  - `X-Chewbacca-growl`
 - Origin cloaking using AWS-managed **CloudFront prefix list**
 - Verification:
   - ❌ Direct ALB curl fails
-  - ✅ CloudFront curl succeeds
+  - ✅ Route53 curl succeeds
   - ✅ `dig` returns CloudFront anycast IPs
 
 ---
@@ -58,10 +57,17 @@ This lab implements a **defense-in-depth CloudFront cloaking architecture** wher
 
 ```plaintext
 lab-2a/
+├── lambda/
+│   ├── incident-reporter/
+│   │   ├── bonus_g_bedrock_template.md
+│   │   ├── build.sh
+│   │   ├── claude.py
+│   │   ├── handler.py
+│   │   └── incident_reporter.zip 
+|
 ├── Screenshots/
 │   ├── alb-pt1.jpg
 │   ├── alb-pt2.jpg
-│   ├── cloudfront-cloak-full.jpg
 │   ├── cloudfront-distro.jpg
 │   ├── lab-2a-pt1.jpg
 │   ├── lab-2a-pt2.jpg
@@ -73,18 +79,25 @@ lab-2a/
 │   ├── terraform-plan.jpg
 │   └── waf.jpg
 │
+├── scripts/
+│   ├── germany.sh
+│   └── user_data.sh
+│
 ├── .gitignore
 ├── 1-versions.tf
 ├── 2-providers.tf
 ├── 3-locals.tf
 ├── 4-main.tf
-├── 5-variables.tf
-├── 6-outputs.tf
-├── germany.sh
+├── 5-cloudfront.tf
+├── 6-route53.tf
+├── 7-cw-insight-queries.tf
+├── 8-bedrock.tf
+├── 9-variables.tf
+├── 10-outputs.tf
 ├── README.md
 ├── STEPS.md
 └── WRITTEN.md
-````
+```
 
 ---
 
@@ -93,12 +106,7 @@ lab-2a/
 ### 1️⃣ Prerequisites
 
 - AWS CLI configured
-- ACM certificates issued:
-
-  - **CloudFront:** `us-east-1`
-  - **ALB:** `us-east-2`
 - Route 53 public hosted zone:
-
   - `theinternationalquietstorm.com`
 
 ---
@@ -107,7 +115,7 @@ lab-2a/
 
 ```bash
 terraform init
-terraform fmt
+terraform fmt -recursive
 terraform validate
 ```
 
@@ -139,44 +147,38 @@ terraform apply
 
 ```bash
 # Direct ALB (should fail)
-curl -I https://$(terraform output -raw alb_dns_name)
+curl -I -k https://$(terraform output -raw alb_dns_name)
 
-# CloudFront (should succeed)
-curl -I https://theinternationalquietstorm.com
-curl -I https://app.theinternationalquietstorm.com
+# Route53 (should succeed)
+curl -I -k https://theinternationalquietstorm.com
+curl -I -k https://app.theinternationalquietstorm.com
 
 # DNS anycast check
 dig theinternationalquietstorm.com +short
+dig app.theinternationalquietstorm.com +short
 ```
 
----
-
-## 🔍 Lab Demos
-
-- **CloudFront Origin `theinternationalquietstorm.com`**
-
-    <https://github.com/user-attachments/assets/28bbea7b-9674-4456-9479-4608c3cd8467>
-
-- **CloudFront Subdomain `app.theinternationalquietstorm.com`**
-
-    <https://github.com/user-attachments/assets/36d69cc8-5b9d-493b-946e-e42b9af70f17>
-
-- **WAF Configuration**
-
-    <https://github.com/user-attachments/assets/8ec1531d-64ff-4cce-87a0-17ab7daf6369>
+![lab-2a-pt1.jpg](/Screenshots/lab-2a-pt1.jpg)
+![lab-2a-pt2.jpg](/Screenshots/lab-2a-pt2.jpg)
+![lab-2a-pt3.jpg](/Screenshots/lab-2a-pt3.jpg)
 
 ---
 
-## 📦 Deliverables
+## 📺 Lab Demo Video
 
-|Deliverables                 | Description                                                                    | Screenshot                                                           |
-|-----------------------------|--------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| `cloudfront-cloak-full.jpg` | CloudFront distribution configuration showing origin cloaking with prefix list | ![cloudfront-cloak-full.jpg](/Screenshots/cloudfront-cloak-full.jpg) |
-| `alb-pt1.jpg`               | ALB security group showing no inbound rules from outside                       | ![alb-pt1.jpg](/Screenshots/alb-pt1.jpg)                             |
-| `alb-pt2.jpg`               | ALB listener rule showing secret header requirement                            | ![alb-pt2.jpg](/Screenshots/alb-pt2.jpg)                             |
-| `cloudfront-distro.jpg`     | CloudFront distribution configuration showing WAF                              | ![cloudfront-distro.jpg](/Screenshots/cloudfront-distro.jpg)         |
-| `route-53.jpg`              | Route 53 records showing apex and subdomain pointing to CloudFront             | ![route-53.jpg](/Screenshots/route-53.jpg)                           |
-| `waf.jpg`                   | WAF Web ACL configuration showing rules and CloudFront association             | ![waf.jpg](/Screenshots/waf.jpg)                                     |
+[**WAF Console Demo with CloudFront**](https://github.com/user-attachments/assets/9afe4306-e31a-464d-b8c6-bf40346fe523)
+
+---
+
+## 📦 Other Screenshots
+
+|Deliverables             | Description                                                          | Screenshot                                                    |
+|-------------------------|----------------------------------------------------------------------|---------------------------------------------------------------|
+| `alb-pt1.jpg`           | ALB security group showing no inbound rules from outside             | ![alb-pt1.jpg](/Screenshots/alb-pt1.jpg)                      |
+| `alb-pt2.jpg`           | ALB listener rule showing secret header requirement                  | ![alb-pt2.jpg](/Screenshots/alb-pt2.jpg)                      |
+| `cloudfront-distro.jpg` | CloudFront distribution configuration showing WAF                    | ![cloudfront-distro.jpg](/Screenshots/cloudfront-distro.jpg)  |
+| `route-53.jpg`          | Route 53 records showing apex and subdomain pointing to CloudFront   | ![route-53.jpg](/Screenshots/route-53.jpg)                    |
+| `waf.jpg`               | WAF Web ACL configuration showing rules and CloudFront association   | ![waf.jpg](/Screenshots/waf.jpg)                              |
 
 ---
 
@@ -194,15 +196,11 @@ terraform destroy
 
 ## 📚 References
 
-- AWS CloudFront Alternate Domain Names
-  [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html)
-- Restricting ALB Access to CloudFront
-  [https://aws.amazon.com/blogs/networking-and-content-delivery/restricting-access-to-application-load-balancers/](https://aws.amazon.com/blogs/networking-and-content-delivery/restricting-access-to-application-load-balancers/)
-- AWS WAFv2 (CloudFront Scope)
-  [https://docs.aws.amazon.com/waf/latest/developerguide/waf-cloudfront.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-cloudfront.html)
-- AWS Managed Prefix Lists
-  [https://docs.aws.amazon.com/vpc/latest/userguide/aws-managed-prefix-lists.html](https://docs.aws.amazon.com/vpc/latest/userguide/aws-managed-prefix-lists.html)
-
+- [**AWS CloudFront Alternate Domain Names**](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html)
+- [**Restricting ALB Access to CloudFront**](https://aws.amazon.com/blogs/networking-and-content-delivery/restricting-access-to-application-load-balancers/)
+- [**AWS WAFv2 (CloudFront Scope)**](https://docs.aws.amazon.com/waf/latest/developerguide/waf-cloudfront.html)
+- [**AWS Managed Prefix Lists**](https://docs.aws.amazon.com/vpc/latest/userguide/aws-managed-prefix-lists.html)
+  
 ---
 
 ## 🛠️ Troubleshooting

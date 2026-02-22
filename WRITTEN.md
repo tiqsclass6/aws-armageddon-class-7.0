@@ -4,32 +4,18 @@
 
 ### **Traffic flow**
 
-```plaintext
-Internet
-│
-▼
-CloudFront
-│
-▼
-ALB
-│
-▼ 
-**CloudFront**
-│
-▼
-(**WAFv2** at edge)
-│
-▼
-**ALB** (HTTPS only, secret header + prefix list) 
-│
-▼
-Target Group 
-│
-▼
-Private EC2 instances
-│
-▼
-RDS (private subnet)
+```mermaid
+flowchart TD
+    A[Internet] -->|HTTPS| B[(CloudFront)]
+    B -->|requests| C[WAFv2<br>at edge]
+    C --> D[ALB<br>HTTPS only<br>secret header + prefix list]
+    D --> E[Target Group]
+    E --> F[Private EC2 instances]
+    F --> G[RDS<br>private subnet]
+   
+    %% Optional: showing the repeating/emphasis elements visually
+    style B fill:#e6f3ff,stroke:#0066cc
+    style D fill:#e6f3ff,stroke:#0066cc
 ```
 
 ### **Key security controls**
@@ -64,7 +50,7 @@ Even if someone spoofs **CloudFront** IPs, they still need the secret header (wh
 **Direct **ALB** access**  
 
 ```bash
-curl -I https://lab-2a-alb-1234567890.us-east-2.elb.amazonaws.com
+curl -I -k https://lab-2a-alb-1234567890.us-east-1.elb.amazonaws.com
 ```
 
 → Timeout (security group drop) or 403 Forbidden (missing header)
@@ -72,8 +58,8 @@ curl -I https://lab-2a-alb-1234567890.us-east-2.elb.amazonaws.com
 **CloudFront** access  
 
 ```bash
-curl -I https://theinternationalquietstorm.com
-curl -I https://app.theinternationalquietstorm.com
+curl -I -k https://theinternationalquietstorm.com
+curl -I -k https://app.theinternationalquietstorm.com
 ```
 
 ![la-2a-pt1.jpg](/Screenshots/lab-2a-pt1.jpg)
@@ -92,8 +78,11 @@ dig app.theinternationalquietstorm.com +short
 **WAF association**  
 
 ```bash
-**AWS** **CloudFront** get-distribution --id <DISTRIBUTION_ID> --query "Distribution.DistributionConfig.WebACLId"
-```
+aws cloudfront get-distribution \
+  --id <DISTRIBUTION_ID> \
+  --query "Distribution.DistributionConfig.WebACLId" \
+  --output text
+  ```
 
 ![lab-2a-pt3.jpg](/Screenshots/lab-2a-pt3.jpg)
 
@@ -113,4 +102,6 @@ dig app.theinternationalquietstorm.com +short
 - Defense-in-depth (IP list + secret header) significantly raises attack difficulty
 - **AWS**-managed prefix lists simplify origin cloaking dramatically
 
-Submitted: February 2026
+---
+
+## Submitted: February 2026
