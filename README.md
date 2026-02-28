@@ -1,4 +1,4 @@
-# ☁️ **Class 7 Armageddon — Labs 1 – 4 + Bonus Tracks**
+# ☁️ **Class 7 Armageddon — Labs 1–4 + Bonus Tracks**
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Terraform](https://img.shields.io/badge/Terraform-%E2%89%A51.9-844FBA?style=for-the-badge&logo=terraform&logoColor=white)
@@ -26,7 +26,7 @@
   - [**Lab 1 — Secure Two-Tier Application Foundation**](#-lab-1--secure-two-tier-application-foundation)
   - [**Lab 2 — CloudFront Edge Security & Caching Mastery**](#-lab-2--cloudfront-edge-security--caching-mastery)
   - [**Lab 3 — Multi-Region Healthcare Architecture**](#-lab-3--multi-region-healthcare-architecture)
-  - [**Lab 4 — Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)**](#-lab-4--japan-medical-multi-cloud-reality-in-regulated-healthcare-aws-gcp-vpn-and-tgws)
+  - [**Lab 4 — Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGWs)**](#-lab-4--japan-medical-multi-cloud-reality-in-regulated-healthcare-aws-gcp-vpn-and-tgws)
 - [**Ways Ahead / Future Enhancements**](#-ways-ahead--future-enhancements)
 - [**Why This Portfolio Stands Out**](#-why-this-portfolio-stands-out)
 - [**References**](#-references)
@@ -71,14 +71,14 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 - **Lab 1**: EC2, RDS, Secrets Manager, SSM, WAF, Bedrock access
 - **Lab 2**: CloudFront + ALB integration, custom domains, short TTL testing
 - **Lab 3**: Multi-region architecture, Transit Gateway permissions, compliance mindset
-- **Lab 4**: Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)
+- **Lab 4**: Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGWs)
 
 ---
 
 ## 🧰 **Resources Needed (All Labs)**
 
 - AWS account  
-  *(Free Tier sufficient for most labs; costs apply for ALB, CloudFront, Bedrock, TGW)*
+  *(Free Tier sufficient for most labs; costs apply for ALB, CloudFront, Bedrock, TGWs)*
 - AWS Provider **≥ 5.x** (≥ 6.x recommended)
 - Domain name with NS delegation capability (Route 53)
 - GCP account (for Lab 4)
@@ -369,13 +369,16 @@ These are not academic exercises — they mirror real production patterns used b
 
 ## 📚 **References**
 
-- [**AWS Well-Architected Framework**](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
-- [**AWS Security Best Practices**](https://aws.amazon.com/security/security-best-practices/)  
-- [**AWS HIPAA Compliance**](https://aws.amazon.com/compliance/hipaa-compliance/)  
+- [**RFC 1918 - Address Allocation for Private Internets**](https://datatracker.ietf.org/doc/html/rfc1918)
+- [**RFC 2401 - The Secure Shell (SSH) Protocol Architecture**](https://datatracker.ietf.org/doc/html/rfc2401)
+- [**RFC 4271 - Border Gateway Protocol 4 (BGP)**](https://datatracker.ietf.org/doc/html/rfc4271)
+- [**Well-Architected Framework**](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
+- [**Security Best Practices**](https://aws.amazon.com/security/security-best-practices/)  
+- [**HIPAA Compliance**](https://aws.amazon.com/compliance/hipaa-compliance/)  
 - [**Amazon RDS Security Best Practices**](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Security.html)  
 - [**RDS Security Groups**](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html)  
 - [**Connecting to RDS**](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToInstance.html)  
-- [**AWS Secrets Manager**](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)  
+- [**Secrets Manager**](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)  
 - [**Secrets Manager – Hardcoded Credentials**](https://docs.aws.amazon.com/secretsmanager/latest/userguide/hardcoded-db-creds.html)  
 - [**EC2 User Guide**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)  
 - [**IAM Best Practices**](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)  
@@ -385,7 +388,7 @@ These are not academic exercises — they mirror real production patterns used b
 - [**CloudWatch Alarms**](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)  
 - [**Amazon SNS**](https://docs.aws.amazon.com/sns/latest/dg/sns-create-subscribe-endpoint-to-topic.html)  
 - [**Parameter Store**](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html)  
-- [**AWS WAF Logging**](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)  
+- [**WAF Logging**](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)  
 - [**WAF Logging to CloudWatch**](https://docs.aws.amazon.com/waf/latest/developerguide/logging-cw-logs.html)  
 - [**WAF LoggingConfiguration API**](https://docs.aws.amazon.com/waf/latest/APIReference/API_LoggingConfiguration.html)  
 - [**CloudWatch Logs Insights**](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)  
