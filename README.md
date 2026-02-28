@@ -1,4 +1,4 @@
-# ☁️ Class 7 Armageddon — Labs 1–3 + Bonus Tracks
+# ☁️ **Class 7 Armageddon — Labs 1 – 4 + Bonus Tracks**
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Terraform](https://img.shields.io/badge/Terraform-%E2%89%A51.9-844FBA?style=for-the-badge&logo=terraform&logoColor=white)
@@ -12,7 +12,7 @@
 
 ---
 
-## 📑 Table of Contents
+## 📑 **Table of Contents**
 
 - [**Project Overview**](#-project-overview)
 - [**Project Requirements (All Labs)**](#-project-requirements-all-labs)
@@ -36,7 +36,7 @@
 
 ---
 
-## 📘 Project Overview
+## 📘 **Project Overview**
 
 This repository contains a **comprehensive, production-oriented AWS Terraform portfolio** developed through four progressively advanced labs and their complete bonus tracks.
 
@@ -51,7 +51,7 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 
 ---
 
-## 📋 Project Requirements (All Labs)
+## 📋 **Project Requirements (All Labs)**
 
 ### Common Requirements
 
@@ -59,8 +59,12 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
   - **VPC, EC2, RDS, ALB, CloudFront, WAFv2, Route 53, ACM, Secrets Manager, SSM, CloudWatch, SNS, Lambda, Bedrock, Transit Gateway**
 - Administrative IAM user/role  
   *(or least-privilege role tailored per lab)*
-- Domain name under your control (Route 53 + ACM validation)
 - AWS CLI configured locally for validation and troubleshooting
+- Active GCP account with permissions for:
+  - **VPC, Compute Engine, Cloud VPN, IAM** (for Lab 4)
+- Domain name under your control (Route 53 + ACM validation)
+- Python 3.x environment for Bedrock IR scripts
+- Terraform CLI installed locally (≥ 1.10 recommended)
 
 ### Lab-Specific Requirements
 
@@ -71,26 +75,34 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 
 ---
 
-## 🧰 Resources Needed (All Labs)
+## 🧰 **Resources Needed (All Labs)**
 
 - AWS account  
   *(Free Tier sufficient for most labs; costs apply for ALB, CloudFront, Bedrock, TGW)*
-- Terraform **≥ 1.10** (latest stable recommended)
 - AWS Provider **≥ 5.x** (≥ 6.x recommended)
 - Domain name with NS delegation capability (Route 53)
+- GCP account (for Lab 4)
+  *GCP Free Tier may cover basic VPN and compute resources, but verify limits*
+- Google Project with billing enabled (for Lab 4)
+- Random Provider (for generating secrets and random values)
+- TLS Provider (for ACM certificates)
+- Terraform **≥ 1.10** (latest stable recommended)
 
 ### Local Environment
 
 - Terraform CLI
 - AWS CLI (v2 recommended)
+- GCP SDK (for Lab 4)
 - Git
+- Python 3.x (for Bedrock IR scripts)
 - Text editor / IDE
+- Visual Studio Code (optional, with Terraform extension for syntax highlighting and linting)
 
 **Optional:** VS Code with HashiCorp Terraform extension
 
 ---
 
-## 🛠️ Software & Tooling
+## 🛠️ **Software & Tooling**
 
 - **Terraform** — Infrastructure as Code (primary provisioning tool)
 - **AWS CLI** — Validation, troubleshooting, and operational checks
@@ -99,23 +111,27 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 - **AWS Console** — Visual verification and evidence capture
 - **Git** — Version control and branching strategy
 - **Markdown** — Documentation and evidence formatting
+- **Amazon Bedrock** — LLM-powered incident analysis and reporting
+- **CloudWatch Logs Insights** — Log analysis and query validation
+- **GCP Console & CLI** — For Lab 4 multi-cloud connectivity validation
+- **GCP VPN and Networking Tools** — For multi-cloud connectivity setup and troubleshooting
 
 ---
 
-## 🔁 Project Workflow
+## 🔁 **Project Workflow**
 
 The labs follow a deliberate progression from secure foundations to edge mastery to global compliance:
 
 1. **Lab 1** — Secure two-tier architecture, observability, automated incident response
 2. **Lab 2** — CDN correctness, origin cloaking, edge security discipline
 3. **Lab 3** — Compliance-aware multi-region architecture using Transit Gateways
-4. **Lab 4** — (COMING SOON) Multi-cloud reality with AWS-GCP VPN and Transit Gateway
+4. **Lab 4** — Multi-cloud reality with AWS-GCP VPN and Transit Gateway
 
 > Each lab includes self-contained Terraform code, bootstrap scripts, screenshots, CLI verification steps, and operational runbooks where applicable.
 
 ---
 
-## 🗂️ Project Structure & Workflow
+## 🗂️ **Project Structure & Workflow**
 
 The repository is organized to reflect a **progressive, enterprise-grade learning and delivery path**, moving from foundational AWS constructs to advanced edge security, automation, and compliance-aware multi-region design.
 
@@ -142,14 +158,14 @@ aws-armageddon-terraform/
 ├── lab-3a/                # Cross-region base architecture (Shinjuku ↔ Liberdade)
 ├── lab-3b/                # Healthcare-grade multi-region design (PHI isolation)
 |
-├── lab-4/                # (COMING SOON) AWS-GCP VPN + Transit Gateway multi-cloud reality
+├── lab-4/                 # AWS-GCP VPN + Transit Gateway multi-cloud reality
 |
 └── README.md              # Primary portfolio documentation
 ```
 
 ---
 
-## 🚀 Terraform Deployment (General Instructions)
+## 🚀 **Terraform Deployment (General Instructions)**
 
 ```bash
 # Navigate to the desired lab folder
@@ -178,9 +194,9 @@ terraform destroy
 
 ---
 
-## 🧪 Lab Breakdown
+## 🧪 **Lab Breakdown**
 
-### 🔐 Lab 1 — Secure Two-Tier Application Foundation
+### 🔐 **Lab 1 — Secure Two-Tier Application Foundation**
 
 ![lab1-diagram](/images/lab1-diagram.png)
 
@@ -252,7 +268,7 @@ terraform destroy
 
 ---
 
-### 🌐 Lab 2 — CloudFront Edge Security & Caching Mastery
+### 🌐 **Lab 2 — CloudFront Edge Security & Caching Mastery**
 
 ![lab2-diagram](/images/lab2-diagram.png)
 
@@ -288,7 +304,7 @@ terraform destroy
 
 ---
 
-### 🌍 Lab 3 — Multi-Region Healthcare Architecture
+### 🌍 **Lab 3 — Multi-Region Healthcare Architecture**
 
 ![lab3-diagram](/images/lab3-diagram.png)
 
@@ -306,15 +322,15 @@ terraform destroy
 
 ---
 
-### 🧬 Lab 4 — Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)
+### 🧬 **Lab 4 — Japan Medical Multi-Cloud Reality in Regulated Healthcare (AWS-GCP VPN and TGW's)**
 
-![lab4-diagram](/images/lab4-diagram.png)
+![lab4-diagram (COMING SOON)](/images/lab4-diagram.png)
 
-1. [**Lab 4 - (COMING SOON)**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-4)  
+- [**🏥 Lab 4A — Japan Medical (AWS ↔ GCP Secure Connectivity (IPSec VPN + BGP))**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-4)  
 
 ---
 
-## 🔮 Ways Ahead / Future Enhancements
+## 🔮 **Ways Ahead / Future Enhancements**
 
 - Implement CI/CD pipeline (GitHub Actions / Terraform Cloud) for automated deployments
 - Containerize application layer (ECS Fargate / EKS)
@@ -322,10 +338,12 @@ terraform destroy
 - Extend Bedrock IR pipeline with auto-remediation actions
 - Add cross-account deployment using OIDC federation
 - Publish internal runbooks and patterns derived from this work
+- Explore additional multi-cloud patterns (Azure, Kubernetes, etc.)
+- Continuously refine and expand the portfolio based on emerging best practices and feedback
 
 ---
 
-## 🎯 Why This Portfolio Stands Out
+## 🎯 **Why This Portfolio Stands Out**
 
 ### This work directly demonstrates competencies sought in **Senior → Staff** Cloud & DevOps positions, including
 
@@ -336,12 +354,20 @@ terraform destroy
 - Compliance-aware design (PHI/data residency, HIPAA-inspired patterns, auditability)
 - Incident response automation & MTTR reduction
 - Multi-region operational maturity (Transit Gateway, private global connectivity)
+- Multi-cloud reality (AWS-GCP VPN, cross-cloud connectivity)
+- Real-world operational patterns (beyond academic exercises), including:
+  - Secrets management with dynamic retrieval and rotation
+  - Private compute with secure access patterns (SSM Session Manager, VPC endpoints)
+  - Edge security with CloudFront + WAF and origin protection
+  - Observability with CloudWatch Logs, metric filters, and Bedrock-assisted analysis
+  - Compliance-aware multi-region architecture with strict data residency controls
+  - Multi-cloud connectivity using AWS Transit Gateway and VPN to GCP
 
 These are not academic exercises — they mirror real production patterns used by teams operating at scale in regulated and high-availability environments.
 
 ---
 
-## 📚 References
+## 📚 **References**
 
 - [**AWS Well-Architected Framework**](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html)
 - [**AWS Security Best Practices**](https://aws.amazon.com/security/security-best-practices/)  
@@ -383,10 +409,17 @@ These are not academic exercises — they mirror real production patterns used b
 - [**Terraform AWS Getting Started**](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)  
 - [**Restricting ALB Access (Blog)**](https://aws.amazon.com/blogs/networking-and-content-delivery/restricting-access-to-application-load-balancers/)  
 - [**Secrets Manager Best Practices (Blog)**](https://aws.amazon.com/blogs/security/how-to-use-aws-secrets-manager-securely-store-secrets-centralize-secret-management/)
+- [**VPNs with Transit Gateway**](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpn.html)
+- [**AWS-GCP VPN Reference Architecture**](https://docs.cloud.google.com/network-connectivity/docs/vpn/tutorials/create-ha-vpn-connections-google-cloud-aws)
+- [**HIPAA Compliance on AWS**](https://aws.amazon.com/compliance/hipaa-compliance/)
+- [**GCP VPN Documentation**](https://cloud.google.com/network-connectivity/docs/vpn)
+- [**GCP Internal Load Balancing**](https://cloud.google.com/load-balancing/docs/internal)
+- [**GCP IAM Best Practices**](https://cloud.google.com/blog/products/identity-security/iam-best-practice-guides-available-now)
+- [**GCP Managed Instance Group (MIG) Documentation**](https://cloud.google.com/compute/docs/instance-groups)
 
 ---
 
-## 🛡️ Repository Governance
+## 🛡️ **Repository Governance**
 
 This repository follows standard open-source and enterprise governance practices.  
 See:
@@ -401,7 +434,7 @@ See:
 
 ---
 
-## 🛠️ Troubleshooting (Common Across Labs)
+## 🛠️ **Troubleshooting (Common Across Labs)**
 
 - **`terraform init` fails** → Check Terraform version, provider constraints, AWS credentials, network connectivity
 - **Secrets AccessDenied** → Verify IAM role attachment and secret ARN
@@ -412,10 +445,15 @@ See:
 - **Bedrock access denied** → Enable model access in Bedrock console (region-specific)
 - **Alarm not triggering** → Validate metric filter pattern matches log message exactly
 - **DNS not resolving** → Check Route 53 NS records match registrar; confirm ACM status is ISSUED
+- **Transit Gateway connectivity issues** → Verify attachments, route tables, and SG rules in both regions
+- **VPN tunnel down** → Check IPSec configuration, BGP status, and CloudWatch metrics for TGW VPN
+- **GCP connectivity issues** → Validate GCP VPN configuration, firewall rules, and instance tags
+- **General debugging** → Use AWS CLI for direct resource queries, check CloudWatch Logs, and review Terraform state for discrepancies
+- **Cost concerns** → Monitor AWS Cost Explorer, tear down resources when not in use, and consider using AWS Free Tier where applicable
 
 ---
 
-## 👤 Authors
+## 👤 **Authors**
 
 - **Author:** T.I.Q.S.
 - **Group Lead:** John Sweeney
