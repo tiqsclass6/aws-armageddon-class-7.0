@@ -1,0 +1,22 @@
+[
+  {
+    "IPAddress": "10.245.11.4",
+    "IPProtocol": "TCP",
+    "creationTimestamp": "2026-02-27T17:15:18.571-08:00",
+    "description": "",
+    "fingerprint": "J7p76kcBdng=",
+    "id": "1490949864963440457",
+    "kind": "compute#forwardingRule",
+    "labelFingerprint": "42WmSpB8rSM=",
+    "loadBalancingScheme": "INTERNAL_MANAGED",
+    "name": "lab-4-fr",
+    "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+    "networkTier": "PREMIUM",
+    "portRange": "443-443",
+    "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/forwardingRules/lab-4-fr",
+    "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/forwardingRules/1490949864963440457",
+    "subnetwork": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/subnetworks/nihonmachi-subnet",
+    "target": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/targetHttpsProxies/lab-4-https-proxy"
+  }
+]

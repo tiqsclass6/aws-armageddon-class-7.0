@@ -1,0 +1,115 @@
+#!/bin/bash
+exec > >(tee -a /var/log/nihonmachi-startup.log) 2>&1
+set -euxo pipefail
+
+# Explanation (lab-4): Tokyo does not trust public networks; which makes the clinic self-contained.
+# This script:
+# 1) installs nginx + python
+# 2) generates a self-signed cert
+# 3) hosts a tiny HTTPS app endpoint
+# 4) includes a DB connect test to Tokyo RDS over the VPN corridor
+
+TOKYO_RDS_HOST="${tokyo_rds_host}"
+TOKYO_RDS_PORT="${tokyo_rds_port}"
+TOKYO_RDS_USER="${tokyo_rds_user}"
+SECRET_NAME="${secret_name}"
+
+apt-get update -y
+apt-get install -y nginx python3 jq curl ca-certificates gnupg openssl python3-pymysql
+
+# Install gcloud CLI (for Secret Manager access)
+if ! command -v gcloud >/dev/null 2>&1; then
+  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \
+    > /etc/apt/sources.list.d/google-cloud-sdk.list
+  apt-get update -y
+  apt-get install -y google-cloud-cli
+fi
+
+mkdir -p /etc/nginx/certs
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /etc/nginx/certs/self.key \
+  -out /etc/nginx/certs/self.crt \
+  -subj "/CN=nihonmachi-internal.local"
+
+cat > /var/www/html/index.html <<EOF
+<h1>Nihonmachi Clinic (Private)</h1>
+<p>Only reachable via VPN corridor.</p>
+EOF
+
+# rds_test.py fetches the secret at runtime (no password on disk)
+cat > /usr/local/bin/rds_test.py <<'PY'
+#!/usr/bin/env python3
+import os, json, datetime, subprocess
+import pymysql
+
+def get_secret(secret_name: str) -> str:
+    cmd = ["sudo", "gcloud", "secrets", "versions", "access", "latest", f"--secret={secret_name}"]
+    out = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
+    return out.strip()
+
+def main():
+    host = os.environ.get("TOKYO_RDS_HOST")
+    port = int(os.environ.get("TOKYO_RDS_PORT","3306"))
+    user = os.environ.get("TOKYO_RDS_USER")
+    db   = os.environ.get("TOKYO_RDS_DB","labdb")
+    secret_name = os.environ.get("TOKYO_RDS_SECRET_NAME")
+
+    if not all([host, user, secret_name]):
+        print(json.dumps({
+            "status": "error",
+            "message": "Missing TOKYO_RDS_HOST / TOKYO_RDS_USER / TOKYO_RDS_SECRET_NAME"
+        }, indent=2))
+        return
+
+    pw = get_secret(secret_name)
+
+    conn = pymysql.connect(host=host, port=port, user=user, password=pw, database=db, connect_timeout=5)
+    with conn.cursor() as cur:
+        cur.execute("CREATE TABLE IF NOT EXISTS clinic_ping (id INT AUTO_INCREMENT PRIMARY KEY, ts VARCHAR(64))")
+        ts = datetime.datetime.utcnow().isoformat()
+        cur.execute("INSERT INTO clinic_ping (ts) VALUES (%s)", (ts,))
+        conn.commit()
+        cur.execute("SELECT ts FROM clinic_ping ORDER BY id DESC LIMIT 1")
+        row = cur.fetchone()
+    conn.close()
+
+    print(json.dumps({"status":"ok","latest_ts": row[0]}, indent=2))
+
+if __name__ == "__main__":
+    main()
+PY
+
+chmod +x /usr/local/bin/rds_test.py
+
+# Nginx HTTPS config (TLS terminates on VM; ILB TCP passthrough)
+cat > /etc/nginx/sites-available/default <<EOF
+server {
+  listen 443 ssl;
+  ssl_certificate /etc/nginx/certs/self.crt;
+  ssl_certificate_key /etc/nginx/certs/self.key;
+
+  location /health {
+    return 200 "ok\n";
+  }
+
+  location / {
+    root /var/www/html;
+    index index.html;
+  }
+}
+EOF
+
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+nginx -t
+systemctl enable nginx
+systemctl restart nginx
+
+# Export ONLY non-secret env for DB test (no password)
+cat > /etc/profile.d/tokyo_rds.sh <<EOF
+export TOKYO_RDS_DB="labdb"
+export TOKYO_RDS_HOST="${tokyo_rds_host}"
+export TOKYO_RDS_PORT="${tokyo_rds_port}"
+export TOKYO_RDS_SECRET_NAME="${secret_name}"
+export TOKYO_RDS_USER="${tokyo_rds_user}"
+EOF

@@ -1,0 +1,738 @@
+{
+  "timestamp": "2026-02-28T02:45:07Z",
+  "project": "class-6-5-tiqs",
+  "region": "us-central1",
+  "checks": {
+    "mig_list": [
+      {
+        "autoHealingPolicies": [
+          {
+            "healthCheck": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/healthChecks/lab-4-hc",
+            "initialDelaySec": 60
+          }
+        ],
+        "autoscaled": "yes",
+        "autoscaler": {
+          "autoscalingPolicy": {
+            "coolDownPeriodSec": 60,
+            "cpuUtilization": {
+              "predictiveMethod": "NONE",
+              "utilizationTarget": 0.8
+            },
+            "maxNumReplicas": 4,
+            "minNumReplicas": 2,
+            "mode": "ON"
+          },
+          "creationTimestamp": "2026-02-27T17:14:12.974-08:00",
+          "id": "8900219233150959499",
+          "kind": "compute#autoscaler",
+          "name": "lab-4-autoscaler",
+          "recommendedSize": 2,
+          "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/autoscalers/lab-4-autoscaler",
+          "status": "ACTIVE",
+          "target": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/instanceGroupManagers/nihonmachi-mig"
+        },
+        "baseInstanceName": "nihonmachi-app",
+        "creationTimestamp": "2026-02-27T17:13:40.902-08:00",
+        "currentActions": {
+          "abandoning": 0,
+          "creating": 0,
+          "creatingWithoutRetries": 0,
+          "deleting": 0,
+          "none": 2,
+          "recreating": 0,
+          "refreshing": 0,
+          "restarting": 0,
+          "resuming": 0,
+          "starting": 0,
+          "stopping": 0,
+          "suspending": 0,
+          "verifying": 0
+        },
+        "distributionPolicy": {
+          "targetShape": "EVEN",
+          "zones": [
+            {
+              "zone": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/zones/us-central1-b"
+            },
+            {
+              "zone": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/zones/us-central1-c"
+            },
+            {
+              "zone": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/zones/us-central1-f"
+            }
+          ]
+        },
+        "fingerprint": "Dn_vE6vUgJo=",
+        "id": "8884055158092201899",
+        "instanceGroup": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/instanceGroups/nihonmachi-mig",
+        "instanceLifecyclePolicy": {
+          "defaultActionOnFailure": "REPAIR",
+          "forceUpdateOnRepair": "NO",
+          "onFailedHealthCheck": "DEFAULT_ACTION"
+        },
+        "instanceTemplate": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/instanceTemplates/nihonmachi-tpl20260228011335299900000001",
+        "kind": "compute#instanceGroupManager",
+        "listManagedInstancesResults": "PAGELESS",
+        "name": "nihonmachi-mig",
+        "namedPorts": [
+          {
+            "name": "https",
+            "port": 443
+          }
+        ],
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "satisfiesPzi": true,
+        "satisfiesPzs": true,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/instanceGroupManagers/nihonmachi-mig",
+        "size": "2",
+        "standbyPolicy": {
+          "mode": "MANUAL"
+        },
+        "status": {
+          "allInstancesConfig": {
+            "effective": true
+          },
+          "autoscaler": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/autoscalers/lab-4-autoscaler",
+          "isStable": true,
+          "stateful": {
+            "hasStatefulConfig": false,
+            "perInstanceConfigs": {
+              "allEffective": true
+            }
+          },
+          "versionTarget": {
+            "isReached": true
+          }
+        },
+        "targetSize": 2,
+        "targetStoppedSize": 0,
+        "targetSuspendedSize": 0,
+        "updatePolicy": {
+          "instanceRedistributionType": "PROACTIVE",
+          "maxSurge": {
+            "calculated": 3,
+            "fixed": 3
+          },
+          "maxUnavailable": {
+            "calculated": 0,
+            "fixed": 0
+          },
+          "minimalAction": "REPLACE",
+          "replacementMethod": "SUBSTITUTE",
+          "type": "PROACTIVE"
+        },
+        "versions": [
+          {
+            "instanceTemplate": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/instanceTemplates/nihonmachi-tpl20260228011335299900000001",
+            "targetSize": {
+              "calculated": 2
+            }
+          }
+        ]
+      }
+    ],
+    "forwarding_rules": [
+      {
+        "IPAddress": "10.245.11.4",
+        "IPProtocol": "TCP",
+        "creationTimestamp": "2026-02-27T17:15:18.571-08:00",
+        "description": "",
+        "fingerprint": "J7p76kcBdng=",
+        "id": "1490949864963440457",
+        "kind": "compute#forwardingRule",
+        "labelFingerprint": "42WmSpB8rSM=",
+        "loadBalancingScheme": "INTERNAL_MANAGED",
+        "name": "lab-4-fr",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "networkTier": "PREMIUM",
+        "portRange": "443-443",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/forwardingRules/lab-4-fr",
+        "selfLinkWithId": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/forwardingRules/1490949864963440457",
+        "subnetwork": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/subnetworks/nihonmachi-subnet",
+        "target": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/targetHttpsProxies/lab-4-https-proxy"
+      }
+    ],
+    "target_https_proxies": [
+      {
+        "creationTimestamp": "2026-02-27T17:15:06.895-08:00",
+        "fingerprint": "TRSRIaxRY2U=",
+        "id": "710925972275199861",
+        "kind": "compute#targetHttpsProxy",
+        "name": "lab-4-https-proxy",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/targetHttpsProxies/lab-4-https-proxy",
+        "sslCertificates": [
+          "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/sslCertificates/lab-4-ilb-ssl"
+        ],
+        "tlsEarlyData": "DISABLED",
+        "urlMap": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/urlMaps/lab-4-url-map"
+      }
+    ],
+    "backend_services": [
+      {
+        "affinityCookieTtlSec": 0,
+        "backends": [
+          {
+            "balancingMode": "UTILIZATION",
+            "capacityScaler": 1,
+            "group": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/instanceGroups/nihonmachi-mig",
+            "maxUtilization": 0.8
+          }
+        ],
+        "connectionDraining": {
+          "drainingTimeoutSec": 300
+        },
+        "creationTimestamp": "2026-02-27T17:14:13.162-08:00",
+        "description": "",
+        "fingerprint": "J2kV33vJYSs=",
+        "healthChecks": [
+          "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/healthChecks/lab-4-hc"
+        ],
+        "id": "1555057569025752970",
+        "kind": "compute#backendService",
+        "loadBalancingScheme": "INTERNAL_MANAGED",
+        "name": "lab-4-backend",
+        "port": 80,
+        "portName": "https",
+        "protocol": "HTTPS",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/backendServices/lab-4-backend",
+        "sessionAffinity": "NONE",
+        "timeoutSec": 30,
+        "usedBy": [
+          {
+            "reference": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/urlMaps/lab-4-url-map"
+          }
+        ]
+      }
+    ],
+    "health_checks": [
+      {
+        "checkIntervalSec": 5,
+        "creationTimestamp": "2026-02-27T17:12:59.944-08:00",
+        "healthyThreshold": 2,
+        "httpsHealthCheck": {
+          "port": 443,
+          "proxyHeader": "NONE",
+          "requestPath": "/health"
+        },
+        "id": "630211240291991540",
+        "kind": "compute#healthCheck",
+        "name": "lab-4-hc",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/healthChecks/lab-4-hc",
+        "timeoutSec": 5,
+        "type": "HTTPS",
+        "unhealthyThreshold": 2
+      }
+    ],
+    "firewall_rules": [
+      {
+        "allowed": [
+          {
+            "IPProtocol": "icmp"
+          }
+        ],
+        "creationTimestamp": "2025-11-08T18:20:32.399-08:00",
+        "description": "Allow ICMP from anywhere",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "3310051613579822239",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "default-allow-icmp",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/default",
+        "priority": 65534,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/default-allow-icmp",
+        "sourceRanges": [
+          "0.0.0.0/0"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "0-65535"
+            ]
+          },
+          {
+            "IPProtocol": "udp",
+            "ports": [
+              "0-65535"
+            ]
+          },
+          {
+            "IPProtocol": "icmp"
+          }
+        ],
+        "creationTimestamp": "2025-11-08T18:20:32.338-08:00",
+        "description": "Allow internal traffic on the default network",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "3747257100806538399",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "default-allow-internal",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/default",
+        "priority": 65534,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/default-allow-internal",
+        "sourceRanges": [
+          "10.128.0.0/9"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "3389"
+            ]
+          }
+        ],
+        "creationTimestamp": "2025-11-08T18:20:32.379-08:00",
+        "description": "Allow RDP from anywhere",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "4080620651161994399",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "default-allow-rdp",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/default",
+        "priority": 65534,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/default-allow-rdp",
+        "sourceRanges": [
+          "0.0.0.0/0"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "22"
+            ]
+          }
+        ],
+        "creationTimestamp": "2025-11-08T18:20:32.358-08:00",
+        "description": "Allow SSH from anywhere",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "5931898971900495007",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "default-allow-ssh",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/default",
+        "priority": 65534,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/default-allow-ssh",
+        "sourceRanges": [
+          "0.0.0.0/0"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "80",
+              "443"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:11.552-08:00",
+        "description": "",
+        "destinationRanges": [
+          "0.0.0.0/0"
+        ],
+        "direction": "EGRESS",
+        "disabled": false,
+        "id": "1264116501574582216",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-egress-bootstrap",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 900,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-egress-bootstrap",
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "udp",
+            "ports": [
+              "53"
+            ]
+          },
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "53"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:11.721-08:00",
+        "description": "",
+        "destinationRanges": [
+          "0.0.0.0/0"
+        ],
+        "direction": "EGRESS",
+        "disabled": false,
+        "id": "2192980467271073736",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-egress-dns",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 800,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-egress-dns",
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "443",
+              "3306"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:22.818-08:00",
+        "description": "",
+        "destinationRanges": [
+          "10.240.0.0/16"
+        ],
+        "direction": "EGRESS",
+        "disabled": false,
+        "id": "10620684100173789",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-egress-to-aws",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 800,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-egress-to-aws",
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "443"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:19.480-08:00",
+        "description": "Allow Google health checks to reach app instances on 443",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "4036128595306872768",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-hc",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 1000,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-hc",
+        "sourceRanges": [
+          "130.211.0.0/22",
+          "35.191.0.0/16"
+        ],
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "443"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:33.172-08:00",
+        "description": "",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "6189015999360008146",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-https-from-proxy",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 1000,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-https-from-proxy",
+        "sourceRanges": [
+          "10.245.40.0/24"
+        ],
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "443"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:13.959-08:00",
+        "description": "",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "7700041947142946758",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-https-from-vpn",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 1000,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-https-from-vpn",
+        "sourceRanges": [
+          "10.240.0.0/16"
+        ],
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "22"
+            ]
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:32.993-08:00",
+        "description": "",
+        "direction": "INGRESS",
+        "disabled": false,
+        "id": "9178498221617446867",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-allow-ssh",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 1000,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-allow-ssh",
+        "sourceRanges": [
+          "35.235.240.0/20"
+        ],
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      },
+      {
+        "creationTimestamp": "2026-02-27T17:13:22.844-08:00",
+        "denied": [
+          {
+            "IPProtocol": "all"
+          }
+        ],
+        "description": "",
+        "destinationRanges": [
+          "0.0.0.0/0"
+        ],
+        "direction": "EGRESS",
+        "disabled": false,
+        "id": "721810768022994909",
+        "kind": "compute#firewall",
+        "logConfig": {
+          "enable": false
+        },
+        "name": "nihonmachi-deny-all-egress",
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "priority": 1000,
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/firewalls/nihonmachi-deny-all-egress",
+        "targetTags": [
+          "nihonmachi-app"
+        ]
+      }
+    ],
+    "vpn_tunnels": [
+      {
+        "creationTimestamp": "2026-02-27T17:18:02.083-08:00",
+        "description": "Tunnel 1: IKEv2, AES256, SHA256, DH15",
+        "detailedStatus": "Tunnel is up and running.",
+        "id": "5937468049825201318",
+        "ikeVersion": 2,
+        "kind": "compute#vpnTunnel",
+        "labelFingerprint": "vezUS-42LLM=",
+        "labels": {
+          "goog-terraform-provisioned": "true"
+        },
+        "localTrafficSelector": [
+          "0.0.0.0/0"
+        ],
+        "name": "lab-4-tunnel1",
+        "peerExternalGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/externalVpnGateways/lab-4-aws-ext-gw",
+        "peerExternalGatewayInterface": 0,
+        "peerIp": "35.73.159.114",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "remoteTrafficSelector": [
+          "0.0.0.0/0"
+        ],
+        "router": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/routers/nihonmachi-router",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnTunnels/lab-4-tunnel1",
+        "sharedSecret": "*************",
+        "sharedSecretHash": "Hj_BeHUENv6KTdwqaBpRwEHtqR38",
+        "status": "ESTABLISHED",
+        "vpnGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnGateways/lab-4-ha-vpn",
+        "vpnGatewayInterface": 0
+      },
+      {
+        "creationTimestamp": "2026-02-27T17:18:01.948-08:00",
+        "description": "Tunnel 2: IKEv2, AES256, SHA256, DH16",
+        "detailedStatus": "Tunnel is up and running.",
+        "id": "4092519815096302758",
+        "ikeVersion": 2,
+        "kind": "compute#vpnTunnel",
+        "labelFingerprint": "vezUS-42LLM=",
+        "labels": {
+          "goog-terraform-provisioned": "true"
+        },
+        "localTrafficSelector": [
+          "0.0.0.0/0"
+        ],
+        "name": "lab-4-tunnel2",
+        "peerExternalGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/externalVpnGateways/lab-4-aws-ext-gw",
+        "peerExternalGatewayInterface": 1,
+        "peerIp": "35.76.170.131",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "remoteTrafficSelector": [
+          "0.0.0.0/0"
+        ],
+        "router": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/routers/nihonmachi-router",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnTunnels/lab-4-tunnel2",
+        "sharedSecret": "*************",
+        "sharedSecretHash": "zqxmRMXP_QnvFn2-IUWoRFs17MUf",
+        "status": "ESTABLISHED",
+        "vpnGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnGateways/lab-4-ha-vpn",
+        "vpnGatewayInterface": 0
+      }
+    ],
+    "routers": [
+      {
+        "bgp": {
+          "advertiseMode": "CUSTOM",
+          "advertisedIpRanges": [
+            {
+              "description": "",
+              "range": "10.245.11.0/24"
+            }
+          ],
+          "asn": 65501,
+          "keepaliveInterval": 20
+        },
+        "bgpPeers": [
+          {
+            "advertiseMode": "DEFAULT",
+            "advertisedRoutePriority": 100,
+            "bfd": {
+              "minReceiveInterval": 1000,
+              "minTransmitInterval": 1000,
+              "multiplier": 5,
+              "sessionInitializationMode": "DISABLED"
+            },
+            "enable": "TRUE",
+            "enableIpv4": true,
+            "enableIpv6": false,
+            "interfaceName": "lab-4-if2",
+            "ipAddress": "169.254.12.6",
+            "name": "lab-4-peer2",
+            "peerAsn": 64512,
+            "peerIpAddress": "169.254.12.5"
+          },
+          {
+            "advertiseMode": "DEFAULT",
+            "advertisedRoutePriority": 100,
+            "bfd": {
+              "minReceiveInterval": 1000,
+              "minTransmitInterval": 1000,
+              "multiplier": 5,
+              "sessionInitializationMode": "DISABLED"
+            },
+            "enable": "TRUE",
+            "enableIpv4": true,
+            "enableIpv6": false,
+            "interfaceName": "lab-4-if1",
+            "ipAddress": "169.254.12.2",
+            "name": "lab-4-peer1",
+            "peerAsn": 64512,
+            "peerIpAddress": "169.254.12.1"
+          }
+        ],
+        "creationTimestamp": "2026-02-27T17:13:11.537-08:00",
+        "encryptedInterconnectRouter": false,
+        "id": "1726794164228587464",
+        "interfaces": [
+          {
+            "ipRange": "169.254.12.6/30",
+            "ipVersion": "IPV4",
+            "linkedVpnTunnel": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnTunnels/lab-4-tunnel2",
+            "name": "lab-4-if2"
+          },
+          {
+            "ipRange": "169.254.12.2/30",
+            "ipVersion": "IPV4",
+            "linkedVpnTunnel": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnTunnels/lab-4-tunnel1",
+            "name": "lab-4-if1"
+          }
+        ],
+        "kind": "compute#router",
+        "name": "nihonmachi-router",
+        "nats": [
+          {
+            "autoNetworkTier": "PREMIUM",
+            "enableEndpointIndependentMapping": false,
+            "endpointTypes": [
+              "ENDPOINT_TYPE_VM"
+            ],
+            "icmpIdleTimeoutSec": 30,
+            "name": "nihonmachi-nat",
+            "natIpAllocateOption": "AUTO_ONLY",
+            "sourceSubnetworkIpRangesToNat": "ALL_SUBNETWORKS_ALL_IP_RANGES",
+            "tcpEstablishedIdleTimeoutSec": 1200,
+            "tcpTimeWaitTimeoutSec": 120,
+            "tcpTransitoryIdleTimeoutSec": 30,
+            "type": "PUBLIC",
+            "udpIdleTimeoutSec": 30
+          }
+        ],
+        "network": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/networks/nihonmachi-vpc",
+        "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+        "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/routers/nihonmachi-router"
+      }
+    ]
+  }
+}

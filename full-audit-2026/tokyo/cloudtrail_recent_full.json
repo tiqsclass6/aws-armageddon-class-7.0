@@ -1,0 +1,136 @@
+{
+    "Events": [
+        {
+            "EventId": "7443fc01-24e0-40f1-be85-846ceab34b03",
+            "EventName": "LookupEvents",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:38:28-08:00",
+            "EventSource": "cloudtrail.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:38:28Z\",\"eventSource\":\"cloudtrail.amazonaws.com\",\"eventName\":\"LookupEvents\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/n,Z,E,b cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#cloudtrail.lookup-events\",\"requestParameters\":{\"maxResults\":10},\"responseElements\":null,\"requestID\":\"6a21269c-82f4-47d6-b488-d92298f5c748\",\"eventID\":\"7443fc01-24e0-40f1-be85-846ceab34b03\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"cloudtrail.ap-northeast-1.amazonaws.com\"}}"
+        },
+        {
+            "EventId": "9def98ae-7e42-40b0-951b-314459091720",
+            "EventName": "DescribeSecurityGroups",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:38:26-08:00",
+            "EventSource": "ec2.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:38:26Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeSecurityGroups\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/n,C,E,Z,b cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#ec2.describe-security-groups\",\"requestParameters\":{\"securityGroupSet\":{},\"securityGroupIdSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"aa0628d3-2612-46ed-961d-3c2441f061ba\",\"eventID\":\"9def98ae-7e42-40b0-951b-314459091720\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.ap-northeast-1.amazonaws.com\"}}"
+        },
+        {
+            "EventId": "c6bd3c62-eb7b-44c5-b6cb-147578ce3891",
+            "EventName": "DescribeRouteTables",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:38:24-08:00",
+            "EventSource": "ec2.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:38:24Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeRouteTables\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/n,Z,E,b,C cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#ec2.describe-route-tables\",\"requestParameters\":{\"routeTableIdSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"82468d8c-dd4e-4c0c-bb71-0bff6873f4b0\",\"eventID\":\"c6bd3c62-eb7b-44c5-b6cb-147578ce3891\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.ap-northeast-1.amazonaws.com\"}}"
+        },
+        {
+            "EventId": "f6425355-f413-48be-b613-2a9a06037642",
+            "EventName": "DescribeVpnConnections",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:38:22-08:00",
+            "EventSource": "ec2.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:38:22Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeVpnConnections\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/Z,b,E,n cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#ec2.describe-vpn-connections\",\"requestParameters\":{\"vpnConnectionSet\":{},\"filterSet\":{}},\"responseElements\":null,\"requestID\":\"5f73ee02-c303-43e8-b533-10479a971ef2\",\"eventID\":\"f6425355-f413-48be-b613-2a9a06037642\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.ap-northeast-1.amazonaws.com\"}}"
+        },
+        {
+            "EventId": "cceb4dfe-27e4-4643-97d0-3df84fd65d6e",
+            "EventName": "DescribeTransitGateways",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:38:19-08:00",
+            "EventSource": "ec2.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:38:19Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeTransitGateways\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/Z,n,E,C,b cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#ec2.describe-transit-gateways\",\"requestParameters\":{\"DescribeTransitGatewaysRequest\":\"\"},\"responseElements\":null,\"requestID\":\"f3e949e7-9c51-4bdd-a516-c5c01c9d9143\",\"eventID\":\"cceb4dfe-27e4-4643-97d0-3df84fd65d6e\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"ec2.ap-northeast-1.amazonaws.com\"}}"
+        },
+        {
+            "EventId": "5a0f17e3-539e-4e52-9050-98c15508ec56",
+            "EventName": "DescribeDBInstances",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:38:18-08:00",
+            "EventSource": "rds.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:38:18Z\",\"eventSource\":\"rds.amazonaws.com\",\"eventName\":\"DescribeDBInstances\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/E,b,C,Z,n cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#rds.describe-db-instances\",\"requestParameters\":null,\"responseElements\":null,\"requestID\":\"9ad853e2-577b-4975-abe3-a9fd4a9f2596\",\"eventID\":\"5a0f17e3-539e-4e52-9050-98c15508ec56\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"rds.ap-northeast-1.amazonaws.com\"}}"
+        },
+        {
+            "EventId": "ab7a3b20-951b-38b0-8503-79c553066ba1",
+            "EventName": "GenerateDataKey",
+            "ReadOnly": "true",
+            "EventTime": "2026-02-27T18:36:42-08:00",
+            "EventSource": "kms.amazonaws.com",
+            "Resources": [
+                {
+                    "ResourceName": "arn:aws:kms:ap-northeast-1:866340886126:key/ab235dc4-222a-41fe-935d-bb2a34321364"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"AWSService\",\"invokedBy\":\"rds.amazonaws.com\"},\"eventTime\":\"2026-02-28T02:36:42Z\",\"eventSource\":\"kms.amazonaws.com\",\"eventName\":\"GenerateDataKey\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"rds.amazonaws.com\",\"userAgent\":\"rds.amazonaws.com\",\"requestParameters\":{\"numberOfBytes\":32,\"encryptionContext\":{\"aws:rds:db-id\":\"db-37VWNWSV7UULAT5YSDCHVLFP2I\"},\"keyId\":\"arn:aws:kms:ap-northeast-1:866340886126:key/ab235dc4-222a-41fe-935d-bb2a34321364\"},\"responseElements\":null,\"additionalEventData\":{\"keyMaterialId\":\"4cf108c160d699ce8168f30599a9df9ee70b3cf275ef29bca823a50cf1cbc78e\"},\"requestID\":\"68927ac5-5ca9-446f-bf75-88e28445c8ba\",\"eventID\":\"ab7a3b20-951b-38b0-8503-79c553066ba1\",\"readOnly\":true,\"resources\":[{\"accountId\":\"866340886126\",\"type\":\"AWS::KMS::Key\",\"ARN\":\"arn:aws:kms:ap-northeast-1:866340886126:key/ab235dc4-222a-41fe-935d-bb2a34321364\"}],\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"sharedEventID\":\"16014b42-5d97-4387-8fae-f9ba1172187e\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "5b8ef964-bd42-4ffc-bb00-6beb7df308d1",
+            "EventName": "DescribeNatGateways",
+            "ReadOnly": "true",
+            "AccessKeyId": "ASIA4TNPQ2ZXG2SPNLS3",
+            "EventTime": "2026-02-27T18:34:47-08:00",
+            "EventSource": "ec2.amazonaws.com",
+            "Username": "NAT_GATEWAY_METADATA_INGESTION",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"AssumedRole\",\"principalId\":\"AROA4TNPQ2ZXJNT4W5JBG:NAT_GATEWAY_METADATA_INGESTION\",\"arn\":\"arn:aws:sts::866340886126:assumed-role/AWSServiceRoleForComputeOptimizer/NAT_GATEWAY_METADATA_INGESTION\",\"accountId\":\"866340886126\",\"accessKeyId\":\"ASIA4TNPQ2ZXG2SPNLS3\",\"sessionContext\":{\"sessionIssuer\":{\"type\":\"Role\",\"principalId\":\"AROA4TNPQ2ZXJNT4W5JBG\",\"arn\":\"arn:aws:iam::866340886126:role/aws-service-role/compute-optimizer.amazonaws.com/AWSServiceRoleForComputeOptimizer\",\"accountId\":\"866340886126\",\"userName\":\"AWSServiceRoleForComputeOptimizer\"},\"attributes\":{\"creationDate\":\"2026-02-28T02:34:47Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"compute-optimizer.amazonaws.com\"},\"eventTime\":\"2026-02-28T02:34:47Z\",\"eventSource\":\"ec2.amazonaws.com\",\"eventName\":\"DescribeNatGateways\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"compute-optimizer.amazonaws.com\",\"userAgent\":\"compute-optimizer.amazonaws.com\",\"requestParameters\":{\"DescribeNatGatewaysRequest\":{\"Filter\":{\"Value\":{\"tag\":1,\"content\":\"available\"},\"tag\":1,\"Name\":\"state\"}}},\"responseElements\":null,\"requestID\":\"133d6de0-bef0-4f14-8f73-205ef08a368e\",\"eventID\":\"5b8ef964-bd42-4ffc-bb00-6beb7df308d1\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "cee7be9f-20b1-3110-90a8-be23778ab287",
+            "EventName": "AssumeRole",
+            "ReadOnly": "true",
+            "EventTime": "2026-02-27T18:34:47-08:00",
+            "EventSource": "sts.amazonaws.com",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::AccessKey",
+                    "ResourceName": "ASIA4TNPQ2ZXG2SPNLS3"
+                },
+                {
+                    "ResourceType": "AWS::STS::AssumedRole",
+                    "ResourceName": "arn:aws:sts::866340886126:assumed-role/AWSServiceRoleForComputeOptimizer/NAT_GATEWAY_METADATA_INGESTION"
+                },
+                {
+                    "ResourceType": "AWS::STS::AssumedRole",
+                    "ResourceName": "AROA4TNPQ2ZXJNT4W5JBG:NAT_GATEWAY_METADATA_INGESTION"
+                },
+                {
+                    "ResourceType": "AWS::STS::AssumedRole",
+                    "ResourceName": "NAT_GATEWAY_METADATA_INGESTION"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Role",
+                    "ResourceName": "arn:aws:iam::866340886126:role/aws-service-role/compute-optimizer.amazonaws.com/AWSServiceRoleForComputeOptimizer"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"AWSService\",\"invokedBy\":\"AWS Internal\"},\"eventTime\":\"2026-02-28T02:34:47Z\",\"eventSource\":\"sts.amazonaws.com\",\"eventName\":\"AssumeRole\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"AWS Internal\",\"userAgent\":\"AWS Internal\",\"requestParameters\":{\"roleArn\":\"arn:aws:iam::866340886126:role/aws-service-role/compute-optimizer.amazonaws.com/AWSServiceRoleForComputeOptimizer\",\"roleSessionName\":\"NAT_GATEWAY_METADATA_INGESTION\"},\"responseElements\":{\"credentials\":{\"accessKeyId\":\"ASIA4TNPQ2ZXG2SPNLS3\",\"sessionToken\":\"IQoJb3JpZ2luX2VjEIL//////////wEaDmFwLW5vcnRoZWFzdC0xIkYwRAIgRova9l02rG8/oYSLMP8AkFmmpjpEbFNaHpfNON4u4ucCIAk15Kg3aTJCjoW+Yf1gLTC1lK0k127bR5hlt2xgt9pQKvkCCEwQABoMODY2MzQwODg2MTI2IgwjrDiP0H8fUeP/Vokq1gIbqq9+/4fM/QczBCRbHPZD+xhGcOMNWLkXmdWGAJAQTvIlQ57WJtgdQOgHVr1sAuBMwi+7F1pwpYVKxzkswrSJ2L8nCVD+YZH2IUMKbHBvvFo2eh/qd/JU1deyZJldB4K7E/LWuss+fcZWop5gS1Fg9tctpuD4RmnQEDtRZTFNvuvcqrnPBqmMbshXZwGOtoLYo9+l5q5CwNzhg0LwaCbaQqUsnRvdkPqAqb2tCioY5hgpgbY8zveOsYHRYb969hkpbAJgli4OkA5WIfTPiLoq8fEs+oE3+lolgVsXmyfPxadxs0XOoIxkuIRAixTcWg/f0hdJQBT63rPrhiqSf3Oqxxf0oX0KJfT2FR7zBNJzgPpgOcfGlNyotjj0NlnAP5bZK6WefboEkPVy22U20hGD9OP0gQMZHjD2Ah61NMyabEBkYPXArfMqVgEGoGIgEvNOMDcQhCMwx6iJzQY6vgGkxyvimN8AN8Ev6cYRYeF7GRsBvhjE6Jjy0qPHZm377PTeDc4Lo20BP1MnxZVAqlN6HMBlz4Ecj5gCf2cq3g/klUKSh5TgSKWC9b91N9Ccz0BHk/OVxAIdpO5Kcte+dZJotHOuMrCa9ojZmwBaZBzpAj/OOEj6VW/NLKqhWl0gHwZzNk32As3NubOOlLX3CBZpQa2gl4sF1gdnglSSQbfAJ43i34gTbFYEgUIWC7ol8tek8hjMTZXQ5QDa6y3n\",\"expiration\":\"Feb 28, 2026, 3:34:47 AM\"},\"assumedRoleUser\":{\"assumedRoleId\":\"AROA4TNPQ2ZXJNT4W5JBG:NAT_GATEWAY_METADATA_INGESTION\",\"arn\":\"arn:aws:sts::866340886126:assumed-role/AWSServiceRoleForComputeOptimizer/NAT_GATEWAY_METADATA_INGESTION\"}},\"additionalEventData\":{\"ExtendedRequestId\":\"MTphcC1ub3J0aGVhc3QtMTpTOjE3NzIyNDYwODcxMDg6UjpOeDhLeEJiQQ==\"},\"requestID\":\"296f339b-bd31-4a79-8f68-8e4a8c4baffb\",\"eventID\":\"cee7be9f-20b1-3110-90a8-be23778ab287\",\"readOnly\":true,\"resources\":[{\"accountId\":\"866340886126\",\"type\":\"AWS::IAM::Role\",\"ARN\":\"arn:aws:iam::866340886126:role/aws-service-role/compute-optimizer.amazonaws.com/AWSServiceRoleForComputeOptimizer\"}],\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"sharedEventID\":\"fe7a17c4-701f-4540-98a3-32e414b7b50f\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "92fb6051-1173-4a5e-b3ad-272d60b4f93c",
+            "EventName": "LookupEvents",
+            "ReadOnly": "true",
+            "AccessKeyId": "AKIA4TNPQ2ZXD6PS7MGM",
+            "EventTime": "2026-02-27T18:30:46-08:00",
+            "EventSource": "cloudtrail.amazonaws.com",
+            "Username": "AWSCLI",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.11\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDA4TNPQ2ZXNAV6PP5T2\",\"arn\":\"arn:aws:iam::866340886126:user/AWSCLI\",\"accountId\":\"866340886126\",\"accessKeyId\":\"AKIA4TNPQ2ZXD6PS7MGM\",\"userName\":\"AWSCLI\"},\"eventTime\":\"2026-02-28T02:30:46Z\",\"eventSource\":\"cloudtrail.amazonaws.com\",\"eventName\":\"LookupEvents\",\"awsRegion\":\"ap-northeast-1\",\"sourceIPAddress\":\"70.224.198.136\",\"userAgent\":\"aws-cli/2.33.30 md/awscrt#0.31.2 ua/2.1 os/windows#11 md/arch#amd64 lang/python#3.13.11 md/pyimpl#CPython m/n,E,Z,b cfg/retry-mode#standard md/installer#exe sid/4478a978b5ee md/prompt#off md/command#cloudtrail.lookup-events\",\"requestParameters\":{\"maxResults\":25},\"responseElements\":null,\"requestID\":\"78510f6b-fca0-4819-a1a5-1a8f9e5a84a5\",\"eventID\":\"92fb6051-1173-4a5e-b3ad-272d60b4f93c\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"866340886126\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.3\",\"cipherSuite\":\"TLS_AES_128_GCM_SHA256\",\"clientProvidedHostHeader\":\"cloudtrail.ap-northeast-1.amazonaws.com\"}}"
+        }
+    ],
+    "NextToken": "5m2EV+zUjD763f8lfE6VTcFXeo8F5ym1mIuphvscAzWduxvUYRZkrEF6bMT9KCQlPr6rw9l9M3OjAJxb5eaNmA=="
+}

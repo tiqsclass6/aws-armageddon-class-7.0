@@ -1,0 +1,62 @@
+[
+  {
+    "creationTimestamp": "2026-02-27T17:18:02.083-08:00",
+    "description": "Tunnel 1: IKEv2, AES256, SHA256, DH15",
+    "detailedStatus": "Tunnel is up and running.",
+    "id": "5937468049825201318",
+    "ikeVersion": 2,
+    "kind": "compute#vpnTunnel",
+    "labelFingerprint": "vezUS-42LLM=",
+    "labels": {
+      "goog-terraform-provisioned": "true"
+    },
+    "localTrafficSelector": [
+      "0.0.0.0/0"
+    ],
+    "name": "lab-4-tunnel1",
+    "peerExternalGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/externalVpnGateways/lab-4-aws-ext-gw",
+    "peerExternalGatewayInterface": 0,
+    "peerIp": "35.73.159.114",
+    "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+    "remoteTrafficSelector": [
+      "0.0.0.0/0"
+    ],
+    "router": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/routers/nihonmachi-router",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnTunnels/lab-4-tunnel1",
+    "sharedSecret": "*************",
+    "sharedSecretHash": "Hj_BeHUENv6KTdwqaBpRwEHtqR38",
+    "status": "ESTABLISHED",
+    "vpnGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnGateways/lab-4-ha-vpn",
+    "vpnGatewayInterface": 0
+  },
+  {
+    "creationTimestamp": "2026-02-27T17:18:01.948-08:00",
+    "description": "Tunnel 2: IKEv2, AES256, SHA256, DH16",
+    "detailedStatus": "Tunnel is up and running.",
+    "id": "4092519815096302758",
+    "ikeVersion": 2,
+    "kind": "compute#vpnTunnel",
+    "labelFingerprint": "vezUS-42LLM=",
+    "labels": {
+      "goog-terraform-provisioned": "true"
+    },
+    "localTrafficSelector": [
+      "0.0.0.0/0"
+    ],
+    "name": "lab-4-tunnel2",
+    "peerExternalGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/global/externalVpnGateways/lab-4-aws-ext-gw",
+    "peerExternalGatewayInterface": 1,
+    "peerIp": "35.76.170.131",
+    "region": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1",
+    "remoteTrafficSelector": [
+      "0.0.0.0/0"
+    ],
+    "router": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/routers/nihonmachi-router",
+    "selfLink": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnTunnels/lab-4-tunnel2",
+    "sharedSecret": "*************",
+    "sharedSecretHash": "zqxmRMXP_QnvFn2-IUWoRFs17MUf",
+    "status": "ESTABLISHED",
+    "vpnGateway": "https://www.googleapis.com/compute/v1/projects/class-6-5-tiqs/regions/us-central1/vpnGateways/lab-4-ha-vpn",
+    "vpnGatewayInterface": 0
+  }
+]

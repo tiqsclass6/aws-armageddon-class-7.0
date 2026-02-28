@@ -1,0 +1,127 @@
+{
+  "RouteTables": [
+    {
+      "Associations": [
+        {
+          "Main": true,
+          "RouteTableAssociationId": "rtbassoc-052854d8ebc0c2789",
+          "RouteTableId": "rtb-0c9ecfc25dcf0be8b",
+          "AssociationState": {
+            "State": "associated"
+          }
+        }
+      ],
+      "PropagatingVgws": [],
+      "RouteTableId": "rtb-0c9ecfc25dcf0be8b",
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.240.0.0/16",
+          "GatewayId": "local",
+          "Origin": "CreateRouteTable",
+          "State": "active"
+        }
+      ],
+      "Tags": [],
+      "VpcId": "vpc-03b7db9fc4bbbfdbe",
+      "OwnerId": "866340886126"
+    },
+    {
+      "Associations": [
+        {
+          "Main": false,
+          "RouteTableAssociationId": "rtbassoc-0db8a44833e14c8f4",
+          "RouteTableId": "rtb-0e23b574434beb34e",
+          "SubnetId": "subnet-05fb981a9bc5de2e5",
+          "AssociationState": {
+            "State": "associated"
+          }
+        },
+        {
+          "Main": false,
+          "RouteTableAssociationId": "rtbassoc-01becc256e1e788bb",
+          "RouteTableId": "rtb-0e23b574434beb34e",
+          "SubnetId": "subnet-032cd6e6e210e036c",
+          "AssociationState": {
+            "State": "associated"
+          }
+        },
+        {
+          "Main": false,
+          "RouteTableAssociationId": "rtbassoc-04c7f7effcfd1255f",
+          "RouteTableId": "rtb-0e23b574434beb34e",
+          "SubnetId": "subnet-09bb75613f248bd72",
+          "AssociationState": {
+            "State": "associated"
+          }
+        }
+      ],
+      "PropagatingVgws": [],
+      "RouteTableId": "rtb-0e23b574434beb34e",
+      "Routes": [
+        {
+          "DestinationCidrBlock": "10.245.11.0/24",
+          "TransitGatewayId": "tgw-05f326d86d6cab282",
+          "Origin": "CreateRoute",
+          "State": "active"
+        },
+        {
+          "DestinationCidrBlock": "10.240.0.0/16",
+          "GatewayId": "local",
+          "Origin": "CreateRouteTable",
+          "State": "active"
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "lab-4-aws-tokyo-rtb-private"
+        },
+        {
+          "Key": "Compliance",
+          "Value": "PHI-at-rest-Japan-only"
+        },
+        {
+          "Key": "Project",
+          "Value": "lab-4"
+        },
+        {
+          "Key": "Environment",
+          "Value": "lab-4a"
+        }
+      ],
+      "VpcId": "vpc-03b7db9fc4bbbfdbe",
+      "OwnerId": "866340886126"
+    },
+    {
+      "Associations": [
+        {
+          "Main": true,
+          "RouteTableAssociationId": "rtbassoc-0acdcca16a4d89f8b",
+          "RouteTableId": "rtb-0db37cfd1f7788e30",
+          "AssociationState": {
+            "State": "associated"
+          }
+        }
+      ],
+      "PropagatingVgws": [],
+      "RouteTableId": "rtb-0db37cfd1f7788e30",
+      "Routes": [
+        {
+          "DestinationCidrBlock": "172.31.0.0/16",
+          "GatewayId": "local",
+          "Origin": "CreateRouteTable",
+          "State": "active"
+        },
+        {
+          "DestinationCidrBlock": "0.0.0.0/0",
+          "GatewayId": "igw-094561ef89ea91d8e",
+          "Origin": "CreateRoute",
+          "State": "active"
+        }
+      ],
+      "Tags": [],
+      "VpcId": "vpc-05589493ba8a3eb8f",
+      "OwnerId": "866340886126"
+    }
+  ]
+}
