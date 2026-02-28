@@ -1,4 +1,4 @@
-# 🏥 Lab 4A — Japan Medical (AWS ↔ GCP Secure Connectivity (IPSec VPN + BGP))
+# 🏥 **Lab 4 — Japan Medical (AWS ↔ GCP Secure Connectivity (IPSec VPN + BGP))**
 
 ![AWS](https://img.shields.io/badge/AWS-ap--northeast--1-orange?logo=amazonaws)
 ![GCP](https://img.shields.io/badge/GCP-us--central1-blue?logo=googlecloud)
@@ -26,6 +26,8 @@ This lab demonstrates:
 - Secrets handling maturity
 - Regulated environment design
 
+Planning Documentation is located in the [**NETWORK.md**](NETWORK.md) file.
+
 ---
 
 ## 🗣️ **Interview Talk Track**
@@ -39,7 +41,7 @@ This lab demonstrates:
 Design and validate secure, compliant multi-cloud connectivity between:
 
 - **AWS Tokyo (ap-northeast-1)** → Authoritative PHI Region  
-- **GCP Iowa (us-central1)** → New York branch compute  
+- **GCP Iowa (us-central1)** → Compute-only branch  
 
 **Using:**
 
@@ -71,12 +73,12 @@ This lab emphasizes **discipline, routing control, and secrets management** over
 
 ## 🌍 **Architecture Overview**
 
-## Regions
+### **Regions**
 
-| Provider | Region             | Role                         |
-|----------|--------------------|------------------------------|
-| **AWS**  | **ap-northeast-1** | **PHI authoritative region** |
-| **GCP**  | **us-central1**    | **Compute-only branch**      |
+| **Provider** | **Region**             | **Role**                     |
+|--------------|------------------------|------------------------------|
+| **AWS**      | **ap-northeast-1**     | **PHI authoritative region** |
+| **GCP**      | **us-central1**        | **Compute-only branch**      |
 
 ---
 
@@ -93,7 +95,8 @@ This lab emphasizes **discipline, routing control, and secrets management** over
 - ✅ Out-of-band PSK handling
 - ✅ Secrets not committed to Git
 
-If it works but violates these — it fails.
+> [!WARNING]
+> If it works but violates these — it fails.
 
 ---
 
@@ -107,6 +110,7 @@ LAB-4/
 │   │   ├── gcp_firewall_rules.txt
 │   │   ├── gcp_forwarding_rules.txt
 │   │   └── gcp_vpn_tunnels.txt
+│   │
 │   └── tokyo/
 │       ├── aws_evidence.json
 │       ├── aws_routes.txt
@@ -130,10 +134,11 @@ LAB-4/
 │   │   ├── 8-iam.tf
 │   │   ├── 9-outputs.tf
 │   │   └── startup.sh.tftpl
+│   │
 │   ├── vpn/
-│   │   ├── 1-variables.tf
-│   │   ├── 2-main.tf
-│   │   └── 3-outputs.tf
+│       ├── 1-variables.tf
+│       ├── 2-main.tf
+│       └── 3-outputs.tf
 │
 ├── python/
 │   └── malgus_collect_evidence.py
@@ -173,6 +178,17 @@ LAB-4/
 
 ---
 
+## 💼 **Why This Layout Works for Portfolio**
+
+- Clearly separates AWS and GCP responsibilities
+- Demonstrates BGP establishment proof
+- Shows routing discipline
+- Shows internal-only access design
+- Shows compute-only GCP implementation
+- Includes automation evidence (Python script)
+
+---
+
 ## 🚀 **Terraform Deployment Steps**
 
 ### 1️⃣ **Initialize, Format, & Validate**
@@ -200,17 +216,6 @@ terraform apply
 ```
 
   ![terraform-apply.jpg](/Screenshots/terraform-apply.jpg)
-
----
-
-## 💼 **Why This Layout Works for Portfolio**
-
-- Clearly separates AWS and GCP responsibilities
-- Demonstrates BGP establishment proof
-- Shows routing discipline
-- Shows internal-only access design
-- Shows compute-only GCP implementation
-- Includes automation evidence (Python script)
 
 ---
 
@@ -269,35 +274,7 @@ gcloud compute routers get-status nihonmachi-router --region us-central1
 
 ### 📦 **Deliverable 2 — Network Diagram**
 
-```mermaid
-flowchart LR
-
-    subgraph AWS["AWS Tokyo ap-northeast-1 PHI Region"]
-        A[AWS VPC 10.240.0.0/16] --> B[RDS PHI private]
-        A --> C[TGW ASN 64512]
-    end
-
-    subgraph VPN["IPSec VPN + BGP 2 tunnels"]
-        V["Tunnel 1: 35.74.175.161<br>169.254.12.0/30<br>Tunnel 2: 54.95.250.195<br>169.254.12.4/30"]
-    end
-
-    subgraph GCP["GCP Iowa us-central1 NY Branch"]
-        F[VPC nihonmachi-vpc] --> G[Subnet 10.245.11.0/24]
-        G --> H[HA VPN Gateway]
-        H --> I[Cloud Router ASN 65001<br>Advertise 10.245.11.0/24<br>Learn 10.240.0.0/16]
-        G --> J[Internal HTTPS ILB + MIG]
-    end
-
-    AWS --> VPN --> GCP
-
-    classDef aws fill:#ffe6e6,stroke:#990000
-    classDef gcp fill:#e6f0ff,stroke:#004d99
-    classDef vpn fill:#ffffe6,stroke:#999900
-
-    class AWS aws
-    class GCP gcp
-    class VPN vpn
-```
+![diagram.png](/Screenshots/diagram.png)
 
 ---
 
@@ -309,7 +286,7 @@ gcloud compute forwarding-rules describe lab-4-fr --region us-central1
 
 ![lab4-deliverable-pt1.jpg](/Screenshots/lab4-deliverable-pt1.jpg)
 
-**From inside VPN corridor:**
+**From inside VPN corridor (SSH into VM):**
 
 ```bash
 curl -k https://<INTERNAL_LB_IP>/health
@@ -318,7 +295,7 @@ curl -k https://<INTERNAL_LB_IP>/
 
 ![lab4-deliverable-pt2.jpg](/Screenshots/lab4-deliverable-pt2.jpg)
 
-**From Public Internet:**
+**From Public Internet (outside VPN corridor):**
 
 ```bash
 curl -k https://<INTERNAL_LB_IP>/health
@@ -336,6 +313,8 @@ curl -k https://<INTERNAL_LB_IP>/
 
 ### 📦 **Deliverable 4 — MIG Proof**
 
+**From Terminal or Git Bash:**
+
 ```bash
 gcloud compute instance-groups managed list --regions us-central1
 gcloud compute instances list --filter="name~nihonmachi-app"
@@ -352,13 +331,16 @@ gcloud compute instances list --filter="name~nihonmachi-app"
 
 ### 📦 **Deliverable 5 — Tokyo RDS Connectivity Proof**
 
-From VM:
+**From inside VPN corridor (SSH into VM):**
 
 ```bash
 python3 /usr/local/bin/rds_test.py
 ```
 
 ![lab4-deliverable-pt5.jpg](/Screenshots/lab4-deliverable-pt5.jpg)
+
+> [!NOTE]
+> I did not include command `source /etc/profile.d/tokyo_rds.sh` because it resets the PATH and causes the Python script to fail. The necessary environment variables were exported manually in the terminal session for testing purposes. In a production scenario, the startup script would handle this automatically on instance boot.
 
 ---
 
@@ -386,21 +368,14 @@ python python/malgus_collect_evidence.py
 
 ### 📦 **Deliverable 8 — Compliance Statement**
 
-No data is stored in GCP because the Iowa environment is compute-only and does not deploy databases or persistent storage for PHI. All regulated data remains within AWS Tokyo, the authoritative region. Access to the Tokyo RDS instance occurs exclusively over encrypted IPSec VPN tunnels using BGP for controlled routing, ensuring that only explicitly approved CIDRs are exchanged. Multi-cloud in this architecture separates compute from storage responsibilities without expanding the PHI storage footprint. Therefore, Japanese data residency requirements remain satisfied while still enabling operational flexibility.
+- The architecture adheres to Japanese data residency and protection requirements by ensuring that all protected health information (PHI) remains stored exclusively within the AWS Tokyo region, which serves as the authoritative location for regulated data. No persistent storage or databases are deployed in the GCP Iowa environment, rendering it compute-only and thereby preventing any PHI from being housed outside Japan. Access to the Tokyo-based RDS instance occurs solely through encrypted IPSec VPN tunnels established between the AWS Transit Gateway and the GCP HA VPN gateway. These tunnels utilize BGP to dynamically exchange only explicitly approved CIDR ranges, thereby enforcing strict network-level controls and preventing unauthorized data exposure.
 
----
-
-## 🛠️ **Additional Screenshots**
-
-**Include:**
-
-- AWS TGW configuration
-- GCP HA VPN configuration
-- Cloud Router BGP peer status
-- Network Connectivity Center
-- Firewall rules
-- Terraform apply success
-- Internal HTTPS Load Balancer configuration
+- This multi-cloud design effectively segregates compute operations in GCP from storage responsibilities in AWS, without expanding the PHI storage footprint beyond Japanese jurisdiction. The configuration aligns with the principles of the Act on the Protection of Personal Information (APPI), Japan's primary data protection framework, which does not impose strict data localization mandates for personal data, including sensitive categories such as health information. Instead, the APPI focuses on appropriate safeguards for cross-border transfers, consent mechanisms, and security measures when personal data leaves Japan. By maintaining all PHI within Japan and restricting external access to encrypted, controlled channels, the architecture satisfies relevant compliance expectations for data handling in regulated environments.
+  
+- 🔎 **References:**
+  
+  - [*Japanese Law Protection of Personal Information (APPI)*](https://www.ppc.go.jp/en/legal/)
+  - [*Japanese Law Translation - APPI*](https://www.japaneselawtranslation.go.jp/en/laws/view/4241/en)
 
 ---
 
@@ -420,15 +395,19 @@ terraform destroy
 
 ### 📚 **AWS References**
 
-- [https://docs.aws.amazon.com/vpc/latest/tgw/](https://docs.aws.amazon.com/vpc/latest/tgw/)
-- [https://docs.aws.amazon.com/vpn/latest/s2svpn/](https://docs.aws.amazon.com/vpn/latest/s2svpn/)
-- [https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)
+- [**RFC 1918 - Private Addressing**](https://datatracker.ietf.org/doc/html/rfc1918)
+- [**RFC 4271 - BGP**](https://datatracker.ietf.org/doc/html/rfc4271)
+- [**AWS Transit Gateway Documentation**](https://docs.aws.amazon.com/vpc/latest/tgw/)
+- [**AWS Site-to-Site VPN Documentation**](https://docs.aws.amazon.com/vpn/latest/s2svpn/)
+- [**AWS Transit Gateway Overview**](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)
 
 ### 📚 **GCP References**
 
-- [https://cloud.google.com/network-connectivity/docs/vpn](https://cloud.google.com/network-connectivity/docs/vpn)
-- [https://cloud.google.com/network-connectivity/docs/router](https://cloud.google.com/network-connectivity/docs/router)
-- [https://cloud.google.com/load-balancing/docs/l7-internal](https://cloud.google.com/load-balancing/docs/l7-internal)
+- [**RFC 1918 - Private Addressing**](https://datatracker.ietf.org/doc/html/rfc1918)
+- [**RFC 2401 - IPSec**](https://datatracker.ietf.org/doc/html/rfc2401)
+- [**GCP VPN Documentation**](https://cloud.google.com/network-connectivity/docs/vpn)
+- [**GCP Cloud Router Documentation**](https://cloud.google.com/network-connectivity/docs/router)
+- [**GCP Internal Load Balancing Documentation**](https://cloud.google.com/load-balancing/docs/l7-internal)
 
 ---
 
@@ -464,8 +443,9 @@ terraform destroy
 
 ## 🧠 **Final Reminder**
 
-Secure connectivity is not about speed.
-It is about control, discipline, and defensibility.
+> [!NOTE]
+>> Secure connectivity is not about speed.
+>> It is about control, discipline, and defensibility.
 
 ---
 

@@ -1,6 +1,6 @@
 # Lab 4 (AWS Tokyo PHI + GCP Iowa Compute via HA VPN/BGP)
 
-## Prereqs / Assumptions
+## Prerequisites / Assumptions
 
 - Terraform has already applied successfully (tunnels + BGP are **UP**).
 - You know your internal ILB IP (example used below: **10.245.11.4**).
@@ -115,35 +115,7 @@ Expected:
 
 Use the diagram below as your deliverable (edit only if your IPs/ASNs differ):
 
-```mermaid
-flowchart LR
-
-    subgraph AWS["AWS Tokyo ap-northeast-1 PHI Region"]
-        A[AWS VPC 10.240.0.0/16] --> B[RDS PHI private]
-        A --> C[TGW ASN 64512]
-    end
-
-    subgraph VPN["IPSec VPN + BGP 2 tunnels"]
-        V["Tunnel 1: 35.74.175.161<br>169.254.12.0/30<br>Tunnel 2: 54.95.250.195<br>169.254.12.4/30"]
-    end
-
-    subgraph GCP["GCP Iowa us-central1 NY Branch"]
-        F[VPC nihonmachi-vpc] --> G[Subnet 10.245.11.0/24]
-        G --> H[HA VPN Gateway]
-        H --> I[Cloud Router ASN 65001<br>Advertise 10.245.11.0/24<br>Learn 10.240.0.0/16]
-        G --> J[Internal HTTPS ILB + MIG]
-    end
-
-    AWS --> VPN --> GCP
-
-    classDef aws fill:#ffe6e6,stroke:#990000
-    classDef gcp fill:#e6f0ff,stroke:#004d99
-    classDef vpn fill:#ffffe6,stroke:#999900
-
-    class AWS aws
-    class GCP gcp
-    class VPN vpn
-```
+![diagram.png](/Screenshots/diagram.png)
 
 ---
 
