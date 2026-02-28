@@ -326,7 +326,7 @@ terraform destroy
 
 ![lab4-diagram (COMING SOON)](/images/lab4-diagram.png)
 
-- [**🏥 Lab 4A — Japan Medical (AWS ↔ GCP Secure Connectivity (IPSec VPN + BGP))**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-4)  
+- [**🏥 Lab 4 — AWS ↔ GCP Secure Connectivity (IPSec VPN + BGP)**](https://github.com/tiqsclass6/aws-armageddon-class-7.0/tree/lab-4)  
 
 ---
 
