@@ -12,6 +12,26 @@
 
 ---
 
+## 🎤 **Interview Talk Track**
+
+### 🏛 **Board-Level (Non-Technical, Business-Focused)**
+
+- **“I led the design and implementation of a secure, production-grade cloud platform that scales from a single application to multi-region and multi-cloud operations."**
+
+  - The architecture emphasizes resilience, regulatory alignment, strong security controls, and operational visibility. I implemented automated monitoring and AI-assisted incident reporting to reduce response time and improve audit readiness.
+  - The end result is a platform that reflects how regulated enterprises operate — secure by default, compliant by design, globally resilient, and automation-driven to minimize operational risk.
+
+### 🛡 **CISO-Focused (Security & Risk Framing)**
+
+- **“I engineered a secure-by-default cloud architecture using Terraform that enforces least-privilege IAM, private networking, origin cloaking at the edge, WAF inspection, and full audit logging."**
+
+  - All compute runs privately with controlled ingress through CloudFront and ALB, supported by real-time log analysis, CloudWatch metric filters, and automated incident response workflows powered by Lambda and Amazon Bedrock.
+  - I extended the design into multi-region and multi-cloud connectivity using Transit Gateway and BGP-based VPN, while enforcing strict data residency controls for healthcare workloads.
+
+> The project demonstrates measurable reductions in attack surface, improved MTTR through automation, and strong alignment with compliance and auditability requirements.
+
+---
+
 ## 📑 **Table of Contents**
 
 - [**Project Overview**](#-project-overview)
@@ -53,7 +73,7 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 
 ## 📋 **Project Requirements (All Labs)**
 
-### Common Requirements
+### **Common Requirements**
 
 - Active AWS account with permissions for:
   - **VPC, EC2, RDS, ALB, CloudFront, WAFv2, Route 53, ACM, Secrets Manager, SSM, CloudWatch, SNS, Lambda, Bedrock, Transit Gateway**
@@ -66,7 +86,7 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 - Python 3.x environment for Bedrock IR scripts
 - Terraform CLI installed locally (≥ 1.10 recommended)
 
-### Lab-Specific Requirements
+### **Lab-Specific Requirements**
 
 - **Lab 1**: EC2, RDS, Secrets Manager, SSM, WAF, Bedrock access
 - **Lab 2**: CloudFront + ALB integration, custom domains, short TTL testing
@@ -77,8 +97,7 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 
 ## 🧰 **Resources Needed (All Labs)**
 
-- AWS account  
-  *(Free Tier sufficient for most labs; costs apply for ALB, CloudFront, Bedrock, TGWs)*
+- AWS account *(Free Tier sufficient for most labs; costs apply for ALB, CloudFront, Bedrock, TGWs)*
 - AWS Provider **≥ 5.x** (≥ 6.x recommended)
 - Domain name with NS delegation capability (Route 53)
 - GCP account (for Lab 4)
@@ -88,7 +107,7 @@ All infrastructure is provisioned declaratively using **Terraform**, follows **l
 - TLS Provider (for ACM certificates)
 - Terraform **≥ 1.10** (latest stable recommended)
 
-### Local Environment
+### **Local Environment**
 
 - Terraform CLI
 - AWS CLI (v2 recommended)
