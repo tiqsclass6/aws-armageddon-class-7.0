@@ -1,3 +1,4 @@
+# AWS Tokyo variables
 variable "name_prefix" {
   description = "Prefix for all resources created by this module"
   type        = string
@@ -55,9 +56,7 @@ variable "gcp_branch_cidr" {
   type        = string
 }
 
-# -------------------------
 # Tokyo RDS (PHI lives here only)
-# -------------------------
 variable "enable_rds" {
   description = "Enable provisioning of Tokyo RDS (PHI region)"
   type        = bool

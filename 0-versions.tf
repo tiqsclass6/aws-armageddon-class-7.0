@@ -25,7 +25,7 @@ terraform {
 
   backend "s3" {
     bucket  = "armageddon-tiqs-state-files"
-    key     = "theo-labs/lab-4.tfstate"
+    key     = "armageddon/class7/theo-labs/lab-4.tfstate"
     region  = "us-east-1"
     encrypt = true
   }

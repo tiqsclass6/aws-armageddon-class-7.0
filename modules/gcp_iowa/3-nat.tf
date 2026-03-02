@@ -1,3 +1,4 @@
+# Nihonmachi VPC Router
 resource "google_compute_router" "nihonmachi_router" {
   name    = "nihonmachi-router"
   region  = var.gcp_region
@@ -14,6 +15,7 @@ resource "google_compute_router" "nihonmachi_router" {
   }
 }
 
+# Nihonmachi VPC NAT (for spoke VM egress)
 resource "google_compute_router_nat" "nihonmachi_nat" {
   count                              = var.enable_nat ? 1 : 0
   name                               = "nihonmachi-nat"

@@ -23,7 +23,6 @@ output "ha_vpn_interface1_ip" {
   value       = google_compute_ha_vpn_gateway.nihonmachi_ha_vpn.vpn_interfaces[1].ip_address
 }
 
-# --- Deliverable outputs ---
 output "ilb_ip" {
   description = "Internal LB IP for nihonmachi-fr (private-only over VPN corridor)"
   value       = google_compute_forwarding_rule.nihonmachi_fr.ip_address
@@ -33,7 +32,6 @@ output "mig_name" {
   description = "Managed Instance Group name"
   value       = google_compute_region_instance_group_manager.nihonmachi_mig.name
 }
-
 
 output "ncc_hub_id" {
   description = "Network Connectivity Center hub ID"

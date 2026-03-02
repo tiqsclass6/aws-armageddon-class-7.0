@@ -15,6 +15,7 @@ locals {
   )
 }
 
+# Instance template and MIG for app servers (Phase 1)
 resource "google_compute_instance_template" "nihonmachi_tpl" {
   name_prefix  = "nihonmachi-tpl"
   machine_type = var.machine_type
@@ -42,6 +43,7 @@ resource "google_compute_instance_template" "nihonmachi_tpl" {
   }
 }
 
+# Health check for MIG autohealing (Phase 1)
 resource "google_compute_region_instance_group_manager" "nihonmachi_mig" {
   name   = "nihonmachi-mig"
   region = var.gcp_region
@@ -72,6 +74,7 @@ resource "google_compute_region_instance_group_manager" "nihonmachi_mig" {
   }
 }
 
+# Autoscaling for MIG (Phase 1)
 resource "google_compute_region_autoscaler" "nihonmachi_autoscaler" {
   count  = var.enable_autoscaling ? 1 : 0
   name   = "${var.name_prefix}-autoscaler"

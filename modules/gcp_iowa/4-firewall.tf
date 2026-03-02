@@ -1,4 +1,4 @@
-# Allow HTTPS ONLY from the VPN/TGW corridor CIDRs to the app instances
+# Firewall rules for Nihonmachi app instances
 resource "google_compute_firewall" "allow_https_from_vpn" {
   name    = "nihonmachi-allow-https-from-vpn"
   network = google_compute_network.nihonmachi_vpc.name
@@ -48,6 +48,22 @@ resource "google_compute_firewall" "allow_hc" {
   target_tags = ["nihonmachi-app"]
 }
 
+# Allow SSH from GCP Cloud Shell for troubleshooting (optional)
+resource "google_compute_firewall" "nihonmachi_allow_ssh" {
+  name      = "nihonmachi-allow-ssh"
+  network   = google_compute_network.nihonmachi_vpc.id
+  direction = "INGRESS"
+  priority  = 1000
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["35.235.240.0/20"]
+  target_tags   = ["nihonmachi-app"]
+}
+
 # Egress allow ONLY to AWS Tokyo VPC CIDR on 443 and DB port (3306 default)
 resource "google_compute_firewall" "allow_egress_to_aws" {
   name        = "nihonmachi-allow-egress-to-aws"
@@ -95,6 +111,7 @@ resource "google_compute_firewall" "nihonmachi_allow_egress_bootstrap" {
   target_tags        = ["nihonmachi-app"]
 }
 
+# Allow app instances to reach out to DNS on 53 (TCP and UDP)
 resource "google_compute_firewall" "nihonmachi_allow_egress_dns" {
   name      = "nihonmachi-allow-egress-dns"
   network   = google_compute_network.nihonmachi_vpc.id
@@ -113,19 +130,4 @@ resource "google_compute_firewall" "nihonmachi_allow_egress_dns" {
 
   destination_ranges = ["0.0.0.0/0"]
   target_tags        = ["nihonmachi-app"]
-}
-
-resource "google_compute_firewall" "nihonmachi_allow_ssh" {
-  name      = "nihonmachi-allow-ssh"
-  network   = google_compute_network.nihonmachi_vpc.id
-  direction = "INGRESS"
-  priority  = 1000
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
-
-  source_ranges = ["35.235.240.0/20"]
-  target_tags   = ["nihonmachi-app"]
 }

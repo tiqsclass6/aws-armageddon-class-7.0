@@ -7,6 +7,7 @@ locals {
   }
 }
 
+# Custom VPC
 resource "aws_vpc" "tokyo" {
   cidr_block           = var.aws_vpc_cidr
   enable_dns_support   = true
@@ -17,6 +18,7 @@ resource "aws_vpc" "tokyo" {
   })
 }
 
+# Private subnets (no public subnets in this design)
 resource "aws_subnet" "tokyo_private" {
   count             = length(var.aws_private_subnet_cidrs)
   vpc_id            = aws_vpc.tokyo.id
@@ -28,6 +30,7 @@ resource "aws_subnet" "tokyo_private" {
   })
 }
 
+# Route table for private subnets (no IGW route, only TGW route)
 resource "aws_route_table" "tokyo_private" {
   vpc_id = aws_vpc.tokyo.id
 
@@ -36,29 +39,14 @@ resource "aws_route_table" "tokyo_private" {
   })
 }
 
+# Associate private subnets with private route table
 resource "aws_route_table_association" "tokyo_private" {
   count          = length(aws_subnet.tokyo_private)
   subnet_id      = aws_subnet.tokyo_private[count.index].id
   route_table_id = aws_route_table.tokyo_private.id
 }
 
-# -------------------------
-# Tokyo RDS subnet group (private subnets only)
-# -------------------------
-resource "aws_db_subnet_group" "tokyo_rds" {
-  count       = var.enable_rds ? 1 : 0
-  name        = "${var.name_prefix}-tokyo-rds-subnets"
-  description = "Tokyo RDS subnet group (private subnets only)"
-  subnet_ids  = aws_subnet.tokyo_private[*].id
-
-  tags = merge(local.tags, {
-    Name = "${var.name_prefix}-tokyo-rds-subnet-group"
-  })
-}
-
-# -------------------------
 # Security group for RDS (corridor-only access)
-# -------------------------
 resource "aws_security_group" "tokyo_rds_sg" {
   count       = var.enable_rds ? 1 : 0
   name        = "${var.name_prefix}-tokyo-rds-sg"
@@ -77,7 +65,6 @@ resource "aws_security_group" "tokyo_rds_sg" {
     }
   }
 
-  # If you don't pass rds_allowed_cidrs, fail closed (no ingress).
   # Egress: allow outbound (RDS needs to talk to AWS services)
   egress {
     from_port   = 0
@@ -91,21 +78,30 @@ resource "aws_security_group" "tokyo_rds_sg" {
   })
 }
 
-# -------------------------
-# Tokyo RDS instance (PHI lives here only)
-# -------------------------
+# Tokyo RDS DB Subnet Group and DB Instance (PHI lives here only)
+resource "aws_db_subnet_group" "tokyo_rds" {
+  count       = var.enable_rds ? 1 : 0
+  name        = "${var.name_prefix}-tokyo-rds-subnets"
+  description = "Tokyo RDS subnet group (private subnets only)"
+  subnet_ids  = aws_subnet.tokyo_private[*].id
+
+  tags = merge(local.tags, {
+    Name = "${var.name_prefix}-tokyo-rds-subnet-group"
+  })
+}
+
 resource "aws_db_instance" "tokyo_rds" {
+  allocated_storage         = var.rds_allocated_storage
   count                     = var.enable_rds ? 1 : 0
-  identifier                = "${var.name_prefix}-tokyo-rds"
+  db_name                   = var.rds_db_name
+  db_subnet_group_name      = aws_db_subnet_group.tokyo_rds[0].name
   engine                    = var.rds_engine
   engine_version            = var.rds_engine_version
   instance_class            = var.rds_instance_class
-  allocated_storage         = var.rds_allocated_storage
-  db_name                   = var.rds_db_name
-  username                  = var.rds_username
+  identifier                = "${var.name_prefix}-tokyo-rds"
   password                  = var.rds_password
   port                      = var.rds_port
-  db_subnet_group_name      = aws_db_subnet_group.tokyo_rds[0].name
+  username                  = var.rds_username
   vpc_security_group_ids    = [aws_security_group.tokyo_rds_sg[0].id]
   publicly_accessible       = false
   storage_encrypted         = true

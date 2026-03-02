@@ -1,4 +1,4 @@
-# Customer Gateway objects (GCP HA VPN interfaces)
+# Customer Gateway 1: Represents the GCP VPN gateway interface 0
 resource "aws_customer_gateway" "gcp_cgw0" {
   bgp_asn    = var.gcp_bgp_asn
   ip_address = var.gcp_ha_vpn_interface0_ip
@@ -13,6 +13,7 @@ resource "aws_customer_gateway" "gcp_cgw0" {
   }
 }
 
+# Customer Gateway 2: Represents the GCP VPN gateway interface 1
 resource "aws_customer_gateway" "gcp_cgw1" {
   bgp_asn    = var.gcp_bgp_asn
   ip_address = var.gcp_ha_vpn_interface1_ip
@@ -59,13 +60,13 @@ resource "aws_vpn_connection" "tgw_aws_to_gcp" {
   }
 }
 
-# Associate VPN connection with TGW route table
+# Transit Gateway Route Table Association: Associate the VPN connection with the TGW route table
 resource "aws_ec2_transit_gateway_route_table_association" "vpn_assoc" {
   transit_gateway_attachment_id  = aws_vpn_connection.tgw_aws_to_gcp.transit_gateway_attachment_id
   transit_gateway_route_table_id = var.aws_tgw_route_table_id
 }
 
-# Propagate routes from VPN connection to TGW route table
+# Transit Gateway Route Table Propagation: Propagate routes from VPN connection to TGW route table
 resource "aws_ec2_transit_gateway_route_table_propagation" "vpn_prop" {
   transit_gateway_attachment_id  = aws_vpn_connection.tgw_aws_to_gcp.transit_gateway_attachment_id
   transit_gateway_route_table_id = var.aws_tgw_route_table_id

@@ -1,3 +1,4 @@
+# Nihonmachi Health Check
 resource "google_compute_region_health_check" "nihonmachi_hc" {
   name   = "${var.name_prefix}-hc"
   region = var.gcp_region
@@ -8,6 +9,7 @@ resource "google_compute_region_health_check" "nihonmachi_hc" {
   }
 }
 
+# Nihonmachi Backend Service
 resource "google_compute_region_backend_service" "nihonmachi_backend" {
   name                  = "${var.name_prefix}-backend"
   region                = var.gcp_region
@@ -26,6 +28,7 @@ resource "google_compute_region_backend_service" "nihonmachi_backend" {
   depends_on = [google_compute_region_health_check.nihonmachi_hc]
 }
 
+# Nihonmachi URL Map
 resource "google_compute_region_url_map" "nihonmachi_url_map" {
   name   = "${var.name_prefix}-url-map"
   region = var.gcp_region
@@ -33,6 +36,7 @@ resource "google_compute_region_url_map" "nihonmachi_url_map" {
   default_service = google_compute_region_backend_service.nihonmachi_backend.id
 }
 
+# Nihonmachi Target HTTPS Proxy
 resource "google_compute_region_target_https_proxy" "nihonmachi_https_proxy" {
   name    = "${var.name_prefix}-https-proxy"
   region  = var.gcp_region
@@ -43,11 +47,13 @@ resource "google_compute_region_target_https_proxy" "nihonmachi_https_proxy" {
   ]
 }
 
+# Nihonmachi Private Service Connect Endpoint (represents AWS NLB)
 resource "tls_private_key" "nihonmachi_lb_key" {
   algorithm = "RSA"
   rsa_bits  = 2048
 }
 
+# Nihonmachi SSL Certificate
 resource "tls_self_signed_cert" "nihonmachi_lb_cert" {
   private_key_pem = tls_private_key.nihonmachi_lb_key.private_key_pem
 
@@ -68,6 +74,7 @@ resource "tls_self_signed_cert" "nihonmachi_lb_cert" {
   dns_names = ["nihonmachi.internal"]
 }
 
+# Nihonmachi Regional SSL Certificate
 resource "google_compute_region_ssl_certificate" "nihonmachi_lb_ssl" {
   name   = "${var.name_prefix}-ilb-ssl"
   region = var.gcp_region
@@ -76,6 +83,7 @@ resource "google_compute_region_ssl_certificate" "nihonmachi_lb_ssl" {
   certificate = tls_self_signed_cert.nihonmachi_lb_cert.cert_pem
 }
 
+# Nihonmachi Forwarding Rule (represents AWS NLB)
 resource "google_compute_forwarding_rule" "nihonmachi_fr" {
   name                  = "${var.name_prefix}-fr"
   region                = var.gcp_region
