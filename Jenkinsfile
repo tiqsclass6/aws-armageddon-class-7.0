@@ -29,7 +29,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'armageddon'
                 ]]) {
                     sh '''
                         set +x
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'armageddon'
                 ]]) {
                     sh '''
                         set +x
@@ -65,7 +65,7 @@ pipeline {
                 input message: 'Approve Terraform Apply?', ok: 'Apply'
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'armageddon'
                 ]]) {
                     sh '''
                         set +x
@@ -80,7 +80,7 @@ pipeline {
                 input message: 'Do you want to destroy the Terraform infrastructure?', ok: 'Destroy'
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'aws-creds'
+                    credentialsId: 'armageddon'
                 ]]) {
                     sh '''
                         set +x
