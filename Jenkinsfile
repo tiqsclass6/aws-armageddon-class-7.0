@@ -2,56 +2,89 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'sa-east-1'
+        AWS_REGION         = 'sa-east-1'
         AWS_DEFAULT_REGION = 'sa-east-1'
+        TF_IN_AUTOMATION   = 'true'
+    }
+
+    options {
+        timestamps()
     }
 
     stages {
+
         stage('Checkout Code') {
             steps {
                 git branch: 'lab-3b', url: 'https://github.com/tiqsclass6/aws-armageddon-class-7.0'
             }
         }
 
-        stage('Initialize Terraform') {
+        stage('Terraform Format') {
+            steps {
+                sh 'terraform fmt -check -recursive'
+            }
+        }
+
+        stage('Terraform Init') {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
+                    credentialsId: 'aws-creds'
                 ]]) {
                     sh '''
-                    set +x
-                    aws sts get-caller-identity
-                    terraform init
+                        set +x
+                        aws sts get-caller-identity
+                        terraform init
                     '''
                 }
             }
         }
 
-        stage('Plan Terraform') {
+        stage('Terraform Validate') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+
+        stage('Terraform Plan') {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
+                    credentialsId: 'aws-creds'
                 ]]) {
                     sh '''
-                    set +x
-                    terraform plan -out=tfplan
+                        set +x
+                        terraform plan -out=tfplan
                     '''
                 }
             }
         }
 
-        stage('Apply Terraform') {
+        stage('Terraform Apply') {
             steps {
-                input message: 'Approve Terraform Apply?', ok: 'Deploy'
+                input message: 'Approve Terraform Apply?', ok: 'Apply'
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
+                    credentialsId: 'aws-creds'
                 ]]) {
                     sh '''
-                    set +x
-                    terraform apply -auto-approve tfplan
+                        set +x
+                        terraform apply -auto-approve tfplan
+                    '''
+                }
+            }
+        }
+
+        stage('Terraform Destroy') {
+            steps {
+                input message: 'Do you want to destroy the Terraform infrastructure?', ok: 'Destroy'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds'
+                ]]) {
+                    sh '''
+                        set +x
+                        terraform destroy -auto-approve
                     '''
                 }
             }
@@ -60,10 +93,13 @@ pipeline {
 
     post {
         success {
-            echo 'Terraform deployment completed successfully!'
+            echo '✅ Terraform pipeline completed successfully.'
         }
         failure {
-            echo 'Terraform deployment failed!'
+            echo '❌ Terraform pipeline failed.'
+        }
+        always {
+            echo '📌 Pipeline execution finished.'
         }
     }
 }
