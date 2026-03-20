@@ -129,10 +129,10 @@ Lab-3b/
 ├── 6c-shinjuku-tgw.tf
 ├── 6d-shinjuku-iam.tf
 ├── 7-outputs.tf
-│
+├── Jenkinsfile
 ├── README.md
 ├── STEPS.md
-└── WRITTEN.md
+└── .gitignore
 ```
 
 ---
@@ -161,6 +161,19 @@ Successful deployment results in:
 * RDS MySQL instance in Shinjuku
 
 ![terraform-apply](Screenshots/terraform-apply.jpg)
+
+---
+
+## 🏗️ Jenkinsfile CI/CD Pipeline
+
+A Jenkins pipeline is included in the [**`Jenkinsfile`**](Jenkinsfile) for automating the Terraform deployment process. It performs the following stages:
+
+1. **Checkout**: Retrieves the latest code from the Git repository.
+2. **Terraform Init/Format/Validate**: Initializes Terraform, checks code formatting, and validates the configuration.
+3. **Terraform Plan**: Generates an execution plan and archives it for review.
+4. **Terraform Apply**: Applies the changes to the AWS environment if the plan stage is successful.
+5. **Terraform Destroy**: Destroys the infrastructure, can be triggered manually or as part of a cleanup process.
+6. **Post Actions**: Cleans up the workspace and logs the completion of the pipeline.
 
 ---
 

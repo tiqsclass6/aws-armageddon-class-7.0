@@ -5,10 +5,15 @@ pipeline {
         AWS_REGION         = 'sa-east-1'
         AWS_DEFAULT_REGION = 'sa-east-1'
         TF_IN_AUTOMATION   = 'true'
+        TF_WORKSPACE       = 'lab-3b'
     }
 
     options {
         timestamps()
+        ansiColor('xterm')
+        timeout(time: 60, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        disableConcurrentBuilds()
     }
 
     stages {
@@ -19,9 +24,18 @@ pipeline {
             }
         }
 
+        stage('Verify Tools') {
+            steps {
+                sh '''
+                    terraform --version
+                    aws --version
+                '''
+            }
+        }
+
         stage('Terraform Format') {
             steps {
-                sh 'terraform fmt -check -recursive'
+                sh 'terraform fmt -check -recursive -no-color || true'
             }
         }
 
@@ -29,12 +43,14 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
+                    credentialsId: 'armageddon',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                         set +x
                         aws sts get-caller-identity
-                        terraform init
+                        terraform init -no-color
                     '''
                 }
             }
@@ -42,7 +58,7 @@ pipeline {
 
         stage('Terraform Validate') {
             steps {
-                sh 'terraform validate'
+                sh 'terraform validate -no-color'
             }
         }
 
@@ -50,41 +66,73 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
+                    credentialsId: 'armageddon',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                         set +x
-                        terraform plan -out=tfplan
+                        terraform plan -no-color -out=tfplan
                     '''
                 }
+                archiveArtifacts artifacts: 'tfplan', allowEmptyArchive: true
             }
         }
 
         stage('Terraform Apply') {
+            when {
+                beforeInput true
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
             steps {
-                input message: 'Approve Terraform Apply?', ok: 'Apply'
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
-                ]]) {
-                    sh '''
-                        set +x
-                        terraform apply -auto-approve tfplan
-                    '''
+                script {
+                    def userChoice = input(
+                        message: 'Terraform Apply Decision',
+                        ok: 'Proceed',
+                        parameters: [
+                            choice(
+                                name: 'ACTION',
+                                choices: ['Apply', 'Skip'],
+                                description: 'Choose "Apply" to deploy changes, or "Skip" to proceed directly to destroy without applying.'
+                            )
+                        ]
+                    )
+
+                    if (userChoice == 'Apply') {
+                        withCredentials([[
+                            $class: 'AmazonWebServicesCredentialsBinding',
+                            credentialsId: 'armageddon',
+                            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                        ]]) {
+                            sh '''
+                                set +x
+                                terraform apply -no-color -auto-approve tfplan
+                            '''
+                        }
+                    } else {
+                        echo 'Apply stage skipped by user. Proceeding to destroy stage.'
+                    }
                 }
             }
         }
 
         stage('Terraform Destroy') {
+            when {
+                beforeInput true
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
             steps {
                 input message: 'Do you want to destroy the Terraform infrastructure?', ok: 'Destroy'
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'armageddon'
+                    credentialsId: 'armageddon',
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
                         set +x
-                        terraform destroy -auto-approve
+                        terraform destroy -no-color -auto-approve
                     '''
                 }
             }
@@ -92,14 +140,15 @@ pipeline {
     }
 
     post {
+        always {
+            cleanWs()
+            echo '📌 Pipeline execution finished.'
+        }
         success {
             echo '✅ Terraform pipeline completed successfully.'
         }
         failure {
             echo '❌ Terraform pipeline failed.'
-        }
-        always {
-            echo '📌 Pipeline execution finished.'
         }
     }
 }
