@@ -18,13 +18,12 @@ on:
           - destroy
 
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
   AWS_REGION: sa-east-1
   AWS_DEFAULT_REGION: sa-east-1
   TF_IN_AUTOMATION: "true"
   TF_WORKSPACE: lab-3b
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
-# 🔹 JOB 1: PLAN (NO APPROVAL REQUIRED)
 jobs:
   plan:
     name: Terraform Plan
@@ -73,7 +72,6 @@ jobs:
           path: tfplan
           if-no-files-found: error
 
-# 🔹 JOB 2: APPLY (REQUIRES APPROVAL)
   apply:
     name: Terraform Apply
     runs-on: ubuntu-latest
@@ -108,7 +106,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -no-color -auto-approve tfplan
 
-# 🔹 JOB 3: DESTROY (REQUIRES APPROVAL)
   destroy:
     name: Terraform Destroy
     runs-on: ubuntu-latest
