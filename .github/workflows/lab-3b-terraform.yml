@@ -1,0 +1,147 @@
+name: Lab 3B Terraform Pipeline
+
+on:
+  push:
+    branches:
+      - lab-3b
+
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Choose Terraform action"
+        required: true
+        default: "plan"
+        type: choice
+        options:
+          - plan
+          - apply
+          - destroy
+
+env:
+  AWS_REGION: sa-east-1
+  AWS_DEFAULT_REGION: sa-east-1
+  TF_IN_AUTOMATION: "true"
+  TF_WORKSPACE: lab-3b
+
+# 🔹 JOB 1: PLAN (NO APPROVAL REQUIRED)
+jobs:
+  plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: lab-3b
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.ARMAGEDDON_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ARMAGEDDON_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Verify Tools
+        run: |
+          terraform --version
+          aws --version
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive -no-color || true
+
+      - name: Terraform Init
+        run: |
+          set +x
+          aws sts get-caller-identity
+          terraform init -no-color
+
+      - name: Terraform Validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan
+        run: |
+          set +x
+          terraform plan -no-color -out=tfplan
+
+      - name: Upload tfplan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: tfplan
+          if-no-files-found: warn
+
+# 🔹 JOB 2: APPLY (REQUIRES APPROVAL)
+  apply:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    needs: plan
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'apply' }}
+
+    environment: lab-3b   # 🔐 Approval happens here
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: lab-3b
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.ARMAGEDDON_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ARMAGEDDON_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init -no-color
+
+      - name: Download tfplan Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+
+      - name: Terraform Apply
+        run: |
+          set +x
+          terraform apply -no-color -auto-approve tfplan
+
+# 🔹 JOB 3: DESTROY (REQUIRES APPROVAL)
+  destroy:
+    name: Terraform Destroy
+    runs-on: ubuntu-latest
+    needs: plan
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.action == 'destroy' }}
+
+    environment: lab-3b   # 🔐 Approval happens here
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: lab-3b
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.ARMAGEDDON_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.ARMAGEDDON_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init -no-color
+
+      - name: Terraform Destroy
+        run: |
+          set +x
+          terraform destroy -no-color -auto-approve
